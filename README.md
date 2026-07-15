@@ -2,7 +2,12 @@
 
 Starter Godot 4.x project for the graduation project: procedural dungeon +
 adaptive boss AI + k-NN enchant recommender.
-
+Need to pull like this when you downloaded 
+Main
+├── DungeonTiles
+├── Player
+├── Label
+└── Boss
 ## How to open this
 
 1. Install **Godot 4.3+** (standard, not .NET version — GDScript only, no C# needed): https://godotengine.org/download
