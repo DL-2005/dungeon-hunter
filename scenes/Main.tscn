@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://bjdfegp0d2gf4"]
+
+[ext_resource type="PackedScene" uid="uid://10whhu7x1llk" path="res://scenes/Player.tscn" id="1"]
+[ext_resource type="PackedScene" uid="uid://ruiatewd1m3n" path="res://scenes/Boss.tscn" id="2"]
+[ext_resource type="Script" uid="uid://bgvy5if221p5y" path="res://scripts/Main.gd" id="3"]
+[ext_resource type="Texture2D" uid="uid://ccqu8dquk6hwp" path="res://assets/dungeon_tileset.png" id="4_rarhs"]
+[ext_resource type="Script" uid="uid://mcto77a228bq" path="res://scenes/dungeon_generator.gd" id="5_vcsgt"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vcsgt"]
+texture = ExtResource("4_rarhs")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_lfkbx"]
+tile_size = Vector2i(64, 64)
+physics_layer_0/collision_layer = 1
+sources/1 = SubResource("TileSetAtlasSource_vcsgt")
+
+[node name="Main" type="Node2D" unique_id=1690434981]
+position = Vector2(-528, -414)
+script = ExtResource("3")
+
+[node name="Player" parent="." unique_id=549141553 instance=ExtResource("1")]
+position = Vector2(532, 420)
+
+[node name="Label" type="Label" parent="." unique_id=123189143]
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 400.0
+offset_bottom = 60.0
+text = "WASD to move, Space to attack, Shift to dodge"
+
+[node name="Boss" parent="." unique_id=2094632095 instance=ExtResource("2")]
+position = Vector2(600, 300)
+
+[node name="DungeonTiles" type="TileMapLayer" parent="." unique_id=699402272]
+tile_set = SubResource("TileSet_lfkbx")
+
+[node name="DungeonGenerator" type="Node" parent="DungeonTiles" unique_id=1224714687]
+script = ExtResource("5_vcsgt")
