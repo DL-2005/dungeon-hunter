@@ -4,14 +4,15 @@
 [ext_resource type="Script" uid="uid://b1uo8al8qxa23" path="res://scripts/boss_health_bar.gd" id="2_6ig5k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1"]
-size = Vector2(64, 64)
+size = Vector2(44, 48)
 
 [node name="Boss" type="CharacterBody2D" unique_id=2094632095]
 script = ExtResource("1")
 
 [node name="Visual" type="Polygon2D" parent="." unique_id=693399623]
+scale = Vector2(0.65, 0.65)
 color = Color(0.8, 0.1, 0.1, 1)
-polygon = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+polygon = PackedVector2Array(-50.588238, -29.411766, 50.588238, -29.411766, 50.588238, 52.941177, -50.588238, 54.11765)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1934476521]
 shape = SubResource("RectangleShape2D_1")

@@ -15,8 +15,8 @@ extends Node
 
 # --- TileSet mapping (confirmed from the editor) ---
 const SOURCE_ID: int = 1
-const FLOOR_TILES: Array[Vector2i] = [Vector2i(0, 0), Vector2i(1, 0)]
-const WALL_TILES: Array[Vector2i] = [Vector2i(2, 0), Vector2i(3, 0)]
+const FLOOR_TILES: Array[Vector2i] = [Vector2i(0, 0), Vector2i(1, 0)]  # can have multiple variants
+const WALL_TILES: Array[Vector2i] = [Vector2i(2, 0)]                   # single wall type only
 
 # --- Cell states for the internal grid ---
 enum Cell { EMPTY, FLOOR, WALL }
@@ -31,6 +31,7 @@ enum Cell { EMPTY, FLOOR, WALL }
 @export var room_count_max: int = 9
 @export var room_min_size: int = 4
 @export var room_max_size: int = 8
+@export var wide_corridor_chance: float = 0.5  # 0.0 = always narrow, 1.0 = always wide
 
 @export_group("Future adaptive hooks (unused for now)")
 @export var difficulty_bias: float = 0.0      # e.g. more rooms / bigger rooms as this rises
@@ -72,7 +73,6 @@ func _ensure_wall_collision(atlas_coords: Vector2i) -> void:
 
 	tile_data.add_collision_polygon(0)
 	tile_data.set_collision_polygon_points(0, 0, points)
-	print("Added collision polygon to wall tile ", atlas_coords)
 
 ## Runs the full generation pipeline. Call this from Main.gd on _ready(),
 ## same as before: dungeon.generate()
@@ -148,28 +148,33 @@ func _connect_rooms() -> void:
 
 
 func _carve_l_corridor(from: Vector2i, to: Vector2i) -> void:
-	# Randomly choose horizontal-then-vertical or vertical-then-horizontal
-	# so corridors don't all look the same shape.
+	var wide: bool = _rng.randf() < wide_corridor_chance
 	if _rng.randi_range(0, 1) == 0:
-		_carve_horizontal(from.x, to.x, from.y)
-		_carve_vertical(from.y, to.y, to.x)
+		_carve_horizontal(from.x, to.x, from.y, wide)
+		_carve_vertical(from.y, to.y, to.x, wide)
 	else:
-		_carve_vertical(from.y, to.y, from.x)
-		_carve_horizontal(from.x, to.x, to.y)
+		_carve_vertical(from.y, to.y, from.x, wide)
+		_carve_horizontal(from.x, to.x, to.y, wide)
 
 
-func _carve_horizontal(x1: int, x2: int, y: int) -> void:
+func _carve_horizontal(x1: int, x2: int, y: int, wide: bool) -> void:
 	var start: int = min(x1, x2)
 	var end: int = max(x1, x2)
 	for x in range(start, end + 1):
 		_grid[x][y] = Cell.FLOOR
+		if wide:
+			var y2: int = min(y + 1, grid_height - 1)
+			_grid[x][y2] = Cell.FLOOR
 
 
-func _carve_vertical(y1: int, y2: int, x: int) -> void:
+func _carve_vertical(y1: int, y2: int, x: int, wide: bool) -> void:
 	var start: int = min(y1, y2)
 	var end: int = max(y1, y2)
 	for y in range(start, end + 1):
 		_grid[x][y] = Cell.FLOOR
+		if wide:
+			var x2: int = min(x + 1, grid_width - 1)
+			_grid[x2][y] = Cell.FLOOR
 
 
 func _build_walls_around_floors() -> void:
@@ -211,8 +216,7 @@ func _draw_tiles() -> void:
 				var atlas: Vector2i = FLOOR_TILES[_rng.randi_range(0, FLOOR_TILES.size() - 1)]
 				_tiles.set_cell(Vector2i(x, y), SOURCE_ID, atlas)
 			elif cell == Cell.WALL:
-				var atlas: Vector2i = WALL_TILES[_rng.randi_range(0, WALL_TILES.size() - 1)]
-				_tiles.set_cell(Vector2i(x, y), SOURCE_ID, atlas)
+				_tiles.set_cell(Vector2i(x, y), SOURCE_ID, WALL_TILES[0])
 			# EMPTY cells are simply left blank (no tile set there).
 
 

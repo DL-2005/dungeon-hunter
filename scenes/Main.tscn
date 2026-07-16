@@ -19,9 +19,17 @@ tile_size = Vector2i(64, 64)
 physics_layer_0/collision_layer = 1
 sources/1 = SubResource("TileSetAtlasSource_vcsgt")
 
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_vcsgt"]
+
 [node name="Main" type="Node2D" unique_id=1690434981]
 position = Vector2(-528, -414)
 script = ExtResource("3")
+
+[node name="DungeonTiles" type="TileMapLayer" parent="." unique_id=699402272]
+tile_set = SubResource("TileSet_lfkbx")
+
+[node name="DungeonGenerator" type="Node" parent="DungeonTiles" unique_id=1224714687]
+script = ExtResource("5_vcsgt")
 
 [node name="Player" parent="." unique_id=549141553 instance=ExtResource("1")]
 position = Vector2(532, 420)
@@ -36,8 +44,5 @@ text = "WASD to move, Space to attack, Shift to dodge"
 [node name="Boss" parent="." unique_id=2094632095 instance=ExtResource("2")]
 position = Vector2(600, 300)
 
-[node name="DungeonTiles" type="TileMapLayer" parent="." unique_id=699402272]
-tile_set = SubResource("TileSet_lfkbx")
-
-[node name="DungeonGenerator" type="Node" parent="DungeonTiles" unique_id=1224714687]
-script = ExtResource("5_vcsgt")
+[node name="BTPlayer" type="BTPlayer" parent="Boss" unique_id=167572595]
+blackboard_plan = SubResource("BlackboardPlan_vcsgt")
