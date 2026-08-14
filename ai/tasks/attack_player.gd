@@ -1,3 +1,5 @@
+@tool
+class_name AttackPlayer
 extends BTAction
 ## Action: deal damage to the player if the attack cooldown has elapsed.
 ## Mirrors the old _state_attack() logic from the FSM version of BossAI.gd.

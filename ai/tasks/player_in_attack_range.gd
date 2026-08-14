@@ -1,3 +1,4 @@
+@tool
 extends BTCondition
 ## Condition: is the player currently close enough to attack?
 ## Attach the "agent" on BTPlayer to the Boss node itself, so get_agent()

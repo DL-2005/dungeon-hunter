@@ -1,3 +1,4 @@
+@tool
 extends BTAction
 ## Action: stand still. This is the root Selector's final fallback child —
 ## it always succeeds, so the Selector always has something to do.

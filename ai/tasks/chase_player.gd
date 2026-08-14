@@ -1,3 +1,4 @@
+@tool
 extends BTAction
 ## Action: move toward the player. Returns RUNNING every tick while chasing
 ## (never finishes on its own — the Selector re-evaluates attack range each
