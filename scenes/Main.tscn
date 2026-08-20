@@ -19,10 +19,14 @@ tile_size = Vector2i(64, 64)
 physics_layer_0/collision_layer = 1
 sources/1 = SubResource("TileSetAtlasSource_vcsgt")
 
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_c01mt"]
+
+[sub_resource type="BehaviorTree" id="BehaviorTree_2p31q"]
+blackboard_plan = SubResource("BlackboardPlan_c01mt")
+
 [sub_resource type="BlackboardPlan" id="BlackboardPlan_vcsgt"]
 
 [node name="Main" type="Node2D" unique_id=1690434981]
-position = Vector2(-528, -414)
 script = ExtResource("3")
 
 [node name="DungeonTiles" type="TileMapLayer" parent="." unique_id=699402272]
@@ -44,5 +48,7 @@ text = "WASD to move, Space to attack, Shift to dodge"
 [node name="Boss" parent="." unique_id=2094632095 instance=ExtResource("2")]
 position = Vector2(600, 300)
 
-[node name="BTPlayer" type="BTPlayer" parent="Boss" unique_id=167572595]
+[node name="BTPlayer" type="BTPlayer" parent="Boss" unique_id=847461608]
+behavior_tree = SubResource("BehaviorTree_2p31q")
+agent_node = NodePath("../..")
 blackboard_plan = SubResource("BlackboardPlan_vcsgt")

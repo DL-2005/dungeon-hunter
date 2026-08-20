@@ -1,3 +1,4 @@
+@tool
 extends BTCondition
 ## Condition: is the player within the boss's detection range?
 
