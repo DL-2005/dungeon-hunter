@@ -12,7 +12,6 @@ func _tick(_delta: float) -> Status:
 	var boss = get_agent()
 	if boss.player == null:
 		return FAILURE
-
 	var dir: Vector2 = (boss.player.global_position - boss.global_position).normalized()
 	boss.velocity = dir * boss.move_speed
 	boss.move_and_slide()

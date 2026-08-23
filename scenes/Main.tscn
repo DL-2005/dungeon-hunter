@@ -5,6 +5,11 @@
 [ext_resource type="Script" uid="uid://bgvy5if221p5y" path="res://scripts/Main.gd" id="3"]
 [ext_resource type="Texture2D" uid="uid://ccqu8dquk6hwp" path="res://assets/dungeon_tileset.png" id="4_rarhs"]
 [ext_resource type="Script" uid="uid://mcto77a228bq" path="res://scenes/dungeon_generator.gd" id="5_vcsgt"]
+[ext_resource type="Script" uid="uid://cnl24dch617f6" path="res://ai/tasks/player_in_attack_range.gd" id="6_lhr70"]
+[ext_resource type="Script" uid="uid://c85tsex0fbxw" path="res://ai/tasks/attack_player.gd" id="7_wp0k4"]
+[ext_resource type="Script" uid="uid://b6u4ka2jgqv1d" path="res://ai/tasks/player_in_detection_range.gd" id="8_bjd11"]
+[ext_resource type="Script" uid="uid://coowpr3opbl7w" path="res://ai/tasks/chase_player.gd" id="9_qmy6f"]
+[ext_resource type="Script" uid="uid://bow3k5pibk4om" path="res://ai/tasks/idle.gd" id="10_mwfav"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vcsgt"]
 texture = ExtResource("4_rarhs")
@@ -21,8 +26,33 @@ sources/1 = SubResource("TileSetAtlasSource_vcsgt")
 
 [sub_resource type="BlackboardPlan" id="BlackboardPlan_c01mt"]
 
+[sub_resource type="BTCondition" id="BTCondition_3p2gp"]
+script = ExtResource("6_lhr70")
+
+[sub_resource type="BTAction" id="BTAction_cvmbd"]
+script = ExtResource("7_wp0k4")
+
+[sub_resource type="BTSequence" id="BTSequence_ft6cd"]
+children = [SubResource("BTCondition_3p2gp"), SubResource("BTAction_cvmbd")]
+
+[sub_resource type="BTCondition" id="BTCondition_bb450"]
+script = ExtResource("8_bjd11")
+
+[sub_resource type="BTAction" id="BTAction_nfivy"]
+script = ExtResource("9_qmy6f")
+
+[sub_resource type="BTSequence" id="BTSequence_1nqs0"]
+children = [SubResource("BTCondition_bb450"), SubResource("BTAction_nfivy")]
+
+[sub_resource type="BTAction" id="BTAction_1iba3"]
+script = ExtResource("10_mwfav")
+
+[sub_resource type="BTDynamicSelector" id="BTDynamicSelector_lhr70"]
+children = [SubResource("BTSequence_ft6cd"), SubResource("BTSequence_1nqs0"), SubResource("BTAction_1iba3")]
+
 [sub_resource type="BehaviorTree" id="BehaviorTree_2p31q"]
 blackboard_plan = SubResource("BlackboardPlan_c01mt")
+root_task = SubResource("BTDynamicSelector_lhr70")
 
 [sub_resource type="BlackboardPlan" id="BlackboardPlan_vcsgt"]
 
@@ -50,5 +80,4 @@ position = Vector2(600, 300)
 
 [node name="BTPlayer" type="BTPlayer" parent="Boss" unique_id=847461608]
 behavior_tree = SubResource("BehaviorTree_2p31q")
-agent_node = NodePath("../..")
 blackboard_plan = SubResource("BlackboardPlan_vcsgt")
