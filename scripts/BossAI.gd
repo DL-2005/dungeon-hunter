@@ -10,7 +10,7 @@ enum Phase { PHASE_1, PHASE_2 }
 @export var max_health: float = 300.0
 @export var phase_2_threshold: float = 0.5  # triggers at 50% HP
 @export var move_speed: float = 100.0
-@export var detection_range: float = 400.0
+@export var detection_range: float = 250.0
 @export var attack_cooldown: float = 1.0
 
 var _attack_cooldown_timer: float = 0.0
