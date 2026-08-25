@@ -6,7 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://ccqu8dquk6hwp" path="res://assets/dungeon_tileset.png" id="4_rarhs"]
 [ext_resource type="Script" uid="uid://mcto77a228bq" path="res://scenes/dungeon_generator.gd" id="5_vcsgt"]
 [ext_resource type="Script" uid="uid://cnl24dch617f6" path="res://ai/tasks/player_in_attack_range.gd" id="6_lhr70"]
+[ext_resource type="Script" uid="uid://dshtb2iop7he" path="res://ai/tasks/is_phase_2.gd" id="6_qmy6f"]
+[ext_resource type="Script" uid="uid://8whc3e7a3m0f" path="res://ai/tasks/player_in_ranged_range.gd" id="7_mwfav"]
 [ext_resource type="Script" uid="uid://c85tsex0fbxw" path="res://ai/tasks/attack_player.gd" id="7_wp0k4"]
+[ext_resource type="Script" uid="uid://ceohuvmbgmtvm" path="res://ai/tasks/ranged_attack.gd" id="8_3p2gp"]
 [ext_resource type="Script" uid="uid://b6u4ka2jgqv1d" path="res://ai/tasks/player_in_detection_range.gd" id="8_bjd11"]
 [ext_resource type="Script" uid="uid://coowpr3opbl7w" path="res://ai/tasks/chase_player.gd" id="9_qmy6f"]
 [ext_resource type="Script" uid="uid://bow3k5pibk4om" path="res://ai/tasks/idle.gd" id="10_mwfav"]
@@ -25,6 +28,18 @@ physics_layer_0/collision_layer = 1
 sources/1 = SubResource("TileSetAtlasSource_vcsgt")
 
 [sub_resource type="BlackboardPlan" id="BlackboardPlan_c01mt"]
+
+[sub_resource type="BTCondition" id="BTCondition_cvmbd"]
+script = ExtResource("6_qmy6f")
+
+[sub_resource type="BTCondition" id="BTCondition_ft6cd"]
+script = ExtResource("7_mwfav")
+
+[sub_resource type="BTAction" id="BTAction_bb450"]
+script = ExtResource("8_3p2gp")
+
+[sub_resource type="BTSequence" id="BTSequence_nfivy"]
+children = [SubResource("BTCondition_cvmbd"), SubResource("BTCondition_ft6cd"), SubResource("BTAction_bb450")]
 
 [sub_resource type="BTCondition" id="BTCondition_3p2gp"]
 script = ExtResource("6_lhr70")
@@ -48,7 +63,7 @@ children = [SubResource("BTCondition_bb450"), SubResource("BTAction_nfivy")]
 script = ExtResource("10_mwfav")
 
 [sub_resource type="BTDynamicSelector" id="BTDynamicSelector_lhr70"]
-children = [SubResource("BTSequence_ft6cd"), SubResource("BTSequence_1nqs0"), SubResource("BTAction_1iba3")]
+children = [SubResource("BTSequence_nfivy"), SubResource("BTSequence_ft6cd"), SubResource("BTSequence_1nqs0"), SubResource("BTAction_1iba3")]
 
 [sub_resource type="BehaviorTree" id="BehaviorTree_2p31q"]
 blackboard_plan = SubResource("BlackboardPlan_c01mt")

@@ -12,9 +12,13 @@ enum Phase { PHASE_1, PHASE_2 }
 @export var move_speed: float = 100.0
 @export var detection_range: float = 250.0
 @export var attack_cooldown: float = 1.0
+@export var ranged_range: float = 400.0
+@export var ranged_cooldown: float = 2.0
+@export var ranged_damage: float = 8.0
+var _ranged_cooldown_timer: float = 0.0
 
 var _attack_cooldown_timer: float = 0.0
-var health: float = max_health
+var health: float 
 var current_phase: Phase = Phase.PHASE_1
 var player: Node2D = null
 
@@ -26,6 +30,8 @@ var _recent_player_dodge_dirs: Array = []
 func _physics_process(delta: float) -> void:
 	if _attack_cooldown_timer > 0.0:
 		_attack_cooldown_timer -= delta
+	if _ranged_cooldown_timer > 0.0:
+		_ranged_cooldown_timer -= delta
 	_check_phase_transition()
 	# Movement/attack decisions now happen inside the Behavior Tree
 	# (BTPlayer child node ticks automatically based on its Update Mode).
@@ -56,6 +62,8 @@ func take_damage(amount: float) -> void:
 func is_alive() -> bool:
 	return health > 0.0
 
+func _ready() -> void:
+	health = max_health
 
 func _die() -> void:
 	print("Boss defeated.")
