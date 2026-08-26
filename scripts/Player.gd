@@ -52,6 +52,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	move_and_slide()
 
+
 	if Input.is_action_just_pressed("attack"):
 		_attack()
 
@@ -72,6 +73,7 @@ func _attack() -> void:
 	for body in $AttackHitbox.get_overlapping_bodies():
 		if body != self and body.has_method("take_damage") and body.has_method("is_alive"):
 			body.take_damage(25.0)
+			stats["damage_dealt"] += 25.0
 			print("Hit ", body.name, " for 25 damage")
 	await get_tree().create_timer(0.1).timeout
 	$AttackHitbox.monitoring = false
@@ -100,6 +102,7 @@ func take_damage(amount: float) -> void:
 func _die() -> void:
 	is_dead = true
 	print("Player died.")
+	GameManager.attempts_this_boss += 1
 	# TODO: trigger game-over screen (Week 12)
 
 
