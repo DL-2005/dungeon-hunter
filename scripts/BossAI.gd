@@ -64,8 +64,26 @@ func is_alive() -> bool:
 
 func _ready() -> void:
 	health = max_health
+	_apply_adaptive_difficulty()
+
+func _apply_adaptive_difficulty() -> void:
+	match GameManager.last_skill_tier:
+		"Skilled":
+			move_speed *= 1.2
+			attack_cooldown *= 0.8
+		"Struggling":
+			move_speed *= 0.85
+			attack_cooldown *= 1.25
+		_:
+			pass  # Average -- no change
 
 func _die() -> void:
 	print("Boss defeated.")
 	set_physics_process(false)
-	# TODO: trigger loot drop + fight-end profile capture via GameManager
+	$BTPlayer.active = false
+	var profile: Dictionary = GameManager.end_fight(player)
+	GameManager.log_fight_result(profile)
+	var enchant: String = GameManager.recommend_enchant(profile)
+	print("Recommended enchant: ", enchant, " | Skill tier: ", GameManager.last_skill_tier)
+	GameManager.attempts_this_boss = 1
+	# TODO: trigger loot drop using `enchant` (Week 11)
