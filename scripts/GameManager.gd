@@ -28,6 +28,8 @@ func _ready() -> void:
 func start_fight() -> void:
 	_fight_start_time = Time.get_ticks_msec() / 1000.0
 
+func get_fight_duration() -> float:
+	return (Time.get_ticks_msec() / 1000.0) - _fight_start_time
 
 func end_fight(player: Node) -> Dictionary:
 	var duration := (Time.get_ticks_msec() / 1000.0) - _fight_start_time

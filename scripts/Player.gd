@@ -103,6 +103,11 @@ func _die() -> void:
 	is_dead = true
 	print("Player died.")
 	GameManager.attempts_this_boss += 1
+	var duration := GameManager.get_fight_duration()
+	var profile: Dictionary = get_playstyle_profile(duration)
+	GameManager.log_fight_result(profile)
+	var enchant: String = GameManager.recommend_enchant(profile)
+	print("Recommended enchant (after loss): ", enchant, " | Skill tier: ", GameManager.last_skill_tier)
 	# TODO: trigger game-over screen (Week 12)
 
 
