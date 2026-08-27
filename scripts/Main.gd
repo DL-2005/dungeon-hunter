@@ -7,7 +7,7 @@ extends Node2D
 @onready var player: CharacterBody2D = $Player
 @onready var boss = $Boss
 @onready var dungeon = $DungeonTiles/DungeonGenerator
-
+@onready var shop_ui = $CanvasLayer/ShopUI
 
 func _ready() -> void:
 	dungeon.generate()
@@ -16,4 +16,9 @@ func _ready() -> void:
 	boss.global_position = dungeon.get_random_floor_position()
 
 	boss.player = player
+	boss.defeated.connect(_on_boss_defeated)
 	GameManager.start_fight()
+	
+func _on_boss_defeated(recommended_enchant: String, skill_tier: String) -> void:
+	GameManager.add_currency(50)
+	shop_ui.open(recommended_enchant)

@@ -13,6 +13,7 @@
 [ext_resource type="Script" uid="uid://b6u4ka2jgqv1d" path="res://ai/tasks/player_in_detection_range.gd" id="8_bjd11"]
 [ext_resource type="Script" uid="uid://coowpr3opbl7w" path="res://ai/tasks/chase_player.gd" id="9_qmy6f"]
 [ext_resource type="Script" uid="uid://bow3k5pibk4om" path="res://ai/tasks/idle.gd" id="10_mwfav"]
+[ext_resource type="PackedScene" uid="uid://kgpkfww1fbxw" path="res://scenes/ShopUI.tscn" id="14_mwfav"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vcsgt"]
 texture = ExtResource("4_rarhs")
@@ -101,3 +102,8 @@ position = Vector2(600, 300)
 [node name="BTPlayer" type="BTPlayer" parent="Boss" unique_id=847461608]
 behavior_tree = SubResource("BehaviorTree_2p31q")
 blackboard_plan = SubResource("BlackboardPlan_vcsgt")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1995418825]
+
+[node name="ShopUI" parent="CanvasLayer" unique_id=31122269 instance=ExtResource("14_mwfav")]
+visible = true
