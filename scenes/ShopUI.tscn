@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://kgpkfww1fbxw"]
+
+[ext_resource type="Script" uid="uid://dtnaqufo3dd6" path="res://scenes/ShopUI.gd" id="1_owitj"]
+
+[node name="ShopUi" type="Control" unique_id=31122269]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+script = ExtResource("1_owitj")
+
+[node name="Panel" type="Panel" parent="." unique_id=24313245]
+layout_mode = 0
+offset_left = 376.0
+offset_top = 174.0
+offset_right = 776.0
+offset_bottom = 474.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel" unique_id=1774535961]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="RecommendedLabel" type="Label" parent="Panel/VBoxContainer" unique_id=717847340]
+layout_mode = 2
+
+[node name="CurrencyLabel" type="Label" parent="Panel/VBoxContainer" unique_id=344762350]
+layout_mode = 2
+
+[node name="VampiricButton" type="Button" parent="Panel/VBoxContainer" unique_id=909830066]
+layout_mode = 2
+
+[node name="SwiftButton" type="Button" parent="Panel/VBoxContainer" unique_id=1030350206]
+layout_mode = 2
+
+[node name="GuardianButton" type="Button" parent="Panel/VBoxContainer" unique_id=583417551]
+layout_mode = 2
+
+[node name="BerserkerButton" type="Button" parent="Panel/VBoxContainer" unique_id=1233994618]
+layout_mode = 2

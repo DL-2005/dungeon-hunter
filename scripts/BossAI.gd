@@ -6,6 +6,7 @@ extends CharacterBody2D
 ## This script is now the "body" the tree's tasks act on via get_agent().
 
 enum Phase { PHASE_1, PHASE_2 }
+signal defeated(recommended_enchant: String, skill_tier: String)
 
 @export var max_health: float = 300.0
 @export var phase_2_threshold: float = 0.5  # triggers at 50% HP
@@ -85,5 +86,6 @@ func _die() -> void:
 	GameManager.log_fight_result(profile)
 	var enchant: String = GameManager.recommend_enchant(profile)
 	print("Recommended enchant: ", enchant, " | Skill tier: ", GameManager.last_skill_tier)
+	emit_signal("defeated", enchant, GameManager.last_skill_tier)
 	GameManager.attempts_this_boss = 1
 	# TODO: trigger loot drop using `enchant` (Week 11)
