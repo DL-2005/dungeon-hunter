@@ -16,8 +16,10 @@ signal defeated(recommended_enchant: String, skill_tier: String)
 @export var ranged_range: float = 400.0
 @export var ranged_cooldown: float = 2.0
 @export var ranged_damage: float = 8.0
-var _ranged_cooldown_timer: float = 0.0
 
+var _ranged_cooldown_timer: float = 0.0
+var _base_move_speed: float
+var _base_attack_cooldown: float
 var _attack_cooldown_timer: float = 0.0
 var health: float 
 var current_phase: Phase = Phase.PHASE_1
@@ -64,10 +66,14 @@ func is_alive() -> bool:
 	return health > 0.0
 
 func _ready() -> void:
+	_base_move_speed = move_speed
+	_base_attack_cooldown = attack_cooldown
 	health = max_health
-	_apply_adaptive_difficulty()
+	reset_and_respawn()
 
 func _apply_adaptive_difficulty() -> void:
+	move_speed = _base_move_speed
+	attack_cooldown = _base_attack_cooldown
 	match GameManager.last_skill_tier:
 		"Skilled":
 			move_speed *= 1.2
@@ -89,3 +95,13 @@ func _die() -> void:
 	emit_signal("defeated", enchant, GameManager.last_skill_tier)
 	GameManager.attempts_this_boss = 1
 	# TODO: trigger loot drop using `enchant` (Week 11)
+
+func reset_and_respawn() -> void:
+	health = max_health
+	current_phase = Phase.PHASE_1
+	_attack_cooldown_timer = 0.0
+	_ranged_cooldown_timer = 0.0
+	set_physics_process(true)
+	$BTPlayer.active = true
+	_apply_adaptive_difficulty()
+	$HealthBar.update_health(health, max_health)

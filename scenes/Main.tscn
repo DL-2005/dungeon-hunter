@@ -14,6 +14,7 @@
 [ext_resource type="Script" uid="uid://coowpr3opbl7w" path="res://ai/tasks/chase_player.gd" id="9_qmy6f"]
 [ext_resource type="Script" uid="uid://bow3k5pibk4om" path="res://ai/tasks/idle.gd" id="10_mwfav"]
 [ext_resource type="PackedScene" uid="uid://kgpkfww1fbxw" path="res://scenes/ShopUI.tscn" id="14_mwfav"]
+[ext_resource type="PackedScene" uid="uid://dmdfr8i4tg7nm" path="res://scenes/TutorialUI.tscn" id="15_3p2gp"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vcsgt"]
 texture = ExtResource("4_rarhs")
@@ -83,11 +84,6 @@ script = ExtResource("5_vcsgt")
 
 [node name="Player" parent="." unique_id=549141553 instance=ExtResource("1")]
 position = Vector2(532, 420)
-speed = null
-dodge_speed = null
-dodge_duration = null
-dodge_cooldown = null
-max_health = null
 
 [node name="Label" type="Label" parent="." unique_id=123189143]
 offset_left = 20.0
@@ -106,4 +102,5 @@ blackboard_plan = SubResource("BlackboardPlan_vcsgt")
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1995418825]
 
 [node name="ShopUI" parent="CanvasLayer" unique_id=31122269 instance=ExtResource("14_mwfav")]
-visible = true
+
+[node name="TutorialUI" parent="CanvasLayer" unique_id=671197343 instance=ExtResource("15_3p2gp")]
