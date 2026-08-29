@@ -1,7 +1,7 @@
 extends Control
 
 const ENCHANT_PRICE := 30
-
+signal closed
 @onready var recommended_label: Label = $Panel/VBoxContainer/RecommendedLabel
 @onready var currency_label: Label = $Panel/VBoxContainer/CurrencyLabel
 @onready var buttons: Dictionary = {
@@ -34,3 +34,4 @@ func _on_enchant_pressed(enchant_name: String) -> void:
 
 func close() -> void:
 	visible = false
+	closed.emit()

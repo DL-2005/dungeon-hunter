@@ -10,6 +10,14 @@ extends CharacterBody2D
 @export var dodge_cooldown: float = 0.6
 @export var max_health: float = 100.0
 
+# --- Enchant effect tuning (Week 11-12) ---
+# Read GameManager.equipped_enchant at point-of-use rather than caching it,
+# since it can change any time the player buys something at the shop.
+const VAMPIRIC_LIFESTEAL_PCT: float = 0.20  # % of damage dealt returned as healing
+const SWIFT_SPEED_MULT: float = 1.25        # move + dodge speed multiplier
+const GUARDIAN_DAMAGE_REDUCTION: float = 0.25  # % less damage taken
+const BERSERKER_MAX_BONUS: float = 0.5      # up to +50% attack damage at 0 HP
+
 var health: float = max_health
 var is_dodging: bool = false
 var _dodge_timer: float = 0.0
@@ -26,6 +34,8 @@ var stats := {
 	"hits_taken": 0,
 	"damage_dealt": 0.0,
 }
+
+signal died
 
 func _physics_process(delta: float) -> void:
 	if is_dead:
@@ -48,10 +58,9 @@ func _physics_process(delta: float) -> void:
 		input_dir = input_dir.normalized()
 		last_move_dir = input_dir
 
-	velocity = input_dir * speed
+	var speed_mult := SWIFT_SPEED_MULT if GameManager.equipped_enchant == "Swift" else 1.0
+	velocity = input_dir * speed * speed_mult
 	move_and_slide()
-	move_and_slide()
-
 
 	if Input.is_action_just_pressed("attack"):
 		_attack()
@@ -72,19 +81,39 @@ func _attack() -> void:
 	await get_tree().physics_frame
 	for body in $AttackHitbox.get_overlapping_bodies():
 		if body != self and body.has_method("take_damage") and body.has_method("is_alive"):
-			body.take_damage(25.0)
-			stats["damage_dealt"] += 25.0
-			print("Hit ", body.name, " for 25 damage")
+			var damage := 25.0
+			if GameManager.equipped_enchant == "Berserker":
+				var missing_frac := 1.0 - (health / max_health)
+				damage *= 1.0 + BERSERKER_MAX_BONUS * missing_frac
+			body.take_damage(damage)
+			stats["damage_dealt"] += damage
+			print("Hit ", body.name, " for ", damage, " damage")
+			if GameManager.equipped_enchant == "Vampiric":
+				health = min(health + damage * VAMPIRIC_LIFESTEAL_PCT, max_health)
+				print("Vampiric healed for ", damage * VAMPIRIC_LIFESTEAL_PCT, ". Health: ", health)
 	await get_tree().create_timer(0.1).timeout
 	$AttackHitbox.monitoring = false
 
+func revive() -> void:
+	is_dead = false
+	health = max_health
+	is_dodging = false
+	_dodge_timer = 0.0
+	_dodge_cooldown_timer = 0.0
+	stats = {
+		"attacks_thrown": 0,
+		"dodges_used": 0,
+		"hits_taken": 0,
+		"damage_dealt": 0.0,
+	}
 
 func _start_dodge() -> void:
 	is_dodging = true
 	stats["dodges_used"] += 1
 	_dodge_cooldown_timer = dodge_cooldown
 	_dodge_timer = dodge_duration
-	velocity = last_move_dir * dodge_speed
+	var speed_mult := SWIFT_SPEED_MULT if GameManager.equipped_enchant == "Swift" else 1.0
+	velocity = last_move_dir * dodge_speed * speed_mult
 
 
 func take_damage(amount: float) -> void:
@@ -92,7 +121,10 @@ func take_damage(amount: float) -> void:
 		return # invincibility frames while dodging
 	if is_dodging:
 		return
-	health -= amount
+	var final_amount := amount
+	if GameManager.equipped_enchant == "Guardian":
+		final_amount *= (1.0 - GUARDIAN_DAMAGE_REDUCTION)
+	health -= final_amount
 	stats["hits_taken"] += 1
 	health = max(health, 0.0)
 	if health <= 0.0:
@@ -108,6 +140,7 @@ func _die() -> void:
 	GameManager.log_fight_result(profile)
 	var enchant: String = GameManager.recommend_enchant(profile)
 	print("Recommended enchant (after loss): ", enchant, " | Skill tier: ", GameManager.last_skill_tier)
+	died.emit()
 	# TODO: trigger game-over screen (Week 12)
 
 
