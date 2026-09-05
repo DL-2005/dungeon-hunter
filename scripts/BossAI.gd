@@ -7,6 +7,38 @@ extends CharacterBody2D
 
 enum Phase { PHASE_1, PHASE_2 }
 signal defeated(recommended_enchant: String, skill_tier: String)
+signal mobs_requested(count: int)
+# A data-driven pool of stat/pattern variants. reset_and_respawn() picks
+# one at random each encounter -- this is "multiple bosses" without
+# hand-authoring a new behavior tree per boss identity.
+const BOSS_PRESETS: Array[Dictionary] = [
+	{
+		"name": "Berserker Golem",
+		"max_health": 300.0,
+		"move_speed": 100.0,
+		"attack_cooldown": 1.0,
+		"attack_damage": 10.0,
+		"ranged_damage": 8.0,
+	},
+	{
+		"name": "Swift Reaver",
+		"max_health": 220.0,
+		"move_speed": 140.0,
+		"attack_cooldown": 0.7,
+		"attack_damage": 7.0,
+		"ranged_damage": 6.0,
+	},
+	{
+		"name": "Iron Sentinel",
+		"max_health": 420.0,
+		"move_speed": 75.0,
+		"attack_cooldown": 1.4,
+		"attack_damage": 14.0,
+		"ranged_damage": 10.0,
+	},
+]
+const IS_BOSS: bool = true
+var _current_preset: Dictionary = {}
 
 @export var max_health: float = 300.0
 @export var phase_2_threshold: float = 0.5  # triggers at 50% HP
@@ -15,7 +47,8 @@ signal defeated(recommended_enchant: String, skill_tier: String)
 @export var attack_cooldown: float = 1.0
 @export var ranged_range: float = 400.0
 @export var ranged_cooldown: float = 2.0
-@export var ranged_damage: float = 8.0
+@export var ranged_damage: float = 8.0 
+@export var attack_damage: float = 10.0
 
 var _ranged_cooldown_timer: float = 0.0
 var _base_move_speed: float
@@ -49,8 +82,27 @@ func _check_phase_transition() -> void:
 func _on_enter_phase_2() -> void:
 	print("Boss enters Phase 2 — enraged.")
 	move_speed *= 1.3
-	# TODO (Week 7-8): unlock ranged attack branch in the tree, shorten cooldowns
+	_spawn_adds_for_tier()
 
+func _spawn_adds_for_tier() -> void:
+	var count := 0
+	match GameManager.last_skill_tier:
+		"Skilled":
+			count = randi_range(3, 4)
+		"Average":
+			count = randi_range(1, 2)
+		"Struggling":
+			count = 0
+		_:
+			count = randi_range(1, 2)
+	if count > 0:
+		mobs_requested.emit(count)
+	if GameManager.last_skill_tier == "Skilled":
+		# Second wave for Skilled players, a bit later -- only if the boss
+		# is still alive (don't spawn adds right as/after the boss dies).
+		await get_tree().create_timer(9.0).timeout
+		if is_alive():
+			mobs_requested.emit(randi_range(2, 3))
 
 func take_damage(amount: float) -> void:
 	if health <= 0.0:
@@ -66,8 +118,6 @@ func is_alive() -> bool:
 	return health > 0.0
 
 func _ready() -> void:
-	_base_move_speed = move_speed
-	_base_attack_cooldown = attack_cooldown
 	health = max_health
 	reset_and_respawn()
 
@@ -88,20 +138,43 @@ func _die() -> void:
 	print("Boss defeated.")
 	set_physics_process(false)
 	$BTPlayer.active = false
-	var profile: Dictionary = GameManager.end_fight(player)
-	GameManager.log_fight_result(profile)
-	var enchant: String = GameManager.recommend_enchant(profile)
-	print("Recommended enchant: ", enchant, " | Skill tier: ", GameManager.last_skill_tier)
-	emit_signal("defeated", enchant, GameManager.last_skill_tier)
+
+	var boss_profile: Dictionary = GameManager.end_fight(player)
+	GameManager.log_fight_result(boss_profile)
+	var duration: float = boss_profile["avg_fight_duration"]
+	var mob_profile: Dictionary = player.get_mob_playstyle_profile(duration)
+
+	var boss_result: Dictionary = GameManager.recommend_enchant_with_confidence(boss_profile)
+	var mob_result: Dictionary = GameManager.recommend_enchant_with_confidence(mob_profile)
+	var combined_enchant: String = GameManager.get_combined_recommendation(boss_result, mob_result)
+
+	print("Recommended vs Boss: ", boss_result["enchant"], " (tier: ", boss_result["tier"], ", confidence: ", boss_result["confidence"], ")")
+	print("Recommended vs Mobs: ", mob_result["enchant"], " (tier: ", mob_result["tier"], ", confidence: ", mob_result["confidence"], ")")
+	print("Combined recommendation: ", combined_enchant)
+
+	GameManager.last_skill_tier = boss_result["tier"]  # adaptive difficulty scales off boss performance specifically, not mob performance
+
+	emit_signal("defeated", combined_enchant, GameManager.last_skill_tier)
 	GameManager.attempts_this_boss = 1
-	# TODO: trigger loot drop using `enchant` (Week 11)
+	# TODO: trigger loot drop using `combined_enchant` (Week 11)
 
 func reset_and_respawn() -> void:
+	_pick_preset()
 	health = max_health
 	current_phase = Phase.PHASE_1
 	_attack_cooldown_timer = 0.0
 	_ranged_cooldown_timer = 0.0
 	set_physics_process(true)
-	$BTPlayer.active = true
+	if not $BTPlayer.active:
+		$BTPlayer.active = true
 	_apply_adaptive_difficulty()
 	$HealthBar.update_health(health, max_health)
+
+func _pick_preset() -> void:
+	_current_preset = BOSS_PRESETS[randi() % BOSS_PRESETS.size()]
+	max_health = _current_preset["max_health"]
+	_base_move_speed = _current_preset["move_speed"]
+	_base_attack_cooldown = _current_preset["attack_cooldown"]
+	attack_damage = _current_preset["attack_damage"]
+	ranged_damage = _current_preset["ranged_damage"]
+	print("Boss preset this encounter: ", _current_preset["name"])

@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://bopqqvm3jlgiu"]
+
+[ext_resource type="Script" uid="uid://dmcxdv6mu578u" path="res://scripts/MobAI.gd" id="1_sy55r"]
+[ext_resource type="Texture2D" uid="uid://dj84hxpaj0r6h" path="res://assets/sprites/boss_character.png" id="2_2pbf3"]
+[ext_resource type="Script" uid="uid://cnl24dch617f6" path="res://ai/tasks/player_in_attack_range.gd" id="2_ce1v0"]
+[ext_resource type="Script" uid="uid://c85tsex0fbxw" path="res://ai/tasks/attack_player.gd" id="3_2pbf3"]
+[ext_resource type="Script" uid="uid://ceohuvmbgmtvm" path="res://ai/tasks/ranged_attack.gd" id="3_ce1v0"]
+[ext_resource type="Script" uid="uid://b6u4ka2jgqv1d" path="res://ai/tasks/player_in_detection_range.gd" id="4_swcia"]
+[ext_resource type="Script" uid="uid://coowpr3opbl7w" path="res://ai/tasks/chase_player.gd" id="5_gw2si"]
+[ext_resource type="Script" uid="uid://bow3k5pibk4om" path="res://ai/tasks/idle.gd" id="6_np3nn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ukoal"]
+size = Vector2(32, 36)
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_2pbf3"]
+
+[sub_resource type="BTCondition" id="BTCondition_swcia"]
+script = ExtResource("2_ce1v0")
+
+[sub_resource type="BTAction" id="BTAction_gw2si"]
+script = ExtResource("3_ce1v0")
+
+[sub_resource type="BTSequence" id="BTSequence_np3nn"]
+children = [SubResource("BTCondition_swcia"), SubResource("BTAction_gw2si")]
+
+[sub_resource type="BTCondition" id="BTCondition_gppl5"]
+script = ExtResource("2_ce1v0")
+
+[sub_resource type="BTAction" id="BTAction_7as14"]
+script = ExtResource("3_2pbf3")
+
+[sub_resource type="BTSequence" id="BTSequence_cggu3"]
+children = [SubResource("BTCondition_gppl5"), SubResource("BTAction_7as14")]
+
+[sub_resource type="BTCondition" id="BTCondition_dkxk3"]
+script = ExtResource("4_swcia")
+
+[sub_resource type="BTAction" id="BTAction_g1fpr"]
+script = ExtResource("5_gw2si")
+
+[sub_resource type="BTSequence" id="BTSequence_yskhw"]
+children = [SubResource("BTCondition_dkxk3"), SubResource("BTAction_g1fpr")]
+
+[sub_resource type="BTAction" id="BTAction_4du6r"]
+script = ExtResource("6_np3nn")
+
+[sub_resource type="BTDynamicSelector" id="BTDynamicSelector_qketf"]
+children = [SubResource("BTSequence_np3nn"), SubResource("BTSequence_cggu3"), SubResource("BTSequence_yskhw"), SubResource("BTAction_4du6r")]
+
+[sub_resource type="BehaviorTree" id="BehaviorTree_n0uad"]
+blackboard_plan = SubResource("BlackboardPlan_2pbf3")
+root_task = SubResource("BTDynamicSelector_qketf")
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_8vh2n"]
+
+[node name="RangedMob" type="CharacterBody2D" unique_id=1768120854]
+script = ExtResource("1_sy55r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=497762512]
+shape = SubResource("RectangleShape2D_ukoal")
+
+[node name="Visual" type="Sprite2D" parent="." unique_id=93663970]
+scale = Vector2(3, 3)
+texture = ExtResource("2_2pbf3")
+
+[node name="BTPlayer" type="BTPlayer" parent="." unique_id=1036481688]
+behavior_tree = SubResource("BehaviorTree_n0uad")
+blackboard_plan = SubResource("BlackboardPlan_8vh2n")
