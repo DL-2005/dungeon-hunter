@@ -1,0 +1,366 @@
+[
+	{
+		"attempts": 1.0,
+		"avg_fight_duration": 19.486,
+		"damage_dealt_avg": 22.9166666666667,
+		"dodge_rate": 0.0,
+		"hit_taken_rate": 0.359232269321564
+	},
+	{
+		"attempts": 1.0,
+		"avg_fight_duration": 45.059,
+		"damage_dealt_avg": 22.9166666666667,
+		"dodge_rate": 0.0,
+		"hit_taken_rate": 0.177544996560066
+	},
+	{
+		"attempts": 1.0,
+		"avg_fight_duration": 53.217,
+		"damage_dealt_avg": 12.5,
+		"dodge_rate": 0.0,
+		"hit_taken_rate": 0.112745927053385
+	},
+	{
+		"attempts": 1.0,
+		"avg_fight_duration": 16.296,
+		"damage_dealt_avg": 22.9166666666667,
+		"dodge_rate": 0.0,
+		"hit_taken_rate": 0.184094256259205
+	},
+	{
+		"attempts": 1.0,
+		"avg_fight_duration": 13.999,
+		"damage_dealt_avg": 16.1764705882353,
+		"dodge_rate": 0.0,
+		"hit_taken_rate": 0.428602043003072
+	},
+	{
+		"attempts": 1.0,
+		"avg_fight_duration": 17.657,
+		"damage_dealt_avg": 22.9166666666667,
+		"dodge_rate": 0.0,
+		"hit_taken_rate": 0.169904287251515
+	},
+	{
+		"attempts": 1.0,
+		"avg_fight_duration": 8.369,
+		"damage_dealt_avg": 22.9166666666667,
+		"dodge_rate": 0.0,
+		"hit_taken_rate": 0.358465766519297
+	},
+	{
+		"attempts": 1.0,
+		"avg_fight_duration": 12.465,
+		"damage_dealt_avg": 18.3333333333333,
+		"dodge_rate": 0.0,
+		"hit_taken_rate": 0.240673886883273
+	},
+	{
+		"attempts": 1.0,
+		"avg_fight_duration": 16.113,
+		"damage_dealt_avg": 22.9166666666667,
+		"dodge_rate": 0.0,
+		"hit_taken_rate": 0.18618506795755
+	},
+	{
+		"attempts": 1.0,
+		"avg_fight_duration": 3.253,
+		"damage_dealt_avg": 22.9166666666667,
+		"dodge_rate": 0.0,
+		"hit_taken_rate": 0.922225637872733
+	},
+	{
+		"attempts": 1.0,
+		"avg_fight_duration": 14.63,
+		"damage_dealt_avg": 21.1538461538462,
+		"dodge_rate": 0.0,
+		"hit_taken_rate": 0.205058099794942
+	},
+	{
+		"attempts": 1.0,
+		"avg_fight_duration": 20.993,
+		"damage_dealt_avg": 18.3333333333333,
+		"dodge_rate": 0.0,
+		"hit_taken_rate": 0.190539703710761
+	},
+	{
+		"attempts": 1.0,
+		"avg_fight_duration": 9.673,
+		"damage_dealt_avg": 22.9166666666667,
+		"dodge_rate": 0.0,
+		"hit_taken_rate": 0.310141631344981
+	},
+	{
+		"attempts": 1.0,
+		"avg_fight_duration": 21.393,
+		"damage_dealt_avg": 22.9166666666667,
+		"dodge_rate": 0.0,
+		"hit_taken_rate": 0.140232786425466
+	},
+	{
+		"attempts": 1.0,
+		"avg_fight_duration": 19.724,
+		"damage_dealt_avg": 22.9166666666667,
+		"dodge_rate": 0.0,
+		"hit_taken_rate": 0.152098965727033
+	},
+	{
+		"attempts": 1.0,
+		"avg_fight_duration": 3.365,
+		"damage_dealt_avg": 22.9166666666667,
+		"dodge_rate": 0.0,
+		"hit_taken_rate": 0.891530460624071
+	},
+	{
+		"attempts": 1.0,
+		"avg_fight_duration": 21.056,
+		"damage_dealt_avg": 22.9166666666667,
+		"dodge_rate": 0.0,
+		"hit_taken_rate": 0.142477203647416
+	},
+	{
+		"attempts": 1.0,
+		"avg_fight_duration": 86.435,
+		"damage_dealt_avg": 22.9166666666667,
+		"dodge_rate": 0.0,
+		"hit_taken_rate": 0.0578469370046856
+	},
+	{
+		"attempts": 1.0,
+		"avg_fight_duration": 23.361,
+		"damage_dealt_avg": 22.9166666666667,
+		"dodge_rate": 0.0,
+		"hit_taken_rate": 0.128419160138693
+	},
+	{
+		"attempts": 1.0,
+		"avg_fight_duration": 26.292,
+		"damage_dealt_avg": 22.9166666666667,
+		"dodge_rate": 0.0,
+		"hit_taken_rate": 0.114103149246919
+	},
+	{
+		"attempts": 1.0,
+		"avg_fight_duration": 33.892,
+		"damage_dealt_avg": 18.3333333333333,
+		"dodge_rate": 0.0,
+		"hit_taken_rate": 0.0885164640623156
+	},
+	{
+		"attempts": 1.0,
+		"avg_fight_duration": 35.596,
+		"damage_dealt_avg": 22.9166666666667,
+		"dodge_rate": 0.0,
+		"hit_taken_rate": 0.112372176649062
+	},
+	{
+		"attempts": 2.0,
+		"avg_fight_duration": 80.944,
+		"damage_dealt_avg": 18.75,
+		"dodge_rate": 0.0,
+		"hit_taken_rate": 0.123542202016209
+	},
+	{
+		"attempts": 1.0,
+		"avg_fight_duration": 17.777,
+		"damage_dealt_avg": 22.9166666666667,
+		"dodge_rate": 0.0,
+		"hit_taken_rate": 0.450019688361366
+	},
+	{
+		"attempts": 1.0,
+		"avg_fight_duration": 56.221,
+		"damage_dealt_avg": 22.9166666666667,
+		"dodge_rate": 0.0,
+		"hit_taken_rate": 0.142295583500827
+	},
+	{
+		"attempts": 1.0,
+		"avg_fight_duration": 6.426,
+		"damage_dealt_avg": 22.9166666666667,
+		"dodge_rate": 0.0,
+		"hit_taken_rate": 1.08932461873638
+	},
+	{
+		"attempts": 1.0,
+		"avg_fight_duration": 5.934,
+		"damage_dealt_avg": 22.9166666666667,
+		"dodge_rate": 0.0,
+		"hit_taken_rate": 0.842601954836535
+	},
+	{
+		"attempts": 2.0,
+		"avg_fight_duration": 10.342,
+		"damage_dealt_avg": 0.0,
+		"dodge_rate": 0.0,
+		"hit_taken_rate": 0.966930961129375
+	},
+	{
+		"attempts": 1.0,
+		"avg_fight_duration": 44.896,
+		"damage_dealt_avg": 22.9166666666667,
+		"dodge_rate": 0.0,
+		"hit_taken_rate": 0.0890947968638632
+	},
+	{
+		"attempts": 2.0,
+		"avg_fight_duration": 29.226,
+		"damage_dealt_avg": 25.0,
+		"dodge_rate": 0.0,
+		"hit_taken_rate": 0.342161089440909
+	},
+	{
+		"attempts": 1.0,
+		"avg_fight_duration": 9.051,
+		"damage_dealt_avg": 17.1875,
+		"dodge_rate": 0.0,
+		"hit_taken_rate": 0.441940117114131
+	},
+	{
+		"attempts": 1.0,
+		"avg_fight_duration": 14.838,
+		"damage_dealt_avg": 21.1538461538462,
+		"dodge_rate": 0.0,
+		"hit_taken_rate": 0.336972637821809
+	},
+	{
+		"attempts": 2.0,
+		"avg_fight_duration": 23.407,
+		"damage_dealt_avg": 25.0,
+		"dodge_rate": 0.0,
+		"hit_taken_rate": 0.427222625710258
+	},
+	{
+		"attempts": 1.0,
+		"avg_fight_duration": 16.416,
+		"damage_dealt_avg": 22.9166666666667,
+		"dodge_rate": 0.0,
+		"hit_taken_rate": 0.426413255360624
+	},
+	{
+		"attempts": 1.0,
+		"avg_fight_duration": 15.525,
+		"damage_dealt_avg": 22.9166666666667,
+		"dodge_rate": 0.0,
+		"hit_taken_rate": 0.386473429951691
+	},
+	{
+		"attempts": 1.0,
+		"avg_fight_duration": 153.275,
+		"damage_dealt_avg": 23.5294117647059,
+		"dodge_rate": 0.0,
+		"hit_taken_rate": 0.0260968846843908
+	},
+	{
+		"attempts": 2.0,
+		"avg_fight_duration": 85.089,
+		"damage_dealt_avg": 12.5,
+		"dodge_rate": 0.0,
+		"hit_taken_rate": 0.117524004277874
+	},
+	{
+		"attempts": 1.0,
+		"avg_fight_duration": 46.428,
+		"damage_dealt_avg": 22.9166666666667,
+		"dodge_rate": 0.0,
+		"hit_taken_rate": 0.107693633152408
+	},
+	{
+		"attempts": 1.0,
+		"avg_fight_duration": 101.879,
+		"damage_dealt_avg": 22.2222222222222,
+		"dodge_rate": 0.0,
+		"hit_taken_rate": 0.0588933931428459
+	},
+	{
+		"attempts": 2.0,
+		"avg_fight_duration": 34.744,
+		"damage_dealt_avg": 21.5909090909091,
+		"dodge_rate": 0.0,
+		"hit_taken_rate": 0.460511167395809
+	},
+	{
+		"attempts": 2.0,
+		"avg_fight_duration": 4.461,
+		"damage_dealt_avg": 22.2222222222222,
+		"dodge_rate": 0.0,
+		"hit_taken_rate": 1.56915489800493
+	},
+	{
+		"attempts": 1.0,
+		"avg_fight_duration": 2.17700000000001,
+		"damage_dealt_avg": 22.2222222222222,
+		"dodge_rate": 0.0,
+		"hit_taken_rate": 1.37804317868626
+	},
+	{
+		"attempts": 1.0,
+		"avg_fight_duration": 2.345,
+		"damage_dealt_avg": 22.2222222222222,
+		"dodge_rate": 0.0,
+		"hit_taken_rate": 1.70575692963753
+	},
+	{
+		"attempts": 1.0,
+		"avg_fight_duration": 42.091,
+		"damage_dealt_avg": 23.8636363636364,
+		"dodge_rate": 0.0,
+		"hit_taken_rate": 0.332612672542824
+	},
+	{
+		"attempts": 2.0,
+		"avg_fight_duration": 44.308,
+		"damage_dealt_avg": 25.0,
+		"dodge_rate": 0.0,
+		"hit_taken_rate": 0.361108603412476
+	},
+	{
+		"attempts": 2.0,
+		"avg_fight_duration": 5.374,
+		"damage_dealt_avg": 23.5294117647059,
+		"dodge_rate": 0.0,
+		"hit_taken_rate": 0.744324525493116
+	},
+	{
+		"attempts": 1.0,
+		"avg_fight_duration": 18.055,
+		"damage_dealt_avg": 30.4624757684852,
+		"dodge_rate": 0.0,
+		"hit_taken_rate": 0.387704237053448
+	},
+	{
+		"attempts": 2.0,
+		"avg_fight_duration": 24.639,
+		"damage_dealt_avg": 0.0,
+		"dodge_rate": 0.0,
+		"hit_taken_rate": 0.689963066682901
+	},
+	{
+		"attempts": 2.0,
+		"avg_fight_duration": 33.355,
+		"damage_dealt_avg": 11.2426922500375,
+		"dodge_rate": 0.0,
+		"hit_taken_rate": 0.329785639334433
+	},
+	{
+		"attempts": 1.0,
+		"avg_fight_duration": 35.64,
+		"damage_dealt_avg": 11.2233445566779,
+		"dodge_rate": 0.0,
+		"hit_taken_rate": 0.252525252525253
+	},
+	{
+		"attempts": 2.0,
+		"avg_fight_duration": 14.006,
+		"damage_dealt_avg": 30.3441382264744,
+		"dodge_rate": 0.0,
+		"hit_taken_rate": 0.928173639868628
+	},
+	{
+		"attempts": 2,
+		"avg_fight_duration": 26.904,
+		"damage_dealt_avg": 18.5845970859352,
+		"dodge_rate": 0.0,
+		"hit_taken_rate": 0.334522747546833
+	}
+]

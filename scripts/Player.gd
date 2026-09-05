@@ -32,7 +32,11 @@ var stats := {
 	"attacks_thrown": 0,
 	"dodges_used": 0,
 	"hits_taken": 0,
-	"damage_dealt": 0.0,
+	"hits_taken_from_boss": 0,
+	"hits_taken_from_mobs": 0,
+	"damage_dealt": 0,
+	"damage_dealt_to_boss": 0,
+	"damage_dealt_to_mobs": 0,
 }
 
 signal died
@@ -87,6 +91,10 @@ func _attack() -> void:
 				damage *= 1.0 + BERSERKER_MAX_BONUS * missing_frac
 			body.take_damage(damage)
 			stats["damage_dealt"] += damage
+			if "IS_BOSS" in body and body.IS_BOSS:
+				stats["damage_dealt_to_boss"] += damage
+			else:
+				stats["damage_dealt_to_mobs"] += damage
 			print("Hit ", body.name, " for ", damage, " damage")
 			if GameManager.equipped_enchant == "Vampiric":
 				health = min(health + damage * VAMPIRIC_LIFESTEAL_PCT, max_health)
@@ -104,7 +112,11 @@ func revive() -> void:
 		"attacks_thrown": 0,
 		"dodges_used": 0,
 		"hits_taken": 0,
+		"hits_taken_from_boss": 0,
+		"hits_taken_from_mobs": 0,
 		"damage_dealt": 0.0,
+		"damage_dealt_to_boss": 0,
+		"damage_dealt_to_mobs": 0,
 	}
 
 func _start_dodge() -> void:
@@ -116,16 +128,20 @@ func _start_dodge() -> void:
 	velocity = last_move_dir * dodge_speed * speed_mult
 
 
-func take_damage(amount: float) -> void:
-	if health <=0.0:
-		return # invincibility frames while dodging
+func take_damage(amount: float, from_boss: bool = true) -> void:
+	if health <= 0.0:
+		return
 	if is_dodging:
 		return
 	var final_amount := amount
 	if GameManager.equipped_enchant == "Guardian":
 		final_amount *= (1.0 - GUARDIAN_DAMAGE_REDUCTION)
 	health -= final_amount
-	stats["hits_taken"] += 1
+	stats["hits_taken"] += 1                     # kept for backward-compat, unused going forward
+	if from_boss:
+		stats["hits_taken_from_boss"] += 1
+	else:
+		stats["hits_taken_from_mobs"] += 1
 	health = max(health, 0.0)
 	if health <= 0.0:
 		_die()
@@ -135,11 +151,22 @@ func _die() -> void:
 	is_dead = true
 	print("Player died.")
 	GameManager.attempts_this_boss += 1
+
 	var duration := GameManager.get_fight_duration()
-	var profile: Dictionary = get_playstyle_profile(duration)
-	GameManager.log_fight_result(profile)
-	var enchant: String = GameManager.recommend_enchant(profile)
-	print("Recommended enchant (after loss): ", enchant, " | Skill tier: ", GameManager.last_skill_tier)
+	var boss_profile: Dictionary = get_playstyle_profile(duration)
+	var mob_profile: Dictionary = get_mob_playstyle_profile(duration)
+	GameManager.log_fight_result(boss_profile)
+
+	var boss_result: Dictionary = GameManager.recommend_enchant_with_confidence(boss_profile)
+	var mob_result: Dictionary = GameManager.recommend_enchant_with_confidence(mob_profile)
+	var combined_enchant: String = GameManager.get_combined_recommendation(boss_result, mob_result)
+
+	GameManager.last_skill_tier = boss_result["tier"]
+
+	print("Recommended vs Boss (after loss): ", boss_result["enchant"], " (tier: ", boss_result["tier"], ", confidence: ", boss_result["confidence"], ")")
+	print("Recommended vs Mobs (after loss): ", mob_result["enchant"], " (tier: ", mob_result["tier"], ", confidence: ", mob_result["confidence"], ")")
+	print("Combined recommendation (after loss): ", combined_enchant)
+
 	died.emit()
 	# TODO: trigger game-over screen (Week 12)
 
@@ -151,7 +178,16 @@ func get_playstyle_profile(fight_duration: float) -> Dictionary:
 	var total_actions = max(stats["attacks_thrown"] + stats["dodges_used"], 1)
 	return {
 		"dodge_rate": float(stats["dodges_used"]) / total_actions,
-		"hit_taken_rate": float(stats["hits_taken"]) / max(fight_duration, 1.0),
+		"hit_taken_rate": float(stats["hits_taken_from_boss"]) / max(fight_duration, 1.0),
 		"avg_fight_duration": fight_duration,
-		"damage_dealt_avg": stats["damage_dealt"] / max(stats["attacks_thrown"], 1),
+		"damage_dealt_avg": stats["damage_dealt_to_boss"] / max(fight_duration, 1.0),
+	}
+
+func get_mob_playstyle_profile(fight_duration: float) -> Dictionary:
+	var total_actions = max(stats["attacks_thrown"] + stats["dodges_used"], 1)
+	return {
+		"dodge_rate": float(stats["dodges_used"]) / total_actions,
+		"hit_taken_rate": float(stats["hits_taken_from_mobs"]) / max(fight_duration, 1.0),
+		"avg_fight_duration": fight_duration,
+		"damage_dealt_avg": stats["damage_dealt_to_mobs"] / max(fight_duration, 1.0),
 	}

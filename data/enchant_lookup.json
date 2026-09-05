@@ -1,40 +1,36 @@
 {
   "feature_order": [
-    "attacks_thrown",
-    "dodges_used",
-    "hits_taken",
-    "damage_dealt",
-    "time_to_defeat",
+    "dodge_rate",
+    "hit_taken_rate",
+    "avg_fight_duration",
+    "damage_dealt_avg",
     "attempts"
   ],
   "normalization": {
     "min": {
-      "attacks_thrown": 4.7,
-      "dodges_used": 0,
-      "hits_taken": 0,
-      "damage_dealt": 81.0,
-      "time_to_defeat": 16.6,
+      "dodge_rate": 0.0,
+      "hit_taken_rate": 0.0,
+      "avg_fight_duration": 2.17700000000001,
+      "damage_dealt_avg": 0.0,
       "attempts": 1
     },
     "max": {
-      "attacks_thrown": 47.9,
-      "dodges_used": 22.2,
-      "hits_taken": 30.1,
-      "damage_dealt": 340.7,
-      "time_to_defeat": 126.3,
-      "attempts": 11
+      "dodge_rate": 0.732,
+      "hit_taken_rate": 1.70575692963753,
+      "avg_fight_duration": 153.275,
+      "damage_dealt_avg": 30.4624757684852,
+      "attempts": 13
     }
   },
   "k": 5,
   "dataset": [
     {
       "features": {
-        "attacks_thrown": 31.2,
-        "dodges_used": 4.2,
-        "hits_taken": 16.7,
-        "damage_dealt": 108.6,
-        "time_to_defeat": 72.8,
-        "attempts": 5
+        "dodge_rate": 0.162,
+        "hit_taken_rate": 0.32,
+        "avg_fight_duration": 40.3,
+        "damage_dealt_avg": 20.33,
+        "attempts": 1
       },
       "enchant": "Guardian",
       "tier": "Struggling",
@@ -42,24 +38,10 @@
     },
     {
       "features": {
-        "attacks_thrown": 33.0,
-        "dodges_used": 5.0,
-        "hits_taken": 19.0,
-        "damage_dealt": 259.0,
-        "time_to_defeat": 40.0,
-        "attempts": 2
-      },
-      "enchant": "Guardian",
-      "tier": "Struggling",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 23.6,
-        "dodges_used": 18.9,
-        "hits_taken": 1.7,
-        "damage_dealt": 277.8,
-        "time_to_defeat": 25.7,
+        "dodge_rate": 0.49,
+        "hit_taken_rate": 0.051,
+        "avg_fight_duration": 27.6,
+        "damage_dealt_avg": 21.82,
         "attempts": 1
       },
       "enchant": "Swift",
@@ -68,24 +50,10 @@
     },
     {
       "features": {
-        "attacks_thrown": 24.4,
-        "dodges_used": 4.7,
-        "hits_taken": 14.2,
-        "damage_dealt": 261.1,
-        "time_to_defeat": 30.9,
-        "attempts": 1
-      },
-      "enchant": "Guardian",
-      "tier": "Struggling",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 31.3,
-        "dodges_used": 1.6,
-        "hits_taken": 11.5,
-        "damage_dealt": 229.9,
-        "time_to_defeat": 34.3,
+        "dodge_rate": 0.178,
+        "hit_taken_rate": 0.269,
+        "avg_fight_duration": 25.1,
+        "damage_dealt_avg": 17.47,
         "attempts": 2
       },
       "enchant": "Vampiric",
@@ -94,89 +62,10 @@
     },
     {
       "features": {
-        "attacks_thrown": 37.5,
-        "dodges_used": 4.0,
-        "hits_taken": 15.7,
-        "damage_dealt": 246.7,
-        "time_to_defeat": 37.8,
-        "attempts": 2
-      },
-      "enchant": "Vampiric",
-      "tier": "Average",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 26.2,
-        "dodges_used": 3.6,
-        "hits_taken": 8.8,
-        "damage_dealt": 224.3,
-        "time_to_defeat": 45.4,
-        "attempts": 1
-      },
-      "enchant": "Vampiric",
-      "tier": "Average",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 28.0,
-        "dodges_used": 4.9,
-        "hits_taken": 10.2,
-        "damage_dealt": 198.8,
-        "time_to_defeat": 25.7,
-        "attempts": 3
-      },
-      "enchant": "Vampiric",
-      "tier": "Average",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 16.8,
-        "dodges_used": 13.6,
-        "hits_taken": 1.0,
-        "damage_dealt": 266.1,
-        "time_to_defeat": 21.8,
-        "attempts": 1
-      },
-      "enchant": "Swift",
-      "tier": "Skilled",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 18.7,
-        "dodges_used": 13.8,
-        "hits_taken": 4.2,
-        "damage_dealt": 194.5,
-        "time_to_defeat": 48.0,
-        "attempts": 2
-      },
-      "enchant": "Swift",
-      "tier": "Average",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 7.8,
-        "dodges_used": 2.2,
-        "hits_taken": 18.3,
-        "damage_dealt": 104.6,
-        "time_to_defeat": 86.3,
-        "attempts": 6
-      },
-      "enchant": "Guardian",
-      "tier": "Struggling",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 8.8,
-        "dodges_used": 1.7,
-        "hits_taken": 17.2,
-        "damage_dealt": 155.0,
-        "time_to_defeat": 59.7,
+        "dodge_rate": 0.122,
+        "hit_taken_rate": 0.537,
+        "avg_fight_duration": 103.0,
+        "damage_dealt_avg": 14.14,
         "attempts": 8
       },
       "enchant": "Guardian",
@@ -185,63 +74,10 @@
     },
     {
       "features": {
-        "attacks_thrown": 27.9,
-        "dodges_used": 5.6,
-        "hits_taken": 22.9,
-        "damage_dealt": 152.7,
-        "time_to_defeat": 48.5,
-        "attempts": 6
-      },
-      "enchant": "Guardian",
-      "tier": "Struggling",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 16.1,
-        "dodges_used": 5.4,
-        "hits_taken": 10.7,
-        "damage_dealt": 243.5,
-        "time_to_defeat": 30.0,
-        "attempts": 2
-      },
-      "enchant": "Guardian",
-      "tier": "Struggling",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 8.2,
-        "dodges_used": 1.7,
-        "hits_taken": 20.9,
-        "damage_dealt": 113.0,
-        "time_to_defeat": 108.2,
-        "attempts": 6
-      },
-      "enchant": "Guardian",
-      "tier": "Struggling",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 35.0,
-        "dodges_used": 8.3,
-        "hits_taken": 10.7,
-        "damage_dealt": 269.3,
-        "time_to_defeat": 25.1,
-        "attempts": 1
-      },
-      "enchant": "Berserker",
-      "tier": "Average",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 31.6,
-        "dodges_used": 3.1,
-        "hits_taken": 14.4,
-        "damage_dealt": 144.5,
-        "time_to_defeat": 52.2,
+        "dodge_rate": 0.099,
+        "hit_taken_rate": 0.344,
+        "avg_fight_duration": 69.0,
+        "damage_dealt_avg": 11.32,
         "attempts": 4
       },
       "enchant": "Guardian",
@@ -250,37 +86,10 @@
     },
     {
       "features": {
-        "attacks_thrown": 22.4,
-        "dodges_used": 9.0,
-        "hits_taken": 2.2,
-        "damage_dealt": 283.6,
-        "time_to_defeat": 24.6,
-        "attempts": 1
-      },
-      "enchant": "Berserker",
-      "tier": "Skilled",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 23.7,
-        "dodges_used": 16.4,
-        "hits_taken": 0.8,
-        "damage_dealt": 266.0,
-        "time_to_defeat": 24.6,
-        "attempts": 1
-      },
-      "enchant": "Swift",
-      "tier": "Skilled",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 25.1,
-        "dodges_used": 4.7,
-        "hits_taken": 6.0,
-        "damage_dealt": 197.5,
-        "time_to_defeat": 39.9,
+        "dodge_rate": 0.213,
+        "hit_taken_rate": 0.189,
+        "avg_fight_duration": 42.2,
+        "damage_dealt_avg": 17.92,
         "attempts": 1
       },
       "enchant": "Vampiric",
@@ -289,193 +98,10 @@
     },
     {
       "features": {
-        "attacks_thrown": 46.7,
-        "dodges_used": 6.7,
-        "hits_taken": 15.7,
-        "damage_dealt": 138.3,
-        "time_to_defeat": 80.3,
-        "attempts": 7
-      },
-      "enchant": "Guardian",
-      "tier": "Struggling",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 36.1,
-        "dodges_used": 2.3,
-        "hits_taken": 19.7,
-        "damage_dealt": 168.5,
-        "time_to_defeat": 69.9,
-        "attempts": 2
-      },
-      "enchant": "Guardian",
-      "tier": "Struggling",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 28.3,
-        "dodges_used": 3.0,
-        "hits_taken": 5.3,
-        "damage_dealt": 265.9,
-        "time_to_defeat": 33.5,
-        "attempts": 4
-      },
-      "enchant": "Guardian",
-      "tier": "Struggling",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 31.3,
-        "dodges_used": 0.7,
-        "hits_taken": 22.2,
-        "damage_dealt": 96.7,
-        "time_to_defeat": 78.5,
-        "attempts": 6
-      },
-      "enchant": "Guardian",
-      "tier": "Struggling",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 17.5,
-        "dodges_used": 2.5,
-        "hits_taken": 19.5,
-        "damage_dealt": 125.9,
-        "time_to_defeat": 48.9,
-        "attempts": 8
-      },
-      "enchant": "Guardian",
-      "tier": "Struggling",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 29.5,
-        "dodges_used": 2.5,
-        "hits_taken": 9.3,
-        "damage_dealt": 246.0,
-        "time_to_defeat": 46.0,
-        "attempts": 1
-      },
-      "enchant": "Vampiric",
-      "tier": "Average",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 23.9,
-        "dodges_used": 7.0,
-        "hits_taken": 7.1,
-        "damage_dealt": 204.1,
-        "time_to_defeat": 48.7,
-        "attempts": 2
-      },
-      "enchant": "Vampiric",
-      "tier": "Average",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 30.8,
-        "dodges_used": 1.0,
-        "hits_taken": 1.1,
-        "damage_dealt": 241.8,
-        "time_to_defeat": 27.7,
-        "attempts": 3
-      },
-      "enchant": "Berserker",
-      "tier": "Average",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 23.4,
-        "dodges_used": 4.8,
-        "hits_taken": 7.8,
-        "damage_dealt": 223.6,
-        "time_to_defeat": 42.2,
-        "attempts": 1
-      },
-      "enchant": "Vampiric",
-      "tier": "Average",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 20.9,
-        "dodges_used": 17.2,
-        "hits_taken": 1.9,
-        "damage_dealt": 301.7,
-        "time_to_defeat": 24.8,
-        "attempts": 1
-      },
-      "enchant": "Swift",
-      "tier": "Skilled",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 19.3,
-        "dodges_used": 9.6,
-        "hits_taken": 5.8,
-        "damage_dealt": 238.6,
-        "time_to_defeat": 41.9,
-        "attempts": 2
-      },
-      "enchant": "Vampiric",
-      "tier": "Average",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 33.1,
-        "dodges_used": 0.9,
-        "hits_taken": 14.5,
-        "damage_dealt": 97.6,
-        "time_to_defeat": 74.9,
-        "attempts": 2
-      },
-      "enchant": "Vampiric",
-      "tier": "Struggling",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 33.2,
-        "dodges_used": 2.6,
-        "hits_taken": 11.0,
-        "damage_dealt": 225.8,
-        "time_to_defeat": 37.5,
-        "attempts": 2
-      },
-      "enchant": "Vampiric",
-      "tier": "Average",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 23.8,
-        "dodges_used": 11.6,
-        "hits_taken": 6.3,
-        "damage_dealt": 197.4,
-        "time_to_defeat": 52.2,
-        "attempts": 1
-      },
-      "enchant": "Vampiric",
-      "tier": "Average",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 10.8,
-        "dodges_used": 0,
-        "hits_taken": 24.3,
-        "damage_dealt": 141.4,
-        "time_to_defeat": 81.0,
+        "dodge_rate": 0.116,
+        "hit_taken_rate": 0.342,
+        "avg_fight_duration": 43.0,
+        "damage_dealt_avg": 21.46,
         "attempts": 5
       },
       "enchant": "Guardian",
@@ -484,24 +110,10 @@
     },
     {
       "features": {
-        "attacks_thrown": 17.2,
-        "dodges_used": 15.9,
-        "hits_taken": 1.1,
-        "damage_dealt": 274.2,
-        "time_to_defeat": 23.4,
-        "attempts": 1
-      },
-      "enchant": "Swift",
-      "tier": "Skilled",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 9.8,
-        "dodges_used": 1.6,
-        "hits_taken": 23.7,
-        "damage_dealt": 128.9,
-        "time_to_defeat": 111.9,
+        "dodge_rate": 0.13,
+        "hit_taken_rate": 0.349,
+        "avg_fight_duration": 55.5,
+        "damage_dealt_avg": 11.63,
         "attempts": 6
       },
       "enchant": "Guardian",
@@ -510,11 +122,22 @@
     },
     {
       "features": {
-        "attacks_thrown": 22.2,
-        "dodges_used": 19.2,
-        "hits_taken": 1.4,
-        "damage_dealt": 273.1,
-        "time_to_defeat": 24.8,
+        "dodge_rate": 0.143,
+        "hit_taken_rate": 0.24,
+        "avg_fight_duration": 34.1,
+        "damage_dealt_avg": 22.11,
+        "attempts": 2
+      },
+      "enchant": "Vampiric",
+      "tier": "Average",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.455,
+        "hit_taken_rate": 0.061,
+        "avg_fight_duration": 24.2,
+        "damage_dealt_avg": 20.15,
         "attempts": 1
       },
       "enchant": "Swift",
@@ -523,89 +146,22 @@
     },
     {
       "features": {
-        "attacks_thrown": 21.7,
-        "dodges_used": 10.9,
-        "hits_taken": 6.5,
-        "damage_dealt": 203.6,
-        "time_to_defeat": 44.5,
-        "attempts": 2
-      },
-      "enchant": "Vampiric",
-      "tier": "Average",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 32.4,
-        "dodges_used": 3.5,
-        "hits_taken": 10.1,
-        "damage_dealt": 267.4,
-        "time_to_defeat": 41.3,
+        "dodge_rate": 0.18,
+        "hit_taken_rate": 0.342,
+        "avg_fight_duration": 40.7,
+        "damage_dealt_avg": 20.16,
         "attempts": 1
       },
-      "enchant": "Vampiric",
-      "tier": "Average",
+      "enchant": "Guardian",
+      "tier": "Struggling",
       "source": "synthetic"
     },
     {
       "features": {
-        "attacks_thrown": 24.9,
-        "dodges_used": 15.3,
-        "hits_taken": 1.2,
-        "damage_dealt": 340.7,
-        "time_to_defeat": 28.9,
-        "attempts": 1
-      },
-      "enchant": "Swift",
-      "tier": "Skilled",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 19.5,
-        "dodges_used": 8.9,
-        "hits_taken": 7.0,
-        "damage_dealt": 241.5,
-        "time_to_defeat": 36.0,
-        "attempts": 2
-      },
-      "enchant": "Vampiric",
-      "tier": "Average",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 27.3,
-        "dodges_used": 3.7,
-        "hits_taken": 8.7,
-        "damage_dealt": 281.1,
-        "time_to_defeat": 34.0,
-        "attempts": 1
-      },
-      "enchant": "Berserker",
-      "tier": "Average",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 34.1,
-        "dodges_used": 3.9,
-        "hits_taken": 14.9,
-        "damage_dealt": 249.2,
-        "time_to_defeat": 47.7,
-        "attempts": 2
-      },
-      "enchant": "Vampiric",
-      "tier": "Average",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 22.7,
-        "dodges_used": 11.0,
-        "hits_taken": 8.2,
-        "damage_dealt": 207.0,
-        "time_to_defeat": 55.3,
+        "dodge_rate": 0.173,
+        "hit_taken_rate": 0.133,
+        "avg_fight_duration": 34.7,
+        "damage_dealt_avg": 24.19,
         "attempts": 4
       },
       "enchant": "Guardian",
@@ -614,11 +170,202 @@
     },
     {
       "features": {
-        "attacks_thrown": 21.9,
-        "dodges_used": 1.2,
-        "hits_taken": 14.8,
-        "damage_dealt": 91.4,
-        "time_to_defeat": 90.7,
+        "dodge_rate": 0.694,
+        "hit_taken_rate": 0.009,
+        "avg_fight_duration": 32.6,
+        "damage_dealt_avg": 18.17,
+        "attempts": 1
+      },
+      "enchant": "Swift",
+      "tier": "Skilled",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.226,
+        "hit_taken_rate": 0.254,
+        "avg_fight_duration": 43.0,
+        "damage_dealt_avg": 18.8,
+        "attempts": 1
+      },
+      "enchant": "Vampiric",
+      "tier": "Average",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.109,
+        "hit_taken_rate": 0.329,
+        "avg_fight_duration": 82.0,
+        "damage_dealt_avg": 5.8,
+        "attempts": 6
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.088,
+        "hit_taken_rate": 0.294,
+        "avg_fight_duration": 60.2,
+        "damage_dealt_avg": 10.33,
+        "attempts": 3
+      },
+      "enchant": "Guardian",
+      "tier": "Average",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.636,
+        "hit_taken_rate": 0.033,
+        "avg_fight_duration": 26.6,
+        "damage_dealt_avg": 19.67,
+        "attempts": 1
+      },
+      "enchant": "Swift",
+      "tier": "Skilled",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.251,
+        "hit_taken_rate": 0.202,
+        "avg_fight_duration": 35.8,
+        "damage_dealt_avg": 13.26,
+        "attempts": 3
+      },
+      "enchant": "Vampiric",
+      "tier": "Average",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.225,
+        "hit_taken_rate": 0.166,
+        "avg_fight_duration": 31.8,
+        "damage_dealt_avg": 21.29,
+        "attempts": 3
+      },
+      "enchant": "Berserker",
+      "tier": "Average",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.33,
+        "hit_taken_rate": 0.14,
+        "avg_fight_duration": 52.5,
+        "damage_dealt_avg": 20.25,
+        "attempts": 3
+      },
+      "enchant": "Berserker",
+      "tier": "Average",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.314,
+        "hit_taken_rate": 0.097,
+        "avg_fight_duration": 50.3,
+        "damage_dealt_avg": 16.78,
+        "attempts": 2
+      },
+      "enchant": "Vampiric",
+      "tier": "Average",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.205,
+        "hit_taken_rate": 0.125,
+        "avg_fight_duration": 49.8,
+        "damage_dealt_avg": 17.01,
+        "attempts": 1
+      },
+      "enchant": "Vampiric",
+      "tier": "Average",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.069,
+        "hit_taken_rate": 0.327,
+        "avg_fight_duration": 82.5,
+        "damage_dealt_avg": 11.94,
+        "attempts": 5
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.221,
+        "hit_taken_rate": 0.244,
+        "avg_fight_duration": 23.6,
+        "damage_dealt_avg": 18.4,
+        "attempts": 3
+      },
+      "enchant": "Vampiric",
+      "tier": "Average",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.093,
+        "hit_taken_rate": 0.408,
+        "avg_fight_duration": 27.7,
+        "damage_dealt_avg": 6.25,
+        "attempts": 4
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.075,
+        "hit_taken_rate": 0.27,
+        "avg_fight_duration": 32.9,
+        "damage_dealt_avg": 19.35,
+        "attempts": 2
+      },
+      "enchant": "Vampiric",
+      "tier": "Average",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.498,
+        "hit_taken_rate": 0.055,
+        "avg_fight_duration": 15.3,
+        "damage_dealt_avg": 22.72,
+        "attempts": 1
+      },
+      "enchant": "Swift",
+      "tier": "Skilled",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.285,
+        "hit_taken_rate": 0.168,
+        "avg_fight_duration": 37.8,
+        "damage_dealt_avg": 21.53,
+        "attempts": 2
+      },
+      "enchant": "Berserker",
+      "tier": "Average",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.088,
+        "hit_taken_rate": 0.315,
+        "avg_fight_duration": 77.7,
+        "damage_dealt_avg": 13.05,
         "attempts": 7
       },
       "enchant": "Guardian",
@@ -627,77 +374,11 @@
     },
     {
       "features": {
-        "attacks_thrown": 23.5,
-        "dodges_used": 18.5,
-        "hits_taken": 0.3,
-        "damage_dealt": 283.0,
-        "time_to_defeat": 24.8,
-        "attempts": 1
-      },
-      "enchant": "Swift",
-      "tier": "Skilled",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 18.8,
-        "dodges_used": 16.1,
-        "hits_taken": 3.1,
-        "damage_dealt": 285.7,
-        "time_to_defeat": 26.1,
-        "attempts": 1
-      },
-      "enchant": "Swift",
-      "tier": "Skilled",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 26.9,
-        "dodges_used": 8.6,
-        "hits_taken": 13.5,
-        "damage_dealt": 218.0,
-        "time_to_defeat": 31.8,
+        "dodge_rate": 0.259,
+        "hit_taken_rate": 0.159,
+        "avg_fight_duration": 40.3,
+        "damage_dealt_avg": 20.8,
         "attempts": 2
-      },
-      "enchant": "Guardian",
-      "tier": "Average",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 18.0,
-        "dodges_used": 17.5,
-        "hits_taken": 2.2,
-        "damage_dealt": 291.8,
-        "time_to_defeat": 18.1,
-        "attempts": 1
-      },
-      "enchant": "Swift",
-      "tier": "Skilled",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 39.5,
-        "dodges_used": 2.8,
-        "hits_taken": 14.3,
-        "damage_dealt": 142.2,
-        "time_to_defeat": 85.8,
-        "attempts": 4
-      },
-      "enchant": "Guardian",
-      "tier": "Struggling",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 13.6,
-        "dodges_used": 22.2,
-        "hits_taken": 4.0,
-        "damage_dealt": 284.7,
-        "time_to_defeat": 22.6,
-        "attempts": 1
       },
       "enchant": "Berserker",
       "tier": "Average",
@@ -705,76 +386,10 @@
     },
     {
       "features": {
-        "attacks_thrown": 20.5,
-        "dodges_used": 2.9,
-        "hits_taken": 10.4,
-        "damage_dealt": 280.8,
-        "time_to_defeat": 45.3,
-        "attempts": 2
-      },
-      "enchant": "Guardian",
-      "tier": "Average",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 41.9,
-        "dodges_used": 4.6,
-        "hits_taken": 21.0,
-        "damage_dealt": 130.6,
-        "time_to_defeat": 58.8,
-        "attempts": 1
-      },
-      "enchant": "Guardian",
-      "tier": "Average",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 18.2,
-        "dodges_used": 10.2,
-        "hits_taken": 6.3,
-        "damage_dealt": 206.8,
-        "time_to_defeat": 38.8,
-        "attempts": 2
-      },
-      "enchant": "Vampiric",
-      "tier": "Average",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 20.4,
-        "dodges_used": 12.1,
-        "hits_taken": 10.5,
-        "damage_dealt": 233.2,
-        "time_to_defeat": 59.2,
-        "attempts": 3
-      },
-      "enchant": "Guardian",
-      "tier": "Average",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 24.9,
-        "dodges_used": 2.6,
-        "hits_taken": 7.6,
-        "damage_dealt": 275.0,
-        "time_to_defeat": 33.0,
-        "attempts": 4
-      },
-      "enchant": "Guardian",
-      "tier": "Struggling",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 29.1,
-        "dodges_used": 2.8,
-        "hits_taken": 11.6,
-        "damage_dealt": 278.2,
-        "time_to_defeat": 27.0,
+        "dodge_rate": 0.358,
+        "hit_taken_rate": 0.212,
+        "avg_fight_duration": 59.9,
+        "damage_dealt_avg": 16.83,
         "attempts": 3
       },
       "enchant": "Vampiric",
@@ -783,37 +398,10 @@
     },
     {
       "features": {
-        "attacks_thrown": 25.3,
-        "dodges_used": 1.6,
-        "hits_taken": 18.8,
-        "damage_dealt": 158.9,
-        "time_to_defeat": 84.4,
-        "attempts": 3
-      },
-      "enchant": "Guardian",
-      "tier": "Struggling",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 18.5,
-        "dodges_used": 16.9,
-        "hits_taken": 3.1,
-        "damage_dealt": 269.7,
-        "time_to_defeat": 30.7,
-        "attempts": 1
-      },
-      "enchant": "Swift",
-      "tier": "Skilled",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 33.9,
-        "dodges_used": 1.0,
-        "hits_taken": 16.7,
-        "damage_dealt": 138.0,
-        "time_to_defeat": 31.2,
+        "dodge_rate": 0.07,
+        "hit_taken_rate": 0.428,
+        "avg_fight_duration": 75.0,
+        "damage_dealt_avg": 6.88,
         "attempts": 6
       },
       "enchant": "Guardian",
@@ -822,11 +410,94 @@
     },
     {
       "features": {
-        "attacks_thrown": 28.0,
-        "dodges_used": 8.5,
-        "hits_taken": 3.4,
-        "damage_dealt": 280.9,
-        "time_to_defeat": 32.6,
+        "dodge_rate": 0.092,
+        "hit_taken_rate": 0.289,
+        "avg_fight_duration": 16.5,
+        "damage_dealt_avg": 19.0,
+        "attempts": 2
+      },
+      "enchant": "Guardian",
+      "tier": "Average",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.595,
+        "hit_taken_rate": 0.012,
+        "avg_fight_duration": 31.3,
+        "damage_dealt_avg": 21.19,
+        "attempts": 1
+      },
+      "enchant": "Swift",
+      "tier": "Skilled",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.061,
+        "hit_taken_rate": 0.34,
+        "avg_fight_duration": 90.7,
+        "damage_dealt_avg": 10.05,
+        "attempts": 5
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.094,
+        "hit_taken_rate": 0.43,
+        "avg_fight_duration": 79.1,
+        "damage_dealt_avg": 6.89,
+        "attempts": 3
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.608,
+        "hit_taken_rate": 0.058,
+        "avg_fight_duration": 27.3,
+        "damage_dealt_avg": 23.74,
+        "attempts": 1
+      },
+      "enchant": "Swift",
+      "tier": "Skilled",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.373,
+        "hit_taken_rate": 0.104,
+        "avg_fight_duration": 55.0,
+        "damage_dealt_avg": 13.14,
+        "attempts": 1
+      },
+      "enchant": "Vampiric",
+      "tier": "Average",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.272,
+        "hit_taken_rate": 0.214,
+        "avg_fight_duration": 46.9,
+        "damage_dealt_avg": 19.43,
+        "attempts": 1
+      },
+      "enchant": "Vampiric",
+      "tier": "Average",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.325,
+        "hit_taken_rate": 0.171,
+        "avg_fight_duration": 44.0,
+        "damage_dealt_avg": 23.82,
         "attempts": 2
       },
       "enchant": "Berserker",
@@ -835,11 +506,1930 @@
     },
     {
       "features": {
-        "attacks_thrown": 24.6,
-        "dodges_used": 1.7,
-        "hits_taken": 26.3,
-        "damage_dealt": 132.9,
-        "time_to_defeat": 56.5,
+        "dodge_rate": 0.236,
+        "hit_taken_rate": 0.252,
+        "avg_fight_duration": 30.9,
+        "damage_dealt_avg": 18.23,
+        "attempts": 2
+      },
+      "enchant": "Vampiric",
+      "tier": "Average",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.085,
+        "hit_taken_rate": 0.369,
+        "avg_fight_duration": 84.6,
+        "damage_dealt_avg": 7.21,
+        "attempts": 5
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.09,
+        "hit_taken_rate": 0.319,
+        "avg_fight_duration": 88.1,
+        "damage_dealt_avg": 10.41,
+        "attempts": 4
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.169,
+        "hit_taken_rate": 0.336,
+        "avg_fight_duration": 64.2,
+        "damage_dealt_avg": 5.7,
+        "attempts": 7
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.167,
+        "hit_taken_rate": 0.289,
+        "avg_fight_duration": 38.8,
+        "damage_dealt_avg": 18.12,
+        "attempts": 1
+      },
+      "enchant": "Guardian",
+      "tier": "Average",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.164,
+        "hit_taken_rate": 0.289,
+        "avg_fight_duration": 59.5,
+        "damage_dealt_avg": 11.13,
+        "attempts": 6
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.732,
+        "hit_taken_rate": 0.05,
+        "avg_fight_duration": 18.7,
+        "damage_dealt_avg": 21.24,
+        "attempts": 1
+      },
+      "enchant": "Swift",
+      "tier": "Skilled",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.078,
+        "hit_taken_rate": 0.252,
+        "avg_fight_duration": 37.0,
+        "damage_dealt_avg": 19.05,
+        "attempts": 3
+      },
+      "enchant": "Vampiric",
+      "tier": "Average",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.143,
+        "hit_taken_rate": 0.21,
+        "avg_fight_duration": 30.8,
+        "damage_dealt_avg": 18.25,
+        "attempts": 1
+      },
+      "enchant": "Vampiric",
+      "tier": "Average",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.067,
+        "hit_taken_rate": 0.618,
+        "avg_fight_duration": 66.2,
+        "damage_dealt_avg": 7.63,
+        "attempts": 6
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.141,
+        "hit_taken_rate": 0.383,
+        "avg_fight_duration": 77.7,
+        "damage_dealt_avg": 11.11,
+        "attempts": 6
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.498,
+        "hit_taken_rate": 0.045,
+        "avg_fight_duration": 24.8,
+        "damage_dealt_avg": 18.76,
+        "attempts": 1
+      },
+      "enchant": "Swift",
+      "tier": "Skilled",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.071,
+        "hit_taken_rate": 0.319,
+        "avg_fight_duration": 75.3,
+        "damage_dealt_avg": 10.44,
+        "attempts": 6
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.087,
+        "hit_taken_rate": 0.353,
+        "avg_fight_duration": 70.6,
+        "damage_dealt_avg": 11.84,
+        "attempts": 2
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.053,
+        "hit_taken_rate": 0.516,
+        "avg_fight_duration": 60.1,
+        "damage_dealt_avg": 14.04,
+        "attempts": 8
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.177,
+        "hit_taken_rate": 0.163,
+        "avg_fight_duration": 32.5,
+        "damage_dealt_avg": 21.47,
+        "attempts": 3
+      },
+      "enchant": "Berserker",
+      "tier": "Average",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.129,
+        "hit_taken_rate": 0.252,
+        "avg_fight_duration": 42.6,
+        "damage_dealt_avg": 9.99,
+        "attempts": 6
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.564,
+        "hit_taken_rate": 0.038,
+        "avg_fight_duration": 34.2,
+        "damage_dealt_avg": 23.22,
+        "attempts": 1
+      },
+      "enchant": "Swift",
+      "tier": "Skilled",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.247,
+        "hit_taken_rate": 0.174,
+        "avg_fight_duration": 52.2,
+        "damage_dealt_avg": 15.74,
+        "attempts": 3
+      },
+      "enchant": "Vampiric",
+      "tier": "Average",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.347,
+        "hit_taken_rate": 0.158,
+        "avg_fight_duration": 48.8,
+        "damage_dealt_avg": 19.91,
+        "attempts": 1
+      },
+      "enchant": "Berserker",
+      "tier": "Average",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.064,
+        "hit_taken_rate": 0.466,
+        "avg_fight_duration": 121.0,
+        "damage_dealt_avg": 8.84,
+        "attempts": 6
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.062,
+        "hit_taken_rate": 0.339,
+        "avg_fight_duration": 38.6,
+        "damage_dealt_avg": 12.54,
+        "attempts": 6
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.446,
+        "hit_taken_rate": 0.042,
+        "avg_fight_duration": 28.8,
+        "damage_dealt_avg": 23.38,
+        "attempts": 1
+      },
+      "enchant": "Berserker",
+      "tier": "Skilled",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.575,
+        "hit_taken_rate": 0.058,
+        "avg_fight_duration": 23.4,
+        "damage_dealt_avg": 25.0,
+        "attempts": 1
+      },
+      "enchant": "Swift",
+      "tier": "Skilled",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.065,
+        "hit_taken_rate": 0.379,
+        "avg_fight_duration": 61.3,
+        "damage_dealt_avg": 11.9,
+        "attempts": 7
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.176,
+        "hit_taken_rate": 0.279,
+        "avg_fight_duration": 30.4,
+        "damage_dealt_avg": 21.2,
+        "attempts": 3
+      },
+      "enchant": "Vampiric",
+      "tier": "Average",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.345,
+        "hit_taken_rate": 0.119,
+        "avg_fight_duration": 39.0,
+        "damage_dealt_avg": 11.91,
+        "attempts": 4
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.142,
+        "hit_taken_rate": 0.311,
+        "avg_fight_duration": 96.8,
+        "damage_dealt_avg": 7.88,
+        "attempts": 4
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.083,
+        "hit_taken_rate": 0.115,
+        "avg_fight_duration": 19.7,
+        "damage_dealt_avg": 19.79,
+        "attempts": 2
+      },
+      "enchant": "Berserker",
+      "tier": "Average",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.121,
+        "hit_taken_rate": 0.362,
+        "avg_fight_duration": 100.2,
+        "damage_dealt_avg": 11.76,
+        "attempts": 8
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.235,
+        "hit_taken_rate": 0.142,
+        "avg_fight_duration": 42.1,
+        "damage_dealt_avg": 17.16,
+        "attempts": 1
+      },
+      "enchant": "Vampiric",
+      "tier": "Average",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.259,
+        "hit_taken_rate": 0.118,
+        "avg_fight_duration": 45.0,
+        "damage_dealt_avg": 23.8,
+        "attempts": 2
+      },
+      "enchant": "Berserker",
+      "tier": "Average",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.265,
+        "hit_taken_rate": 0.114,
+        "avg_fight_duration": 36.6,
+        "damage_dealt_avg": 15.9,
+        "attempts": 1
+      },
+      "enchant": "Vampiric",
+      "tier": "Average",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.099,
+        "hit_taken_rate": 0.265,
+        "avg_fight_duration": 45.5,
+        "damage_dealt_avg": 20.12,
+        "attempts": 2
+      },
+      "enchant": "Vampiric",
+      "tier": "Average",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.138,
+        "hit_taken_rate": 0.273,
+        "avg_fight_duration": 37.0,
+        "damage_dealt_avg": 22.35,
+        "attempts": 1
+      },
+      "enchant": "Vampiric",
+      "tier": "Average",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.499,
+        "hit_taken_rate": 0.034,
+        "avg_fight_duration": 35.4,
+        "damage_dealt_avg": 21.71,
+        "attempts": 1
+      },
+      "enchant": "Swift",
+      "tier": "Average",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.107,
+        "hit_taken_rate": 0.16,
+        "avg_fight_duration": 30.6,
+        "damage_dealt_avg": 21.42,
+        "attempts": 3
+      },
+      "enchant": "Berserker",
+      "tier": "Average",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.105,
+        "hit_taken_rate": 0.371,
+        "avg_fight_duration": 90.9,
+        "damage_dealt_avg": 10.76,
+        "attempts": 6
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.06,
+        "hit_taken_rate": 0.327,
+        "avg_fight_duration": 67.8,
+        "damage_dealt_avg": 4.23,
+        "attempts": 6
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.256,
+        "hit_taken_rate": 0.186,
+        "avg_fight_duration": 52.3,
+        "damage_dealt_avg": 22.64,
+        "attempts": 3
+      },
+      "enchant": "Vampiric",
+      "tier": "Average",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.102,
+        "hit_taken_rate": 0.252,
+        "avg_fight_duration": 75.6,
+        "damage_dealt_avg": 9.98,
+        "attempts": 1
+      },
+      "enchant": "Vampiric",
+      "tier": "Struggling",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.32,
+        "hit_taken_rate": 0.142,
+        "avg_fight_duration": 54.6,
+        "damage_dealt_avg": 20.0,
+        "attempts": 3
+      },
+      "enchant": "Berserker",
+      "tier": "Average",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.162,
+        "hit_taken_rate": 0.493,
+        "avg_fight_duration": 94.7,
+        "damage_dealt_avg": 8.02,
+        "attempts": 6
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.537,
+        "hit_taken_rate": 0.047,
+        "avg_fight_duration": 21.9,
+        "damage_dealt_avg": 23.59,
+        "attempts": 1
+      },
+      "enchant": "Swift",
+      "tier": "Skilled",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.095,
+        "hit_taken_rate": 0.296,
+        "avg_fight_duration": 46.4,
+        "damage_dealt_avg": 21.52,
+        "attempts": 3
+      },
+      "enchant": "Guardian",
+      "tier": "Average",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.559,
+        "hit_taken_rate": 0.041,
+        "avg_fight_duration": 36.2,
+        "damage_dealt_avg": 19.15,
+        "attempts": 1
+      },
+      "enchant": "Swift",
+      "tier": "Average",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.136,
+        "hit_taken_rate": 0.274,
+        "avg_fight_duration": 120.8,
+        "damage_dealt_avg": 12.61,
+        "attempts": 6
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.392,
+        "hit_taken_rate": 0.06,
+        "avg_fight_duration": 49.6,
+        "damage_dealt_avg": 14.24,
+        "attempts": 2
+      },
+      "enchant": "Vampiric",
+      "tier": "Average",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.239,
+        "hit_taken_rate": 0.155,
+        "avg_fight_duration": 62.6,
+        "damage_dealt_avg": 20.08,
+        "attempts": 3
+      },
+      "enchant": "Berserker",
+      "tier": "Average",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.144,
+        "hit_taken_rate": 0.186,
+        "avg_fight_duration": 77.7,
+        "damage_dealt_avg": 12.43,
+        "attempts": 4
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.35,
+        "hit_taken_rate": 0.148,
+        "avg_fight_duration": 56.6,
+        "damage_dealt_avg": 17.39,
+        "attempts": 2
+      },
+      "enchant": "Vampiric",
+      "tier": "Average",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.596,
+        "hit_taken_rate": 0.051,
+        "avg_fight_duration": 34.3,
+        "damage_dealt_avg": 24.12,
+        "attempts": 1
+      },
+      "enchant": "Swift",
+      "tier": "Skilled",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.472,
+        "hit_taken_rate": 0.023,
+        "avg_fight_duration": 31.8,
+        "damage_dealt_avg": 21.58,
+        "attempts": 1
+      },
+      "enchant": "Swift",
+      "tier": "Skilled",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.15,
+        "hit_taken_rate": 0.387,
+        "avg_fight_duration": 37.2,
+        "damage_dealt_avg": 24.1,
+        "attempts": 1
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.066,
+        "hit_taken_rate": 0.385,
+        "avg_fight_duration": 93.1,
+        "damage_dealt_avg": 6.85,
+        "attempts": 7
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.285,
+        "hit_taken_rate": 0.117,
+        "avg_fight_duration": 44.5,
+        "damage_dealt_avg": 18.28,
+        "attempts": 3
+      },
+      "enchant": "Berserker",
+      "tier": "Average",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.311,
+        "hit_taken_rate": 0.177,
+        "avg_fight_duration": 49.9,
+        "damage_dealt_avg": 16.04,
+        "attempts": 3
+      },
+      "enchant": "Vampiric",
+      "tier": "Average",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.532,
+        "hit_taken_rate": 0.052,
+        "avg_fight_duration": 23.3,
+        "damage_dealt_avg": 24.58,
+        "attempts": 1
+      },
+      "enchant": "Swift",
+      "tier": "Skilled",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.046,
+        "hit_taken_rate": 0.226,
+        "avg_fight_duration": 76.5,
+        "damage_dealt_avg": 13.77,
+        "attempts": 6
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.088,
+        "hit_taken_rate": 0.262,
+        "avg_fight_duration": 33.5,
+        "damage_dealt_avg": 25.0,
+        "attempts": 1
+      },
+      "enchant": "Vampiric",
+      "tier": "Average",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.105,
+        "hit_taken_rate": 0.489,
+        "avg_fight_duration": 69.9,
+        "damage_dealt_avg": 13.59,
+        "attempts": 6
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.153,
+        "hit_taken_rate": 0.233,
+        "avg_fight_duration": 36.6,
+        "damage_dealt_avg": 13.68,
+        "attempts": 4
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.117,
+        "hit_taken_rate": 0.35,
+        "avg_fight_duration": 64.3,
+        "damage_dealt_avg": 8.06,
+        "attempts": 5
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.116,
+        "hit_taken_rate": 0.423,
+        "avg_fight_duration": 149.3,
+        "damage_dealt_avg": 9.49,
+        "attempts": 6
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.114,
+        "hit_taken_rate": 0.273,
+        "avg_fight_duration": 35.0,
+        "damage_dealt_avg": 25.0,
+        "attempts": 1
+      },
+      "enchant": "Vampiric",
+      "tier": "Average",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.377,
+        "hit_taken_rate": 0.124,
+        "avg_fight_duration": 32.8,
+        "damage_dealt_avg": 21.9,
+        "attempts": 2
+      },
+      "enchant": "Berserker",
+      "tier": "Average",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.056,
+        "hit_taken_rate": 0.496,
+        "avg_fight_duration": 104.7,
+        "damage_dealt_avg": 12.56,
+        "attempts": 3
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.108,
+        "hit_taken_rate": 0.307,
+        "avg_fight_duration": 30.5,
+        "damage_dealt_avg": 19.79,
+        "attempts": 3
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.055,
+        "hit_taken_rate": 0.349,
+        "avg_fight_duration": 68.3,
+        "damage_dealt_avg": 8.16,
+        "attempts": 7
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.084,
+        "hit_taken_rate": 0.479,
+        "avg_fight_duration": 94.0,
+        "damage_dealt_avg": 9.22,
+        "attempts": 8
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.457,
+        "hit_taken_rate": 0.065,
+        "avg_fight_duration": 35.8,
+        "damage_dealt_avg": 25.0,
+        "attempts": 1
+      },
+      "enchant": "Swift",
+      "tier": "Average",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.169,
+        "hit_taken_rate": 0.31,
+        "avg_fight_duration": 41.3,
+        "damage_dealt_avg": 19.43,
+        "attempts": 3
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.156,
+        "hit_taken_rate": 0.418,
+        "avg_fight_duration": 71.1,
+        "damage_dealt_avg": 11.74,
+        "attempts": 4
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.079,
+        "hit_taken_rate": 0.4,
+        "avg_fight_duration": 113.6,
+        "damage_dealt_avg": 12.68,
+        "attempts": 4
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.097,
+        "hit_taken_rate": 0.224,
+        "avg_fight_duration": 45.9,
+        "damage_dealt_avg": 18.66,
+        "attempts": 2
+      },
+      "enchant": "Vampiric",
+      "tier": "Average",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.102,
+        "hit_taken_rate": 0.54,
+        "avg_fight_duration": 66.1,
+        "damage_dealt_avg": 6.52,
+        "attempts": 5
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.091,
+        "hit_taken_rate": 0.486,
+        "avg_fight_duration": 78.1,
+        "damage_dealt_avg": 10.88,
+        "attempts": 6
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.356,
+        "hit_taken_rate": 0.169,
+        "avg_fight_duration": 35.6,
+        "damage_dealt_avg": 14.7,
+        "attempts": 1
+      },
+      "enchant": "Vampiric",
+      "tier": "Average",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.13,
+        "hit_taken_rate": 0.296,
+        "avg_fight_duration": 58.6,
+        "damage_dealt_avg": 11.46,
+        "attempts": 5
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.67,
+        "hit_taken_rate": 0.011,
+        "avg_fight_duration": 19.3,
+        "damage_dealt_avg": 23.62,
+        "attempts": 1
+      },
+      "enchant": "Swift",
+      "tier": "Skilled",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.374,
+        "hit_taken_rate": 0.186,
+        "avg_fight_duration": 23.8,
+        "damage_dealt_avg": 15.72,
+        "attempts": 1
+      },
+      "enchant": "Vampiric",
+      "tier": "Average",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.126,
+        "hit_taken_rate": 0.542,
+        "avg_fight_duration": 103.5,
+        "damage_dealt_avg": 12.55,
+        "attempts": 4
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.048,
+        "hit_taken_rate": 0.228,
+        "avg_fight_duration": 77.7,
+        "damage_dealt_avg": 10.98,
+        "attempts": 6
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.066,
+        "hit_taken_rate": 0.367,
+        "avg_fight_duration": 83.7,
+        "damage_dealt_avg": 16.3,
+        "attempts": 4
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.501,
+        "hit_taken_rate": 0.037,
+        "avg_fight_duration": 32.2,
+        "damage_dealt_avg": 18.97,
+        "attempts": 1
+      },
+      "enchant": "Swift",
+      "tier": "Skilled",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.087,
+        "hit_taken_rate": 0.242,
+        "avg_fight_duration": 35.5,
+        "damage_dealt_avg": 25.0,
+        "attempts": 3
+      },
+      "enchant": "Vampiric",
+      "tier": "Average",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.101,
+        "hit_taken_rate": 0.302,
+        "avg_fight_duration": 68.1,
+        "damage_dealt_avg": 12.55,
+        "attempts": 8
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.027,
+        "hit_taken_rate": 0.423,
+        "avg_fight_duration": 71.5,
+        "damage_dealt_avg": 11.2,
+        "attempts": 7
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.062,
+        "hit_taken_rate": 0.229,
+        "avg_fight_duration": 63.9,
+        "damage_dealt_avg": 16.05,
+        "attempts": 4
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.276,
+        "hit_taken_rate": 0.159,
+        "avg_fight_duration": 36.8,
+        "damage_dealt_avg": 18.21,
+        "attempts": 2
+      },
+      "enchant": "Berserker",
+      "tier": "Average",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.304,
+        "hit_taken_rate": 0.164,
+        "avg_fight_duration": 52.8,
+        "damage_dealt_avg": 12.12,
+        "attempts": 2
+      },
+      "enchant": "Vampiric",
+      "tier": "Average",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.443,
+        "hit_taken_rate": 0.034,
+        "avg_fight_duration": 34.4,
+        "damage_dealt_avg": 19.33,
+        "attempts": 1
+      },
+      "enchant": "Berserker",
+      "tier": "Skilled",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.544,
+        "hit_taken_rate": 0.051,
+        "avg_fight_duration": 22.0,
+        "damage_dealt_avg": 24.69,
+        "attempts": 1
+      },
+      "enchant": "Swift",
+      "tier": "Skilled",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.08,
+        "hit_taken_rate": 0.258,
+        "avg_fight_duration": 95.7,
+        "damage_dealt_avg": 15.08,
+        "attempts": 7
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.055,
+        "hit_taken_rate": 0.396,
+        "avg_fight_duration": 51.6,
+        "damage_dealt_avg": 8.22,
+        "attempts": 8
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.513,
+        "hit_taken_rate": 0.035,
+        "avg_fight_duration": 23.4,
+        "damage_dealt_avg": 25.0,
+        "attempts": 1
+      },
+      "enchant": "Swift",
+      "tier": "Skilled",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.068,
+        "hit_taken_rate": 0.437,
+        "avg_fight_duration": 78.7,
+        "damage_dealt_avg": 3.3,
+        "attempts": 8
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.108,
+        "hit_taken_rate": 0.486,
+        "avg_fight_duration": 82.3,
+        "damage_dealt_avg": 10.57,
+        "attempts": 8
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.135,
+        "hit_taken_rate": 0.257,
+        "avg_fight_duration": 46.9,
+        "damage_dealt_avg": 20.36,
+        "attempts": 3
+      },
+      "enchant": "Vampiric",
+      "tier": "Average",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.604,
+        "hit_taken_rate": 0.074,
+        "avg_fight_duration": 28.0,
+        "damage_dealt_avg": 21.01,
+        "attempts": 1
+      },
+      "enchant": "Swift",
+      "tier": "Skilled",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.238,
+        "hit_taken_rate": 0.086,
+        "avg_fight_duration": 33.0,
+        "damage_dealt_avg": 13.32,
+        "attempts": 1
+      },
+      "enchant": "Vampiric",
+      "tier": "Skilled",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.066,
+        "hit_taken_rate": 0.414,
+        "avg_fight_duration": 60.9,
+        "damage_dealt_avg": 8.83,
+        "attempts": 5
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.046,
+        "hit_taken_rate": 0.264,
+        "avg_fight_duration": 45.4,
+        "damage_dealt_avg": 8.65,
+        "attempts": 6
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.142,
+        "hit_taken_rate": 0.257,
+        "avg_fight_duration": 102.6,
+        "damage_dealt_avg": 10.64,
+        "attempts": 6
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.089,
+        "hit_taken_rate": 0.278,
+        "avg_fight_duration": 71.0,
+        "damage_dealt_avg": 4.26,
+        "attempts": 5
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.403,
+        "hit_taken_rate": 0.198,
+        "avg_fight_duration": 50.8,
+        "damage_dealt_avg": 20.48,
+        "attempts": 1
+      },
+      "enchant": "Vampiric",
+      "tier": "Average",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.054,
+        "hit_taken_rate": 0.404,
+        "avg_fight_duration": 51.2,
+        "damage_dealt_avg": 3.53,
+        "attempts": 7
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.123,
+        "hit_taken_rate": 0.278,
+        "avg_fight_duration": 71.3,
+        "damage_dealt_avg": 8.5,
+        "attempts": 4
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.094,
+        "hit_taken_rate": 0.504,
+        "avg_fight_duration": 73.4,
+        "damage_dealt_avg": 10.54,
+        "attempts": 5
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.158,
+        "hit_taken_rate": 0.265,
+        "avg_fight_duration": 32.1,
+        "damage_dealt_avg": 17.86,
+        "attempts": 2
+      },
+      "enchant": "Vampiric",
+      "tier": "Average",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.115,
+        "hit_taken_rate": 0.314,
+        "avg_fight_duration": 81.3,
+        "damage_dealt_avg": 17.21,
+        "attempts": 3
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.042,
+        "hit_taken_rate": 0.535,
+        "avg_fight_duration": 62.4,
+        "damage_dealt_avg": 8.02,
+        "attempts": 8
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.116,
+        "hit_taken_rate": 0.414,
+        "avg_fight_duration": 77.9,
+        "damage_dealt_avg": 7.79,
+        "attempts": 6
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.3,
+        "hit_taken_rate": 0.175,
+        "avg_fight_duration": 44.0,
+        "damage_dealt_avg": 17.42,
+        "attempts": 4
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.471,
+        "hit_taken_rate": 0.067,
+        "avg_fight_duration": 27.7,
+        "damage_dealt_avg": 25.0,
+        "attempts": 1
+      },
+      "enchant": "Swift",
+      "tier": "Skilled",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.611,
+        "hit_taken_rate": 0.046,
+        "avg_fight_duration": 33.0,
+        "damage_dealt_avg": 23.34,
+        "attempts": 1
+      },
+      "enchant": "Swift",
+      "tier": "Skilled",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.148,
+        "hit_taken_rate": 0.337,
+        "avg_fight_duration": 73.6,
+        "damage_dealt_avg": 13.35,
+        "attempts": 5
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.15,
+        "hit_taken_rate": 0.336,
+        "avg_fight_duration": 72.5,
+        "damage_dealt_avg": 10.53,
+        "attempts": 7
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.114,
+        "hit_taken_rate": 0.232,
+        "avg_fight_duration": 20.3,
+        "damage_dealt_avg": 16.75,
+        "attempts": 1
+      },
+      "enchant": "Vampiric",
+      "tier": "Average",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.523,
+        "hit_taken_rate": 0.037,
+        "avg_fight_duration": 28.4,
+        "damage_dealt_avg": 22.42,
+        "attempts": 1
+      },
+      "enchant": "Swift",
+      "tier": "Skilled",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.495,
+        "hit_taken_rate": 0.06,
+        "avg_fight_duration": 32.4,
+        "damage_dealt_avg": 23.5,
+        "attempts": 1
+      },
+      "enchant": "Swift",
+      "tier": "Skilled",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.125,
+        "hit_taken_rate": 0.459,
+        "avg_fight_duration": 57.9,
+        "damage_dealt_avg": 13.02,
+        "attempts": 8
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.17,
+        "hit_taken_rate": 0.152,
+        "avg_fight_duration": 41.8,
+        "damage_dealt_avg": 23.23,
+        "attempts": 1
+      },
+      "enchant": "Berserker",
+      "tier": "Average",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.215,
+        "hit_taken_rate": 0.235,
+        "avg_fight_duration": 22.2,
+        "damage_dealt_avg": 18.69,
+        "attempts": 3
+      },
+      "enchant": "Vampiric",
+      "tier": "Average",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.14,
+        "hit_taken_rate": 0.343,
+        "avg_fight_duration": 107.9,
+        "damage_dealt_avg": 11.06,
+        "attempts": 3
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.074,
+        "hit_taken_rate": 0.338,
+        "avg_fight_duration": 90.6,
+        "damage_dealt_avg": 9.97,
+        "attempts": 4
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.21,
+        "hit_taken_rate": 0.219,
+        "avg_fight_duration": 21.2,
+        "damage_dealt_avg": 20.9,
+        "attempts": 2
+      },
+      "enchant": "Vampiric",
+      "tier": "Average",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.175,
+        "hit_taken_rate": 0.208,
+        "avg_fight_duration": 44.1,
+        "damage_dealt_avg": 20.26,
+        "attempts": 3
+      },
+      "enchant": "Vampiric",
+      "tier": "Average",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.148,
+        "hit_taken_rate": 0.287,
+        "avg_fight_duration": 37.5,
+        "damage_dealt_avg": 19.33,
+        "attempts": 4
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.04,
+        "hit_taken_rate": 0.49,
+        "avg_fight_duration": 98.5,
+        "damage_dealt_avg": 8.29,
+        "attempts": 2
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.587,
+        "hit_taken_rate": 0.046,
+        "avg_fight_duration": 31.7,
+        "damage_dealt_avg": 21.77,
+        "attempts": 1
+      },
+      "enchant": "Swift",
+      "tier": "Skilled",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.186,
+        "hit_taken_rate": 0.447,
+        "avg_fight_duration": 85.1,
+        "damage_dealt_avg": 8.63,
+        "attempts": 13
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.167,
+        "hit_taken_rate": 0.204,
+        "avg_fight_duration": 25.2,
+        "damage_dealt_avg": 13.93,
+        "attempts": 2
+      },
+      "enchant": "Vampiric",
+      "tier": "Average",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.243,
+        "hit_taken_rate": 0.132,
+        "avg_fight_duration": 47.6,
+        "damage_dealt_avg": 17.5,
+        "attempts": 2
+      },
+      "enchant": "Vampiric",
+      "tier": "Average",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.679,
+        "hit_taken_rate": 0.055,
+        "avg_fight_duration": 21.2,
+        "damage_dealt_avg": 25.0,
+        "attempts": 1
+      },
+      "enchant": "Swift",
+      "tier": "Skilled",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.602,
+        "hit_taken_rate": 0.012,
+        "avg_fight_duration": 29.8,
+        "damage_dealt_avg": 20.54,
+        "attempts": 1
+      },
+      "enchant": "Swift",
+      "tier": "Skilled",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.222,
+        "hit_taken_rate": 0.247,
+        "avg_fight_duration": 26.1,
+        "damage_dealt_avg": 21.37,
+        "attempts": 3
+      },
+      "enchant": "Vampiric",
+      "tier": "Average",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.064,
+        "hit_taken_rate": 0.438,
+        "avg_fight_duration": 84.5,
+        "damage_dealt_avg": 13.61,
+        "attempts": 5
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.56,
+        "hit_taken_rate": 0.026,
+        "avg_fight_duration": 24.6,
+        "damage_dealt_avg": 20.85,
+        "attempts": 1
+      },
+      "enchant": "Swift",
+      "tier": "Skilled",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.155,
+        "hit_taken_rate": 0.407,
+        "avg_fight_duration": 49.8,
+        "damage_dealt_avg": 12.36,
+        "attempts": 4
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.172,
+        "hit_taken_rate": 0.272,
+        "avg_fight_duration": 70.9,
+        "damage_dealt_avg": 7.53,
+        "attempts": 6
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.175,
+        "hit_taken_rate": 0.285,
+        "avg_fight_duration": 31.2,
+        "damage_dealt_avg": 16.54,
+        "attempts": 1
+      },
+      "enchant": "Guardian",
+      "tier": "Average",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.178,
+        "hit_taken_rate": 0.159,
+        "avg_fight_duration": 14.0,
+        "damage_dealt_avg": 18.18,
+        "attempts": 1
+      },
+      "enchant": "Berserker",
+      "tier": "Average",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.166,
+        "hit_taken_rate": 0.156,
+        "avg_fight_duration": 31.8,
+        "damage_dealt_avg": 20.78,
+        "attempts": 3
+      },
+      "enchant": "Berserker",
+      "tier": "Average",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.123,
+        "hit_taken_rate": 0.29,
+        "avg_fight_duration": 100.6,
+        "damage_dealt_avg": 5.68,
+        "attempts": 5
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.474,
+        "hit_taken_rate": 0.085,
+        "avg_fight_duration": 32.7,
+        "damage_dealt_avg": 21.67,
+        "attempts": 1
+      },
+      "enchant": "Swift",
+      "tier": "Skilled",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.077,
+        "hit_taken_rate": 0.317,
+        "avg_fight_duration": 85.3,
+        "damage_dealt_avg": 15.18,
+        "attempts": 4
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.537,
+        "hit_taken_rate": 0.033,
+        "avg_fight_duration": 25.8,
+        "damage_dealt_avg": 23.91,
+        "attempts": 1
+      },
+      "enchant": "Swift",
+      "tier": "Skilled",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.508,
+        "hit_taken_rate": 0.047,
+        "avg_fight_duration": 29.1,
+        "damage_dealt_avg": 25.0,
+        "attempts": 1
+      },
+      "enchant": "Swift",
+      "tier": "Skilled",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.229,
+        "hit_taken_rate": 0.187,
+        "avg_fight_duration": 51.0,
+        "damage_dealt_avg": 18.84,
+        "attempts": 2
+      },
+      "enchant": "Vampiric",
+      "tier": "Average",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.092,
+        "hit_taken_rate": 0.348,
+        "avg_fight_duration": 61.6,
+        "damage_dealt_avg": 11.3,
+        "attempts": 3
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.12,
+        "hit_taken_rate": 0.302,
+        "avg_fight_duration": 39.9,
+        "damage_dealt_avg": 17.02,
+        "attempts": 3
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.079,
+        "hit_taken_rate": 0.366,
+        "avg_fight_duration": 93.3,
+        "damage_dealt_avg": 12.52,
+        "attempts": 3
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.188,
+        "hit_taken_rate": 0.11,
+        "avg_fight_duration": 33.9,
+        "damage_dealt_avg": 17.62,
+        "attempts": 1
+      },
+      "enchant": "Vampiric",
+      "tier": "Average",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.147,
+        "hit_taken_rate": 0.417,
+        "avg_fight_duration": 59.5,
+        "damage_dealt_avg": 10.85,
+        "attempts": 6
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.153,
+        "hit_taken_rate": 0.351,
+        "avg_fight_duration": 84.6,
+        "damage_dealt_avg": 10.05,
+        "attempts": 8
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.551,
+        "hit_taken_rate": 0.089,
+        "avg_fight_duration": 17.6,
+        "damage_dealt_avg": 22.97,
+        "attempts": 1
+      },
+      "enchant": "Swift",
+      "tier": "Skilled",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.624,
+        "hit_taken_rate": 0.05,
+        "avg_fight_duration": 21.9,
+        "damage_dealt_avg": 19.18,
+        "attempts": 1
+      },
+      "enchant": "Swift",
+      "tier": "Skilled",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.255,
+        "hit_taken_rate": 0.101,
+        "avg_fight_duration": 43.6,
+        "damage_dealt_avg": 17.64,
+        "attempts": 2
+      },
+      "enchant": "Vampiric",
+      "tier": "Average",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.185,
+        "hit_taken_rate": 0.232,
+        "avg_fight_duration": 34.2,
+        "damage_dealt_avg": 25.0,
+        "attempts": 2
+      },
+      "enchant": "Vampiric",
+      "tier": "Average",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.105,
+        "hit_taken_rate": 0.442,
+        "avg_fight_duration": 84.4,
+        "damage_dealt_avg": 12.67,
         "attempts": 9
       },
       "enchant": "Guardian",
@@ -848,63 +2438,10 @@
     },
     {
       "features": {
-        "attacks_thrown": 28.2,
-        "dodges_used": 4.5,
-        "hits_taken": 8.1,
-        "damage_dealt": 281.7,
-        "time_to_defeat": 39.6,
-        "attempts": 4
-      },
-      "enchant": "Guardian",
-      "tier": "Struggling",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 19.5,
-        "dodges_used": 11.2,
-        "hits_taken": 7.6,
-        "damage_dealt": 232.6,
-        "time_to_defeat": 53.7,
-        "attempts": 2
-      },
-      "enchant": "Vampiric",
-      "tier": "Average",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 24.5,
-        "dodges_used": 6.3,
-        "hits_taken": 9.3,
-        "damage_dealt": 281.0,
-        "time_to_defeat": 45.2,
-        "attempts": 3
-      },
-      "enchant": "Vampiric",
-      "tier": "Average",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 25.5,
-        "dodges_used": 7.0,
-        "hits_taken": 8.1,
-        "damage_dealt": 193.0,
-        "time_to_defeat": 41.1,
-        "attempts": 3
-      },
-      "enchant": "Vampiric",
-      "tier": "Average",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 29.6,
-        "dodges_used": 7.6,
-        "hits_taken": 6.5,
-        "damage_dealt": 266.3,
-        "time_to_defeat": 36.6,
+        "dodge_rate": 0.295,
+        "hit_taken_rate": 0.12,
+        "avg_fight_duration": 51.3,
+        "damage_dealt_avg": 23.62,
         "attempts": 1
       },
       "enchant": "Berserker",
@@ -913,12 +2450,11 @@
     },
     {
       "features": {
-        "attacks_thrown": 34.3,
-        "dodges_used": 4.0,
-        "hits_taken": 15.7,
-        "damage_dealt": 114.1,
-        "time_to_defeat": 86.5,
-        "attempts": 4
+        "dodge_rate": 0.046,
+        "hit_taken_rate": 0.363,
+        "avg_fight_duration": 64.6,
+        "damage_dealt_avg": 8.75,
+        "attempts": 5
       },
       "enchant": "Guardian",
       "tier": "Struggling",
@@ -926,24 +2462,22 @@
     },
     {
       "features": {
-        "attacks_thrown": 36.9,
-        "dodges_used": 4.9,
-        "hits_taken": 15.1,
-        "damage_dealt": 151.9,
-        "time_to_defeat": 52.4,
-        "attempts": 4
+        "dodge_rate": 0.489,
+        "hit_taken_rate": 0.052,
+        "avg_fight_duration": 28.1,
+        "damage_dealt_avg": 24.85,
+        "attempts": 1
       },
-      "enchant": "Guardian",
-      "tier": "Struggling",
+      "enchant": "Swift",
+      "tier": "Skilled",
       "source": "synthetic"
     },
     {
       "features": {
-        "attacks_thrown": 19.6,
-        "dodges_used": 1.8,
-        "hits_taken": 8.6,
-        "damage_dealt": 120.7,
-        "time_to_defeat": 44.3,
+        "dodge_rate": 0.046,
+        "hit_taken_rate": 0.319,
+        "avg_fight_duration": 78.0,
+        "damage_dealt_avg": 8.45,
         "attempts": 6
       },
       "enchant": "Guardian",
@@ -952,90 +2486,11 @@
     },
     {
       "features": {
-        "attacks_thrown": 14.5,
-        "dodges_used": 17.3,
-        "hits_taken": 1.1,
-        "damage_dealt": 279.1,
-        "time_to_defeat": 34.5,
-        "attempts": 1
-      },
-      "enchant": "Swift",
-      "tier": "Skilled",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 10.4,
-        "dodges_used": 16.0,
-        "hits_taken": 2.4,
-        "damage_dealt": 310.9,
-        "time_to_defeat": 28.9,
-        "attempts": 1
-      },
-      "enchant": "Swift",
-      "tier": "Average",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 25.5,
-        "dodges_used": 6.2,
-        "hits_taken": 6.1,
-        "damage_dealt": 226.5,
-        "time_to_defeat": 43.7,
-        "attempts": 2
-      },
-      "enchant": "Vampiric",
-      "tier": "Average",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 16.8,
-        "dodges_used": 7.3,
-        "hits_taken": 4.2,
-        "damage_dealt": 191.8,
-        "time_to_defeat": 41.8,
-        "attempts": 2
-      },
-      "enchant": "Vampiric",
-      "tier": "Average",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 25.2,
-        "dodges_used": 8.0,
-        "hits_taken": 4.5,
-        "damage_dealt": 244.8,
-        "time_to_defeat": 49.6,
-        "attempts": 1
-      },
-      "enchant": "Vampiric",
-      "tier": "Average",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 12.5,
-        "dodges_used": 17.9,
-        "hits_taken": 1.8,
-        "damage_dealt": 294.3,
-        "time_to_defeat": 28.4,
-        "attempts": 1
-      },
-      "enchant": "Swift",
-      "tier": "Skilled",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 41.6,
-        "dodges_used": 3.0,
-        "hits_taken": 15.2,
-        "damage_dealt": 138.5,
-        "time_to_defeat": 72.7,
-        "attempts": 8
+        "dodge_rate": 0.123,
+        "hit_taken_rate": 0.458,
+        "avg_fight_duration": 115.3,
+        "damage_dealt_avg": 9.06,
+        "attempts": 4
       },
       "enchant": "Guardian",
       "tier": "Struggling",
@@ -1043,24 +2498,10 @@
     },
     {
       "features": {
-        "attacks_thrown": 25.2,
-        "dodges_used": 4.8,
-        "hits_taken": 12.6,
-        "damage_dealt": 259.4,
-        "time_to_defeat": 37.1,
-        "attempts": 2
-      },
-      "enchant": "Guardian",
-      "tier": "Average",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 40.9,
-        "dodges_used": 0,
-        "hits_taken": 16.7,
-        "damage_dealt": 174.2,
-        "time_to_defeat": 93.2,
+        "dodge_rate": 0.072,
+        "hit_taken_rate": 0.25,
+        "avg_fight_duration": 83.8,
+        "damage_dealt_avg": 17.83,
         "attempts": 9
       },
       "enchant": "Guardian",
@@ -1069,24 +2510,10 @@
     },
     {
       "features": {
-        "attacks_thrown": 36.0,
-        "dodges_used": 1.5,
-        "hits_taken": 21.6,
-        "damage_dealt": 172.9,
-        "time_to_defeat": 93.2,
-        "attempts": 6
-      },
-      "enchant": "Guardian",
-      "tier": "Struggling",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 33.0,
-        "dodges_used": 5.6,
-        "hits_taken": 8.4,
-        "damage_dealt": 300.5,
-        "time_to_defeat": 33.9,
+        "dodge_rate": 0.261,
+        "hit_taken_rate": 0.063,
+        "avg_fight_duration": 41.6,
+        "damage_dealt_avg": 19.12,
         "attempts": 1
       },
       "enchant": "Berserker",
@@ -1095,37 +2522,10 @@
     },
     {
       "features": {
-        "attacks_thrown": 10.8,
-        "dodges_used": 0,
-        "hits_taken": 14.1,
-        "damage_dealt": 144.4,
-        "time_to_defeat": 58.0,
-        "attempts": 5
-      },
-      "enchant": "Guardian",
-      "tier": "Struggling",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 21.0,
-        "dodges_used": 4.7,
-        "hits_taken": 10.4,
-        "damage_dealt": 197.4,
-        "time_to_defeat": 39.7,
-        "attempts": 3
-      },
-      "enchant": "Guardian",
-      "tier": "Average",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 18.0,
-        "dodges_used": 12.4,
-        "hits_taken": 2.6,
-        "damage_dealt": 264.2,
-        "time_to_defeat": 22.5,
+        "dodge_rate": 0.633,
+        "hit_taken_rate": 0.036,
+        "avg_fight_duration": 32.0,
+        "damage_dealt_avg": 19.72,
         "attempts": 1
       },
       "enchant": "Swift",
@@ -1134,12 +2534,35 @@
     },
     {
       "features": {
-        "attacks_thrown": 35.1,
-        "dodges_used": 3.8,
-        "hits_taken": 4.7,
-        "damage_dealt": 244.0,
-        "time_to_defeat": 42.6,
-        "attempts": 1
+        "dodge_rate": 0.171,
+        "hit_taken_rate": 0.322,
+        "avg_fight_duration": 34.9,
+        "damage_dealt_avg": 20.78,
+        "attempts": 2
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.101,
+        "hit_taken_rate": 0.444,
+        "avg_fight_duration": 60.1,
+        "damage_dealt_avg": 11.78,
+        "attempts": 6
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.146,
+        "hit_taken_rate": 0.232,
+        "avg_fight_duration": 35.9,
+        "damage_dealt_avg": 22.46,
+        "attempts": 3
       },
       "enchant": "Vampiric",
       "tier": "Average",
@@ -1147,51 +2570,35 @@
     },
     {
       "features": {
-        "attacks_thrown": 19.1,
-        "dodges_used": 1.5,
-        "hits_taken": 15.5,
-        "damage_dealt": 169.5,
-        "time_to_defeat": 72.8,
-        "attempts": 6
+        "dodge_rate": 0.624,
+        "hit_taken_rate": 0.056,
+        "avg_fight_duration": 29.3,
+        "damage_dealt_avg": 23.73,
+        "attempts": 1
       },
-      "enchant": "Guardian",
-      "tier": "Struggling",
+      "enchant": "Swift",
+      "tier": "Skilled",
       "source": "synthetic"
     },
     {
       "features": {
-        "attacks_thrown": 30.5,
-        "dodges_used": 5.2,
-        "hits_taken": 15.3,
-        "damage_dealt": 129.9,
-        "time_to_defeat": 70.0,
-        "attempts": 9
+        "dodge_rate": 0.331,
+        "hit_taken_rate": 0.109,
+        "avg_fight_duration": 49.6,
+        "damage_dealt_avg": 13.34,
+        "attempts": 2
       },
-      "enchant": "Guardian",
-      "tier": "Struggling",
+      "enchant": "Vampiric",
+      "tier": "Average",
       "source": "synthetic"
     },
     {
       "features": {
-        "attacks_thrown": 10.6,
-        "dodges_used": 2.2,
-        "hits_taken": 15.3,
-        "damage_dealt": 105.1,
-        "time_to_defeat": 67.0,
-        "attempts": 8
-      },
-      "enchant": "Guardian",
-      "tier": "Struggling",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 22.7,
-        "dodges_used": 5.5,
-        "hits_taken": 7.1,
-        "damage_dealt": 186.2,
-        "time_to_defeat": 27.8,
-        "attempts": 3
+        "dodge_rate": 0.31,
+        "hit_taken_rate": 0.153,
+        "avg_fight_duration": 52.1,
+        "damage_dealt_avg": 18.45,
+        "attempts": 2
       },
       "enchant": "Berserker",
       "tier": "Average",
@@ -1199,11 +2606,10 @@
     },
     {
       "features": {
-        "attacks_thrown": 36.1,
-        "dodges_used": 4.3,
-        "hits_taken": 16.8,
-        "damage_dealt": 137.6,
-        "time_to_defeat": 72.7,
+        "dodge_rate": 0.101,
+        "hit_taken_rate": 0.422,
+        "avg_fight_duration": 79.0,
+        "damage_dealt_avg": 11.0,
         "attempts": 6
       },
       "enchant": "Guardian",
@@ -1212,11 +2618,34 @@
     },
     {
       "features": {
-        "attacks_thrown": 38.3,
-        "dodges_used": 2.4,
-        "hits_taken": 13.1,
-        "damage_dealt": 131.9,
-        "time_to_defeat": 63.4,
+        "dodge_rate": 0.14,
+        "hit_taken_rate": 0.161,
+        "avg_fight_duration": 38.6,
+        "damage_dealt_avg": 19.86,
+        "attempts": 1
+      },
+      "enchant": "Berserker",
+      "tier": "Average",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.194,
+        "hit_taken_rate": 0.29,
+        "avg_fight_duration": 25.2,
+        "damage_dealt_avg": 22.54,
+        "attempts": 1
+      },
+      "enchant": "Guardian",
+      "tier": "Average",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.048,
+        "hit_taken_rate": 0.355,
+        "avg_fight_duration": 56.7,
+        "damage_dealt_avg": 5.77,
         "attempts": 5
       },
       "enchant": "Guardian",
@@ -1225,11 +2654,58 @@
     },
     {
       "features": {
-        "attacks_thrown": 46.6,
-        "dodges_used": 2.2,
-        "hits_taken": 16.2,
-        "damage_dealt": 81.0,
-        "time_to_defeat": 96.5,
+        "dodge_rate": 0.055,
+        "hit_taken_rate": 0.436,
+        "avg_fight_duration": 95.5,
+        "damage_dealt_avg": 12.43,
+        "attempts": 6
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.356,
+        "hit_taken_rate": 0.121,
+        "avg_fight_duration": 45.6,
+        "damage_dealt_avg": 14.47,
+        "attempts": 1
+      },
+      "enchant": "Vampiric",
+      "tier": "Average",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.328,
+        "hit_taken_rate": 0.232,
+        "avg_fight_duration": 47.6,
+        "damage_dealt_avg": 11.82,
+        "attempts": 1
+      },
+      "enchant": "Vampiric",
+      "tier": "Average",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.169,
+        "hit_taken_rate": 0.333,
+        "avg_fight_duration": 63.5,
+        "damage_dealt_avg": 19.28,
+        "attempts": 5
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.053,
+        "hit_taken_rate": 0.384,
+        "avg_fight_duration": 110.4,
+        "damage_dealt_avg": 9.72,
         "attempts": 4
       },
       "enchant": "Guardian",
@@ -1238,11 +2714,10 @@
     },
     {
       "features": {
-        "attacks_thrown": 16.5,
-        "dodges_used": 3.1,
-        "hits_taken": 18.5,
-        "damage_dealt": 120.0,
-        "time_to_defeat": 91.7,
+        "dodge_rate": 0.096,
+        "hit_taken_rate": 0.403,
+        "avg_fight_duration": 98.5,
+        "damage_dealt_avg": 11.1,
         "attempts": 7
       },
       "enchant": "Guardian",
@@ -1251,141 +2726,22 @@
     },
     {
       "features": {
-        "attacks_thrown": 19.0,
-        "dodges_used": 18.2,
-        "hits_taken": 2.8,
-        "damage_dealt": 303.2,
-        "time_to_defeat": 29.8,
-        "attempts": 1
-      },
-      "enchant": "Swift",
-      "tier": "Skilled",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 34.5,
-        "dodges_used": 7.8,
-        "hits_taken": 14.4,
-        "damage_dealt": 198.3,
-        "time_to_defeat": 41.2,
-        "attempts": 1
-      },
-      "enchant": "Vampiric",
-      "tier": "Average",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 18.0,
-        "dodges_used": 9.4,
-        "hits_taken": 6.1,
-        "damage_dealt": 198.6,
-        "time_to_defeat": 47.6,
-        "attempts": 2
-      },
-      "enchant": "Vampiric",
-      "tier": "Average",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 47.9,
-        "dodges_used": 5.8,
-        "hits_taken": 20.7,
-        "damage_dealt": 121.9,
-        "time_to_defeat": 126.3,
+        "dodge_rate": 0.32,
+        "hit_taken_rate": 0.143,
+        "avg_fight_duration": 46.7,
+        "damage_dealt_avg": 16.84,
         "attempts": 3
       },
       "enchant": "Vampiric",
-      "tier": "Struggling",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 11.5,
-        "dodges_used": 18.0,
-        "hits_taken": 3.2,
-        "damage_dealt": 279.8,
-        "time_to_defeat": 25.0,
-        "attempts": 1
-      },
-      "enchant": "Berserker",
       "tier": "Average",
       "source": "synthetic"
     },
     {
       "features": {
-        "attacks_thrown": 24.8,
-        "dodges_used": 2.4,
-        "hits_taken": 12.7,
-        "damage_dealt": 255.6,
-        "time_to_defeat": 38.7,
-        "attempts": 2
-      },
-      "enchant": "Guardian",
-      "tier": "Average",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 36.6,
-        "dodges_used": 1.9,
-        "hits_taken": 7.7,
-        "damage_dealt": 300.9,
-        "time_to_defeat": 31.4,
-        "attempts": 2
-      },
-      "enchant": "Berserker",
-      "tier": "Average",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 22.3,
-        "dodges_used": 10.6,
-        "hits_taken": 10.4,
-        "damage_dealt": 238.0,
-        "time_to_defeat": 56.1,
-        "attempts": 3
-      },
-      "enchant": "Guardian",
-      "tier": "Average",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 25.4,
-        "dodges_used": 1.7,
-        "hits_taken": 8.5,
-        "damage_dealt": 302.7,
-        "time_to_defeat": 41.5,
-        "attempts": 3
-      },
-      "enchant": "Berserker",
-      "tier": "Average",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 17.4,
-        "dodges_used": 7.2,
-        "hits_taken": 6.5,
-        "damage_dealt": 199.9,
-        "time_to_defeat": 46.2,
-        "attempts": 2
-      },
-      "enchant": "Vampiric",
-      "tier": "Average",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 31.1,
-        "dodges_used": 0,
-        "hits_taken": 23.2,
-        "damage_dealt": 160.4,
-        "time_to_defeat": 37.5,
+        "dodge_rate": 0.17,
+        "hit_taken_rate": 0.209,
+        "avg_fight_duration": 92.8,
+        "damage_dealt_avg": 6.45,
         "attempts": 5
       },
       "enchant": "Guardian",
@@ -1394,37 +2750,10 @@
     },
     {
       "features": {
-        "attacks_thrown": 23.3,
-        "dodges_used": 13.0,
-        "hits_taken": 1.2,
-        "damage_dealt": 283.1,
-        "time_to_defeat": 28.1,
-        "attempts": 1
-      },
-      "enchant": "Swift",
-      "tier": "Skilled",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 19.3,
-        "dodges_used": 4.4,
-        "hits_taken": 10.0,
-        "damage_dealt": 138.1,
-        "time_to_defeat": 89.7,
-        "attempts": 6
-      },
-      "enchant": "Guardian",
-      "tier": "Struggling",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 20.0,
-        "dodges_used": 3.1,
-        "hits_taken": 12.7,
-        "damage_dealt": 274.0,
-        "time_to_defeat": 19.3,
+        "dodge_rate": 0.169,
+        "hit_taken_rate": 0.324,
+        "avg_fight_duration": 34.8,
+        "damage_dealt_avg": 25.0,
         "attempts": 2
       },
       "enchant": "Guardian",
@@ -1433,25 +2762,11 @@
     },
     {
       "features": {
-        "attacks_thrown": 17.5,
-        "dodges_used": 16.5,
-        "hits_taken": 3.5,
-        "damage_dealt": 277.5,
-        "time_to_defeat": 25.9,
+        "dodge_rate": 0.179,
+        "hit_taken_rate": 0.389,
+        "avg_fight_duration": 40.0,
+        "damage_dealt_avg": 18.17,
         "attempts": 1
-      },
-      "enchant": "Swift",
-      "tier": "Average",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 20.3,
-        "dodges_used": 1.8,
-        "hits_taken": 22.3,
-        "damage_dealt": 89.2,
-        "time_to_defeat": 78.2,
-        "attempts": 6
       },
       "enchant": "Guardian",
       "tier": "Struggling",
@@ -1459,11 +2774,10 @@
     },
     {
       "features": {
-        "attacks_thrown": 29.2,
-        "dodges_used": 11.6,
-        "hits_taken": 7.4,
-        "damage_dealt": 221.0,
-        "time_to_defeat": 59.0,
+        "dodge_rate": 0.273,
+        "hit_taken_rate": 0.04,
+        "avg_fight_duration": 59.2,
+        "damage_dealt_avg": 16.89,
         "attempts": 1
       },
       "enchant": "Vampiric",
@@ -1472,167 +2786,10 @@
     },
     {
       "features": {
-        "attacks_thrown": 25.9,
-        "dodges_used": 10.3,
-        "hits_taken": 6.5,
-        "damage_dealt": 235.2,
-        "time_to_defeat": 53.9,
-        "attempts": 2
-      },
-      "enchant": "Vampiric",
-      "tier": "Average",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 24.3,
-        "dodges_used": 11.2,
-        "hits_taken": 10.0,
-        "damage_dealt": 213.8,
-        "time_to_defeat": 36.6,
-        "attempts": 3
-      },
-      "enchant": "Vampiric",
-      "tier": "Average",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 18.8,
-        "dodges_used": 18.6,
-        "hits_taken": 2.1,
-        "damage_dealt": 255.7,
-        "time_to_defeat": 28.1,
-        "attempts": 1
-      },
-      "enchant": "Swift",
-      "tier": "Skilled",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 15.0,
-        "dodges_used": 2.2,
-        "hits_taken": 21.1,
-        "damage_dealt": 102.1,
-        "time_to_defeat": 77.0,
-        "attempts": 3
-      },
-      "enchant": "Guardian",
-      "tier": "Struggling",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 31.9,
-        "dodges_used": 4.5,
-        "hits_taken": 14.2,
-        "damage_dealt": 106.7,
-        "time_to_defeat": 58.9,
-        "attempts": 8
-      },
-      "enchant": "Guardian",
-      "tier": "Struggling",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 17.4,
-        "dodges_used": 13.5,
-        "hits_taken": 1.6,
-        "damage_dealt": 303.9,
-        "time_to_defeat": 23.9,
-        "attempts": 1
-      },
-      "enchant": "Swift",
-      "tier": "Skilled",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 23.2,
-        "dodges_used": 14.5,
-        "hits_taken": 2.3,
-        "damage_dealt": 267.2,
-        "time_to_defeat": 28.6,
-        "attempts": 1
-      },
-      "enchant": "Swift",
-      "tier": "Skilled",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 22.1,
-        "dodges_used": 7.5,
-        "hits_taken": 5.5,
-        "damage_dealt": 227.0,
-        "time_to_defeat": 41.0,
-        "attempts": 1
-      },
-      "enchant": "Vampiric",
-      "tier": "Average",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 21.4,
-        "dodges_used": 2.7,
-        "hits_taken": 16.0,
-        "damage_dealt": 124.4,
-        "time_to_defeat": 92.8,
-        "attempts": 6
-      },
-      "enchant": "Guardian",
-      "tier": "Struggling",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 28.2,
-        "dodges_used": 5.0,
-        "hits_taken": 10.7,
-        "damage_dealt": 245.7,
-        "time_to_defeat": 25.8,
-        "attempts": 1
-      },
-      "enchant": "Vampiric",
-      "tier": "Average",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 11.9,
-        "dodges_used": 1.6,
-        "hits_taken": 20.5,
-        "damage_dealt": 96.6,
-        "time_to_defeat": 56.6,
-        "attempts": 6
-      },
-      "enchant": "Guardian",
-      "tier": "Struggling",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 23.6,
-        "dodges_used": 10.6,
-        "hits_taken": 4.3,
-        "damage_dealt": 199.7,
-        "time_to_defeat": 42.2,
-        "attempts": 1
-      },
-      "enchant": "Vampiric",
-      "tier": "Average",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 32.7,
-        "dodges_used": 5.2,
-        "hits_taken": 24.8,
-        "damage_dealt": 180.0,
-        "time_to_defeat": 80.9,
+        "dodge_rate": 0.096,
+        "hit_taken_rate": 0.28,
+        "avg_fight_duration": 70.9,
+        "damage_dealt_avg": 13.09,
         "attempts": 7
       },
       "enchant": "Guardian",
@@ -1641,50 +2798,10 @@
     },
     {
       "features": {
-        "attacks_thrown": 28.6,
-        "dodges_used": 5.6,
-        "hits_taken": 10.9,
-        "damage_dealt": 270.5,
-        "time_to_defeat": 40.2,
-        "attempts": 2
-      },
-      "enchant": "Vampiric",
-      "tier": "Average",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 27.0,
-        "dodges_used": 1.0,
-        "hits_taken": 10.4,
-        "damage_dealt": 258.6,
-        "time_to_defeat": 29.0,
-        "attempts": 3
-      },
-      "enchant": "Vampiric",
-      "tier": "Average",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 14.2,
-        "dodges_used": 2.3,
-        "hits_taken": 9.8,
-        "damage_dealt": 109.0,
-        "time_to_defeat": 98.8,
-        "attempts": 3
-      },
-      "enchant": "Guardian",
-      "tier": "Struggling",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 21.7,
-        "dodges_used": 16.0,
-        "hits_taken": 1.0,
-        "damage_dealt": 244.7,
-        "time_to_defeat": 22.2,
+        "dodge_rate": 0.566,
+        "hit_taken_rate": 0.036,
+        "avg_fight_duration": 31.9,
+        "damage_dealt_avg": 22.19,
         "attempts": 1
       },
       "enchant": "Swift",
@@ -1693,37 +2810,22 @@
     },
     {
       "features": {
-        "attacks_thrown": 19.0,
-        "dodges_used": 1.8,
-        "hits_taken": 21.3,
-        "damage_dealt": 102.5,
-        "time_to_defeat": 111.1,
-        "attempts": 5
+        "dodge_rate": 0.663,
+        "hit_taken_rate": 0.055,
+        "avg_fight_duration": 32.4,
+        "damage_dealt_avg": 23.68,
+        "attempts": 1
       },
-      "enchant": "Guardian",
-      "tier": "Struggling",
+      "enchant": "Swift",
+      "tier": "Skilled",
       "source": "synthetic"
     },
     {
       "features": {
-        "attacks_thrown": 15.9,
-        "dodges_used": 0.4,
-        "hits_taken": 19.3,
-        "damage_dealt": 125.2,
-        "time_to_defeat": 44.9,
-        "attempts": 5
-      },
-      "enchant": "Guardian",
-      "tier": "Struggling",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 14.6,
-        "dodges_used": 1.8,
-        "hits_taken": 22.3,
-        "damage_dealt": 116.9,
-        "time_to_defeat": 97.2,
+        "dodge_rate": 0.052,
+        "hit_taken_rate": 0.324,
+        "avg_fight_duration": 64.5,
+        "damage_dealt_avg": 16.88,
         "attempts": 6
       },
       "enchant": "Guardian",
@@ -1732,24 +2834,10 @@
     },
     {
       "features": {
-        "attacks_thrown": 10.9,
-        "dodges_used": 2.9,
-        "hits_taken": 20.1,
-        "damage_dealt": 160.0,
-        "time_to_defeat": 89.6,
-        "attempts": 8
-      },
-      "enchant": "Guardian",
-      "tier": "Struggling",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 15.4,
-        "dodges_used": 16.7,
-        "hits_taken": 0,
-        "damage_dealt": 289.0,
-        "time_to_defeat": 29.0,
+        "dodge_rate": 0.453,
+        "hit_taken_rate": 0.064,
+        "avg_fight_duration": 31.2,
+        "damage_dealt_avg": 24.9,
         "attempts": 1
       },
       "enchant": "Swift",
@@ -1758,90 +2846,11 @@
     },
     {
       "features": {
-        "attacks_thrown": 22.8,
-        "dodges_used": 15.5,
-        "hits_taken": 1.9,
-        "damage_dealt": 291.3,
-        "time_to_defeat": 29.5,
+        "dodge_rate": 0.179,
+        "hit_taken_rate": 0.131,
+        "avg_fight_duration": 24.3,
+        "damage_dealt_avg": 15.74,
         "attempts": 1
-      },
-      "enchant": "Swift",
-      "tier": "Skilled",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 17.5,
-        "dodges_used": 13.4,
-        "hits_taken": 1.1,
-        "damage_dealt": 261.5,
-        "time_to_defeat": 22.1,
-        "attempts": 1
-      },
-      "enchant": "Swift",
-      "tier": "Skilled",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 21.1,
-        "dodges_used": 0.8,
-        "hits_taken": 20.0,
-        "damage_dealt": 148.4,
-        "time_to_defeat": 70.2,
-        "attempts": 6
-      },
-      "enchant": "Guardian",
-      "tier": "Struggling",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 22.5,
-        "dodges_used": 13.6,
-        "hits_taken": 1.6,
-        "damage_dealt": 309.9,
-        "time_to_defeat": 32.9,
-        "attempts": 1
-      },
-      "enchant": "Swift",
-      "tier": "Skilled",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 21.4,
-        "dodges_used": 4.6,
-        "hits_taken": 19.7,
-        "damage_dealt": 103.2,
-        "time_to_defeat": 60.6,
-        "attempts": 9
-      },
-      "enchant": "Guardian",
-      "tier": "Struggling",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 19.1,
-        "dodges_used": 14.6,
-        "hits_taken": 1.2,
-        "damage_dealt": 261.0,
-        "time_to_defeat": 38.7,
-        "attempts": 1
-      },
-      "enchant": "Swift",
-      "tier": "Skilled",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 21.9,
-        "dodges_used": 6.9,
-        "hits_taken": 5.4,
-        "damage_dealt": 228.8,
-        "time_to_defeat": 36.2,
-        "attempts": 3
       },
       "enchant": "Vampiric",
       "tier": "Average",
@@ -1849,11 +2858,10 @@
     },
     {
       "features": {
-        "attacks_thrown": 22.5,
-        "dodges_used": 10.6,
-        "hits_taken": 6.9,
-        "damage_dealt": 237.8,
-        "time_to_defeat": 58.2,
+        "dodge_rate": 0.325,
+        "hit_taken_rate": 0.071,
+        "avg_fight_duration": 36.2,
+        "damage_dealt_avg": 17.55,
         "attempts": 2
       },
       "enchant": "Vampiric",
@@ -1862,37 +2870,10 @@
     },
     {
       "features": {
-        "attacks_thrown": 25.1,
-        "dodges_used": 7.4,
-        "hits_taken": 6.5,
-        "damage_dealt": 183.4,
-        "time_to_defeat": 47.3,
-        "attempts": 1
-      },
-      "enchant": "Vampiric",
-      "tier": "Average",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 35.8,
-        "dodges_used": 7.4,
-        "hits_taken": 20.8,
-        "damage_dealt": 171.8,
-        "time_to_defeat": 69.7,
-        "attempts": 7
-      },
-      "enchant": "Guardian",
-      "tier": "Struggling",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 24.9,
-        "dodges_used": 4.6,
-        "hits_taken": 4.3,
-        "damage_dealt": 248.1,
-        "time_to_defeat": 37.1,
+        "dodge_rate": 0.203,
+        "hit_taken_rate": 0.121,
+        "avg_fight_duration": 46.6,
+        "damage_dealt_avg": 19.07,
         "attempts": 3
       },
       "enchant": "Berserker",
@@ -1901,89 +2882,10 @@
     },
     {
       "features": {
-        "attacks_thrown": 16.9,
-        "dodges_used": 12.9,
-        "hits_taken": 1.7,
-        "damage_dealt": 215.5,
-        "time_to_defeat": 26.6,
-        "attempts": 1
-      },
-      "enchant": "Swift",
-      "tier": "Skilled",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 19.6,
-        "dodges_used": 8.0,
-        "hits_taken": 6.2,
-        "damage_dealt": 208.1,
-        "time_to_defeat": 57.0,
-        "attempts": 3
-      },
-      "enchant": "Vampiric",
-      "tier": "Average",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 22.2,
-        "dodges_used": 12.0,
-        "hits_taken": 1.2,
-        "damage_dealt": 306.5,
-        "time_to_defeat": 20.0,
-        "attempts": 1
-      },
-      "enchant": "Swift",
-      "tier": "Skilled",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 32.8,
-        "dodges_used": 1.6,
-        "hits_taken": 24.5,
-        "damage_dealt": 160.5,
-        "time_to_defeat": 48.6,
-        "attempts": 6
-      },
-      "enchant": "Guardian",
-      "tier": "Struggling",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 12.6,
-        "dodges_used": 10.7,
-        "hits_taken": 2.1,
-        "damage_dealt": 294.8,
-        "time_to_defeat": 30.3,
-        "attempts": 1
-      },
-      "enchant": "Swift",
-      "tier": "Skilled",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 25.2,
-        "dodges_used": 12.7,
-        "hits_taken": 1.7,
-        "damage_dealt": 242.8,
-        "time_to_defeat": 31.8,
-        "attempts": 1
-      },
-      "enchant": "Swift",
-      "tier": "Skilled",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 26.8,
-        "dodges_used": 11.0,
-        "hits_taken": 8.5,
-        "damage_dealt": 226.4,
-        "time_to_defeat": 38.2,
+        "dodge_rate": 0.127,
+        "hit_taken_rate": 0.28,
+        "avg_fight_duration": 33.0,
+        "damage_dealt_avg": 25.0,
         "attempts": 1
       },
       "enchant": "Vampiric",
@@ -1992,115 +2894,10 @@
     },
     {
       "features": {
-        "attacks_thrown": 18.5,
-        "dodges_used": 1.4,
-        "hits_taken": 26.4,
-        "damage_dealt": 135.9,
-        "time_to_defeat": 89.9,
-        "attempts": 5
-      },
-      "enchant": "Guardian",
-      "tier": "Struggling",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 14.3,
-        "dodges_used": 2.2,
-        "hits_taken": 23.2,
-        "damage_dealt": 106.4,
-        "time_to_defeat": 96.0,
-        "attempts": 6
-      },
-      "enchant": "Guardian",
-      "tier": "Struggling",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 17.9,
-        "dodges_used": 16.0,
-        "hits_taken": 3.9,
-        "damage_dealt": 236.7,
-        "time_to_defeat": 30.9,
-        "attempts": 1
-      },
-      "enchant": "Swift",
-      "tier": "Average",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 18.5,
-        "dodges_used": 18.1,
-        "hits_taken": 1.8,
-        "damage_dealt": 282.4,
-        "time_to_defeat": 23.3,
-        "attempts": 1
-      },
-      "enchant": "Swift",
-      "tier": "Skilled",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 28.2,
-        "dodges_used": 3.8,
-        "hits_taken": 10.6,
-        "damage_dealt": 216.4,
-        "time_to_defeat": 32.5,
-        "attempts": 2
-      },
-      "enchant": "Vampiric",
-      "tier": "Average",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 16.2,
-        "dodges_used": 2.1,
-        "hits_taken": 15.9,
-        "damage_dealt": 99.6,
-        "time_to_defeat": 60.1,
-        "attempts": 3
-      },
-      "enchant": "Guardian",
-      "tier": "Struggling",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 14.1,
-        "dodges_used": 1.6,
-        "hits_taken": 21.8,
-        "damage_dealt": 118.8,
-        "time_to_defeat": 56.5,
-        "attempts": 6
-      },
-      "enchant": "Guardian",
-      "tier": "Struggling",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 14.6,
-        "dodges_used": 18.7,
-        "hits_taken": 1.1,
-        "damage_dealt": 253.6,
-        "time_to_defeat": 29.2,
-        "attempts": 1
-      },
-      "enchant": "Swift",
-      "tier": "Skilled",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 28.4,
-        "dodges_used": 6.0,
-        "hits_taken": 7.8,
-        "damage_dealt": 237.7,
-        "time_to_defeat": 29.6,
+        "dodge_rate": 0.103,
+        "hit_taken_rate": 0.435,
+        "avg_fight_duration": 102.5,
+        "damage_dealt_avg": 8.99,
         "attempts": 4
       },
       "enchant": "Guardian",
@@ -2109,115 +2906,10 @@
     },
     {
       "features": {
-        "attacks_thrown": 25.4,
-        "dodges_used": 5.7,
-        "hits_taken": 4.8,
-        "damage_dealt": 219.0,
-        "time_to_defeat": 31.6,
-        "attempts": 1
-      },
-      "enchant": "Berserker",
-      "tier": "Skilled",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 28.6,
-        "dodges_used": 5.0,
-        "hits_taken": 12.6,
-        "damage_dealt": 244.6,
-        "time_to_defeat": 21.2,
-        "attempts": 2
-      },
-      "enchant": "Vampiric",
-      "tier": "Average",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 27.7,
-        "dodges_used": 1.5,
-        "hits_taken": 8.6,
-        "damage_dealt": 261.8,
-        "time_to_defeat": 49.8,
-        "attempts": 3
-      },
-      "enchant": "Vampiric",
-      "tier": "Average",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 14.2,
-        "dodges_used": 0,
-        "hits_taken": 22.6,
-        "damage_dealt": 118.4,
-        "time_to_defeat": 62.4,
-        "attempts": 8
-      },
-      "enchant": "Guardian",
-      "tier": "Struggling",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 14.4,
-        "dodges_used": 19.8,
-        "hits_taken": 2.6,
-        "damage_dealt": 293.4,
-        "time_to_defeat": 29.1,
-        "attempts": 1
-      },
-      "enchant": "Swift",
-      "tier": "Skilled",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 32.5,
-        "dodges_used": 3.0,
-        "hits_taken": 22.1,
-        "damage_dealt": 156.6,
-        "time_to_defeat": 65.0,
-        "attempts": 6
-      },
-      "enchant": "Guardian",
-      "tier": "Struggling",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 24.5,
-        "dodges_used": 4.1,
-        "hits_taken": 8.2,
-        "damage_dealt": 266.1,
-        "time_to_defeat": 18.2,
-        "attempts": 4
-      },
-      "enchant": "Guardian",
-      "tier": "Struggling",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 24.0,
-        "dodges_used": 2.6,
-        "hits_taken": 5.0,
-        "damage_dealt": 114.2,
-        "time_to_defeat": 65.3,
-        "attempts": 6
-      },
-      "enchant": "Guardian",
-      "tier": "Struggling",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 31.6,
-        "dodges_used": 7.7,
-        "hits_taken": 20.0,
-        "damage_dealt": 120.9,
-        "time_to_defeat": 57.5,
+        "dodge_rate": 0.035,
+        "hit_taken_rate": 0.388,
+        "avg_fight_duration": 90.2,
+        "damage_dealt_avg": 4.73,
         "attempts": 5
       },
       "enchant": "Guardian",
@@ -2226,37 +2918,10 @@
     },
     {
       "features": {
-        "attacks_thrown": 32.5,
-        "dodges_used": 2.7,
-        "hits_taken": 26.8,
-        "damage_dealt": 147.3,
-        "time_to_defeat": 62.7,
-        "attempts": 5
-      },
-      "enchant": "Guardian",
-      "tier": "Struggling",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 31.9,
-        "dodges_used": 1.6,
-        "hits_taken": 13.1,
-        "damage_dealt": 162.0,
-        "time_to_defeat": 69.3,
-        "attempts": 4
-      },
-      "enchant": "Guardian",
-      "tier": "Struggling",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 23.0,
-        "dodges_used": 15.4,
-        "hits_taken": 1.8,
-        "damage_dealt": 267.7,
-        "time_to_defeat": 32.7,
+        "dodge_rate": 0.556,
+        "hit_taken_rate": 0.031,
+        "avg_fight_duration": 28.1,
+        "damage_dealt_avg": 18.22,
         "attempts": 1
       },
       "enchant": "Swift",
@@ -2265,50 +2930,10 @@
     },
     {
       "features": {
-        "attacks_thrown": 13.2,
-        "dodges_used": 18.2,
-        "hits_taken": 2.5,
-        "damage_dealt": 316.3,
-        "time_to_defeat": 23.5,
-        "attempts": 1
-      },
-      "enchant": "Swift",
-      "tier": "Skilled",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 10.1,
-        "dodges_used": 11.7,
-        "hits_taken": 2.8,
-        "damage_dealt": 247.4,
-        "time_to_defeat": 25.7,
-        "attempts": 1
-      },
-      "enchant": "Berserker",
-      "tier": "Average",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 22.0,
-        "dodges_used": 5.7,
-        "hits_taken": 5.3,
-        "damage_dealt": 216.3,
-        "time_to_defeat": 48.2,
-        "attempts": 1
-      },
-      "enchant": "Vampiric",
-      "tier": "Average",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 45.3,
-        "dodges_used": 4.0,
-        "hits_taken": 17.0,
-        "damage_dealt": 173.3,
-        "time_to_defeat": 81.3,
+        "dodge_rate": 0.115,
+        "hit_taken_rate": 0.286,
+        "avg_fight_duration": 60.6,
+        "damage_dealt_avg": 7.24,
         "attempts": 7
       },
       "enchant": "Guardian",
@@ -2317,89 +2942,10 @@
     },
     {
       "features": {
-        "attacks_thrown": 29.9,
-        "dodges_used": 3.5,
-        "hits_taken": 20.3,
-        "damage_dealt": 185.8,
-        "time_to_defeat": 60.2,
-        "attempts": 4
-      },
-      "enchant": "Guardian",
-      "tier": "Struggling",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 12.1,
-        "dodges_used": 8.3,
-        "hits_taken": 0,
-        "damage_dealt": 245.5,
-        "time_to_defeat": 34.4,
-        "attempts": 1
-      },
-      "enchant": "Swift",
-      "tier": "Skilled",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 31.3,
-        "dodges_used": 4.2,
-        "hits_taken": 6.8,
-        "damage_dealt": 229.6,
-        "time_to_defeat": 37.0,
-        "attempts": 3
-      },
-      "enchant": "Vampiric",
-      "tier": "Average",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 22.8,
-        "dodges_used": 5.5,
-        "hits_taken": 8.8,
-        "damage_dealt": 235.0,
-        "time_to_defeat": 47.2,
-        "attempts": 2
-      },
-      "enchant": "Vampiric",
-      "tier": "Average",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 20.2,
-        "dodges_used": 2.7,
-        "hits_taken": 17.6,
-        "damage_dealt": 145.5,
-        "time_to_defeat": 52.6,
-        "attempts": 7
-      },
-      "enchant": "Guardian",
-      "tier": "Struggling",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 25.4,
-        "dodges_used": 2.8,
-        "hits_taken": 2.5,
-        "damage_dealt": 264.7,
-        "time_to_defeat": 37.0,
-        "attempts": 2
-      },
-      "enchant": "Berserker",
-      "tier": "Average",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 16.4,
-        "dodges_used": 2.5,
-        "hits_taken": 16.5,
-        "damage_dealt": 148.2,
-        "time_to_defeat": 53.0,
+        "dodge_rate": 0.145,
+        "hit_taken_rate": 0.433,
+        "avg_fight_duration": 76.9,
+        "damage_dealt_avg": 13.06,
         "attempts": 10
       },
       "enchant": "Guardian",
@@ -2408,12 +2954,23 @@
     },
     {
       "features": {
-        "attacks_thrown": 12.0,
-        "dodges_used": 22.0,
-        "hits_taken": 3.6,
-        "damage_dealt": 249.1,
-        "time_to_defeat": 19.5,
+        "dodge_rate": 0.51,
+        "hit_taken_rate": 0.057,
+        "avg_fight_duration": 24.9,
+        "damage_dealt_avg": 22.21,
         "attempts": 1
+      },
+      "enchant": "Swift",
+      "tier": "Skilled",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.201,
+        "hit_taken_rate": 0.149,
+        "avg_fight_duration": 36.5,
+        "damage_dealt_avg": 21.46,
+        "attempts": 3
       },
       "enchant": "Berserker",
       "tier": "Average",
@@ -2421,11 +2978,82 @@
     },
     {
       "features": {
-        "attacks_thrown": 16.1,
-        "dodges_used": 17.6,
-        "hits_taken": 4.8,
-        "damage_dealt": 215.8,
-        "time_to_defeat": 42.1,
+        "dodge_rate": 0.077,
+        "hit_taken_rate": 0.249,
+        "avg_fight_duration": 91.5,
+        "damage_dealt_avg": 10.75,
+        "attempts": 4
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.55,
+        "hit_taken_rate": 0.058,
+        "avg_fight_duration": 35.4,
+        "damage_dealt_avg": 22.3,
+        "attempts": 1
+      },
+      "enchant": "Swift",
+      "tier": "Average",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.544,
+        "hit_taken_rate": 0.02,
+        "avg_fight_duration": 26.5,
+        "damage_dealt_avg": 22.57,
+        "attempts": 1
+      },
+      "enchant": "Swift",
+      "tier": "Skilled",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.541,
+        "hit_taken_rate": 0.033,
+        "avg_fight_duration": 22.4,
+        "damage_dealt_avg": 20.52,
+        "attempts": 1
+      },
+      "enchant": "Swift",
+      "tier": "Skilled",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.112,
+        "hit_taken_rate": 0.45,
+        "avg_fight_duration": 106.8,
+        "damage_dealt_avg": 8.88,
+        "attempts": 6
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.518,
+        "hit_taken_rate": 0.074,
+        "avg_fight_duration": 32.9,
+        "damage_dealt_avg": 22.0,
+        "attempts": 1
+      },
+      "enchant": "Swift",
+      "tier": "Skilled",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.23,
+        "hit_taken_rate": 0.257,
+        "avg_fight_duration": 30.9,
+        "damage_dealt_avg": 16.61,
         "attempts": 2
       },
       "enchant": "Vampiric",
@@ -2434,12 +3062,11 @@
     },
     {
       "features": {
-        "attacks_thrown": 29.7,
-        "dodges_used": 2.5,
-        "hits_taken": 5.3,
-        "damage_dealt": 199.3,
-        "time_to_defeat": 37.6,
-        "attempts": 2
+        "dodge_rate": 0.144,
+        "hit_taken_rate": 0.269,
+        "avg_fight_duration": 49.0,
+        "damage_dealt_avg": 14.96,
+        "attempts": 3
       },
       "enchant": "Vampiric",
       "tier": "Average",
@@ -2447,11 +3074,22 @@
     },
     {
       "features": {
-        "attacks_thrown": 20.1,
-        "dodges_used": 1.4,
-        "hits_taken": 21.6,
-        "damage_dealt": 97.0,
-        "time_to_defeat": 89.7,
+        "dodge_rate": 0.662,
+        "hit_taken_rate": 0.039,
+        "avg_fight_duration": 34.8,
+        "damage_dealt_avg": 20.41,
+        "attempts": 1
+      },
+      "enchant": "Swift",
+      "tier": "Skilled",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.057,
+        "hit_taken_rate": 0.386,
+        "avg_fight_duration": 60.8,
+        "damage_dealt_avg": 11.89,
         "attempts": 7
       },
       "enchant": "Guardian",
@@ -2460,180 +3098,10 @@
     },
     {
       "features": {
-        "attacks_thrown": 31.9,
-        "dodges_used": 1.3,
-        "hits_taken": 2.2,
-        "damage_dealt": 202.8,
-        "time_to_defeat": 34.4,
-        "attempts": 2
-      },
-      "enchant": "Vampiric",
-      "tier": "Average",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 23.9,
-        "dodges_used": 1.8,
-        "hits_taken": 11.3,
-        "damage_dealt": 302.7,
-        "time_to_defeat": 39.0,
-        "attempts": 3
-      },
-      "enchant": "Guardian",
-      "tier": "Average",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 23.7,
-        "dodges_used": 3.1,
-        "hits_taken": 4.8,
-        "damage_dealt": 217.0,
-        "time_to_defeat": 47.8,
-        "attempts": 2
-      },
-      "enchant": "Vampiric",
-      "tier": "Average",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 20.3,
-        "dodges_used": 10.2,
-        "hits_taken": 8.7,
-        "damage_dealt": 190.0,
-        "time_to_defeat": 46.7,
-        "attempts": 1
-      },
-      "enchant": "Vampiric",
-      "tier": "Average",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 29.0,
-        "dodges_used": 2.5,
-        "hits_taken": 19.4,
-        "damage_dealt": 171.9,
-        "time_to_defeat": 70.9,
-        "attempts": 2
-      },
-      "enchant": "Guardian",
-      "tier": "Struggling",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 24.1,
-        "dodges_used": 11.4,
-        "hits_taken": 6.6,
-        "damage_dealt": 240.1,
-        "time_to_defeat": 39.3,
-        "attempts": 3
-      },
-      "enchant": "Vampiric",
-      "tier": "Average",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 35.3,
-        "dodges_used": 2.4,
-        "hits_taken": 17.8,
-        "damage_dealt": 110.9,
-        "time_to_defeat": 75.6,
-        "attempts": 3
-      },
-      "enchant": "Guardian",
-      "tier": "Struggling",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 21.4,
-        "dodges_used": 8.2,
-        "hits_taken": 4.9,
-        "damage_dealt": 236.5,
-        "time_to_defeat": 51.8,
-        "attempts": 2
-      },
-      "enchant": "Vampiric",
-      "tier": "Average",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 36.7,
-        "dodges_used": 0.6,
-        "hits_taken": 12.0,
-        "damage_dealt": 277.7,
-        "time_to_defeat": 47.3,
-        "attempts": 3
-      },
-      "enchant": "Vampiric",
-      "tier": "Average",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 17.4,
-        "dodges_used": 12.8,
-        "hits_taken": 3.8,
-        "damage_dealt": 203.7,
-        "time_to_defeat": 57.2,
-        "attempts": 1
-      },
-      "enchant": "Swift",
-      "tier": "Average",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 33.4,
-        "dodges_used": 5.8,
-        "hits_taken": 9.8,
-        "damage_dealt": 229.7,
-        "time_to_defeat": 42.2,
-        "attempts": 2
-      },
-      "enchant": "Vampiric",
-      "tier": "Average",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 32.2,
-        "dodges_used": 6.2,
-        "hits_taken": 19.0,
-        "damage_dealt": 161.9,
-        "time_to_defeat": 31.2,
-        "attempts": 4
-      },
-      "enchant": "Guardian",
-      "tier": "Struggling",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 22.9,
-        "dodges_used": 5.2,
-        "hits_taken": 7.6,
-        "damage_dealt": 223.3,
-        "time_to_defeat": 51.1,
-        "attempts": 3
-      },
-      "enchant": "Vampiric",
-      "tier": "Average",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 13.8,
-        "dodges_used": 18.1,
-        "hits_taken": 1.4,
-        "damage_dealt": 288.6,
-        "time_to_defeat": 16.6,
+        "dodge_rate": 0.551,
+        "hit_taken_rate": 0.016,
+        "avg_fight_duration": 32.9,
+        "damage_dealt_avg": 23.31,
         "attempts": 1
       },
       "enchant": "Swift",
@@ -2642,11 +3110,46 @@
     },
     {
       "features": {
-        "attacks_thrown": 17.7,
-        "dodges_used": 2.7,
-        "hits_taken": 26.3,
-        "damage_dealt": 98.9,
-        "time_to_defeat": 95.6,
+        "dodge_rate": 0.296,
+        "hit_taken_rate": 0.101,
+        "avg_fight_duration": 44.8,
+        "damage_dealt_avg": 14.59,
+        "attempts": 2
+      },
+      "enchant": "Vampiric",
+      "tier": "Average",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.262,
+        "hit_taken_rate": 0.223,
+        "avg_fight_duration": 37.8,
+        "damage_dealt_avg": 18.53,
+        "attempts": 1
+      },
+      "enchant": "Vampiric",
+      "tier": "Average",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.403,
+        "hit_taken_rate": 0.229,
+        "avg_fight_duration": 45.3,
+        "damage_dealt_avg": 18.97,
+        "attempts": 2
+      },
+      "enchant": "Vampiric",
+      "tier": "Average",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.142,
+        "hit_taken_rate": 0.355,
+        "avg_fight_duration": 26.9,
+        "damage_dealt_avg": 20.88,
         "attempts": 5
       },
       "enchant": "Guardian",
@@ -2655,193 +3158,10 @@
     },
     {
       "features": {
-        "attacks_thrown": 17.6,
-        "dodges_used": 7.0,
-        "hits_taken": 6.5,
-        "damage_dealt": 229.0,
-        "time_to_defeat": 37.8,
-        "attempts": 3
-      },
-      "enchant": "Vampiric",
-      "tier": "Average",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 17.7,
-        "dodges_used": 2.4,
-        "hits_taken": 23.2,
-        "damage_dealt": 98.3,
-        "time_to_defeat": 76.5,
-        "attempts": 4
-      },
-      "enchant": "Guardian",
-      "tier": "Struggling",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 7.5,
-        "dodges_used": 1.6,
-        "hits_taken": 10.6,
-        "damage_dealt": 137.4,
-        "time_to_defeat": 75.2,
-        "attempts": 3
-      },
-      "enchant": "Guardian",
-      "tier": "Struggling",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 15.1,
-        "dodges_used": 1.3,
-        "hits_taken": 14.6,
-        "damage_dealt": 147.3,
-        "time_to_defeat": 91.9,
-        "attempts": 5
-      },
-      "enchant": "Guardian",
-      "tier": "Struggling",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 36.1,
-        "dodges_used": 1.6,
-        "hits_taken": 13.7,
-        "damage_dealt": 146.1,
-        "time_to_defeat": 42.2,
-        "attempts": 6
-      },
-      "enchant": "Guardian",
-      "tier": "Struggling",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 13.4,
-        "dodges_used": 3.2,
-        "hits_taken": 17.0,
-        "damage_dealt": 119.8,
-        "time_to_defeat": 90.8,
-        "attempts": 6
-      },
-      "enchant": "Guardian",
-      "tier": "Struggling",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 4.7,
-        "dodges_used": 2.4,
-        "hits_taken": 21.8,
-        "damage_dealt": 86.1,
-        "time_to_defeat": 51.8,
-        "attempts": 5
-      },
-      "enchant": "Guardian",
-      "tier": "Struggling",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 22.2,
-        "dodges_used": 5.3,
-        "hits_taken": 2.1,
-        "damage_dealt": 250.0,
-        "time_to_defeat": 38.6,
-        "attempts": 4
-      },
-      "enchant": "Guardian",
-      "tier": "Struggling",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 10.4,
-        "dodges_used": 2.9,
-        "hits_taken": 20.0,
-        "damage_dealt": 129.8,
-        "time_to_defeat": 77.9,
-        "attempts": 4
-      },
-      "enchant": "Guardian",
-      "tier": "Struggling",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 29.7,
-        "dodges_used": 3.5,
-        "hits_taken": 8.3,
-        "damage_dealt": 263.5,
-        "time_to_defeat": 36.9,
-        "attempts": 3
-      },
-      "enchant": "Berserker",
-      "tier": "Average",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 24.0,
-        "dodges_used": 6.5,
-        "hits_taken": 12.5,
-        "damage_dealt": 201.2,
-        "time_to_defeat": 38.7,
-        "attempts": 2
-      },
-      "enchant": "Guardian",
-      "tier": "Average",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 24.3,
-        "dodges_used": 5.2,
-        "hits_taken": 6.7,
-        "damage_dealt": 216.4,
-        "time_to_defeat": 58.6,
-        "attempts": 1
-      },
-      "enchant": "Vampiric",
-      "tier": "Average",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 30.3,
-        "dodges_used": 0.1,
-        "hits_taken": 21.9,
-        "damage_dealt": 141.3,
-        "time_to_defeat": 69.6,
-        "attempts": 4
-      },
-      "enchant": "Guardian",
-      "tier": "Struggling",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 22.8,
-        "dodges_used": 9.9,
-        "hits_taken": 10.4,
-        "damage_dealt": 245.9,
-        "time_to_defeat": 38.0,
-        "attempts": 3
-      },
-      "enchant": "Guardian",
-      "tier": "Average",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 30.3,
-        "dodges_used": 2.3,
-        "hits_taken": 20.0,
-        "damage_dealt": 149.5,
-        "time_to_defeat": 71.9,
+        "dodge_rate": 0.1,
+        "hit_taken_rate": 0.385,
+        "avg_fight_duration": 77.7,
+        "damage_dealt_avg": 13.42,
         "attempts": 2
       },
       "enchant": "Guardian",
@@ -2850,258 +3170,10 @@
     },
     {
       "features": {
-        "attacks_thrown": 22.6,
-        "dodges_used": 9.9,
-        "hits_taken": 6.9,
-        "damage_dealt": 195.6,
-        "time_to_defeat": 44.8,
-        "attempts": 1
-      },
-      "enchant": "Vampiric",
-      "tier": "Average",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 17.7,
-        "dodges_used": 16.2,
-        "hits_taken": 1.0,
-        "damage_dealt": 313.6,
-        "time_to_defeat": 37.0,
-        "attempts": 1
-      },
-      "enchant": "Swift",
-      "tier": "Skilled",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 16.0,
-        "dodges_used": 12.0,
-        "hits_taken": 2.3,
-        "damage_dealt": 275.6,
-        "time_to_defeat": 29.0,
-        "attempts": 1
-      },
-      "enchant": "Swift",
-      "tier": "Skilled",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 35.2,
-        "dodges_used": 3.9,
-        "hits_taken": 5.6,
-        "damage_dealt": 273.7,
-        "time_to_defeat": 39.1,
-        "attempts": 2
-      },
-      "enchant": "Berserker",
-      "tier": "Average",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 27.6,
-        "dodges_used": 5.5,
-        "hits_taken": 6.8,
-        "damage_dealt": 251.2,
-        "time_to_defeat": 20.3,
-        "attempts": 1
-      },
-      "enchant": "Berserker",
-      "tier": "Average",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 31.1,
-        "dodges_used": 3.8,
-        "hits_taken": 11.3,
-        "damage_dealt": 254.5,
-        "time_to_defeat": 41.6,
-        "attempts": 3
-      },
-      "enchant": "Vampiric",
-      "tier": "Average",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 30.8,
-        "dodges_used": 0.1,
-        "hits_taken": 13.9,
-        "damage_dealt": 109.8,
-        "time_to_defeat": 47.5,
-        "attempts": 2
-      },
-      "enchant": "Guardian",
-      "tier": "Average",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 31.2,
-        "dodges_used": 4.2,
-        "hits_taken": 6.2,
-        "damage_dealt": 312.9,
-        "time_to_defeat": 41.3,
-        "attempts": 2
-      },
-      "enchant": "Berserker",
-      "tier": "Average",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 11.5,
-        "dodges_used": 0.7,
-        "hits_taken": 12.4,
-        "damage_dealt": 96.4,
-        "time_to_defeat": 45.6,
-        "attempts": 5
-      },
-      "enchant": "Guardian",
-      "tier": "Struggling",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 47.3,
-        "dodges_used": 3.7,
-        "hits_taken": 9.8,
-        "damage_dealt": 129.1,
-        "time_to_defeat": 71.0,
-        "attempts": 6
-      },
-      "enchant": "Guardian",
-      "tier": "Struggling",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 31.1,
-        "dodges_used": 2.8,
-        "hits_taken": 7.3,
-        "damage_dealt": 235.1,
-        "time_to_defeat": 42.6,
-        "attempts": 1
-      },
-      "enchant": "Vampiric",
-      "tier": "Average",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 21.3,
-        "dodges_used": 2.7,
-        "hits_taken": 16.7,
-        "damage_dealt": 134.6,
-        "time_to_defeat": 55.1,
-        "attempts": 5
-      },
-      "enchant": "Guardian",
-      "tier": "Struggling",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 21.5,
-        "dodges_used": 15.9,
-        "hits_taken": 3.6,
-        "damage_dealt": 337.0,
-        "time_to_defeat": 28.1,
-        "attempts": 1
-      },
-      "enchant": "Swift",
-      "tier": "Skilled",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 30.1,
-        "dodges_used": 5.6,
-        "hits_taken": 13.4,
-        "damage_dealt": 110.5,
-        "time_to_defeat": 87.8,
-        "attempts": 2
-      },
-      "enchant": "Vampiric",
-      "tier": "Struggling",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 19.7,
-        "dodges_used": 3.4,
-        "hits_taken": 5.0,
-        "damage_dealt": 192.2,
-        "time_to_defeat": 44.0,
-        "attempts": 1
-      },
-      "enchant": "Vampiric",
-      "tier": "Average",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 45.8,
-        "dodges_used": 3.2,
-        "hits_taken": 22.9,
-        "damage_dealt": 128.1,
-        "time_to_defeat": 78.9,
-        "attempts": 7
-      },
-      "enchant": "Guardian",
-      "tier": "Struggling",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 29.4,
-        "dodges_used": 8.3,
-        "hits_taken": 9.7,
-        "damage_dealt": 251.1,
-        "time_to_defeat": 35.9,
-        "attempts": 3
-      },
-      "enchant": "Berserker",
-      "tier": "Average",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 27.2,
-        "dodges_used": 7.5,
-        "hits_taken": 6.0,
-        "damage_dealt": 268.8,
-        "time_to_defeat": 60.3,
-        "attempts": 1
-      },
-      "enchant": "Vampiric",
-      "tier": "Average",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 26.5,
-        "dodges_used": 10.2,
-        "hits_taken": 7.6,
-        "damage_dealt": 284.3,
-        "time_to_defeat": 43.6,
-        "attempts": 2
-      },
-      "enchant": "Berserker",
-      "tier": "Average",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 11.1,
-        "dodges_used": 2.8,
-        "hits_taken": 19.7,
-        "damage_dealt": 135.5,
-        "time_to_defeat": 16.7,
+        "dodge_rate": 0.134,
+        "hit_taken_rate": 0.464,
+        "avg_fight_duration": 78.5,
+        "damage_dealt_avg": 6.2,
         "attempts": 8
       },
       "enchant": "Guardian",
@@ -3110,687 +3182,10 @@
     },
     {
       "features": {
-        "attacks_thrown": 23.9,
-        "dodges_used": 2.8,
-        "hits_taken": 17.3,
-        "damage_dealt": 170.6,
-        "time_to_defeat": 22.7,
-        "attempts": 1
-      },
-      "enchant": "Guardian",
-      "tier": "Struggling",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 13.1,
-        "dodges_used": 11.8,
-        "hits_taken": 7.4,
-        "damage_dealt": 241.6,
-        "time_to_defeat": 43.9,
-        "attempts": 2
-      },
-      "enchant": "Guardian",
-      "tier": "Struggling",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 15.7,
-        "dodges_used": 19.1,
-        "hits_taken": 2.6,
-        "damage_dealt": 264.8,
-        "time_to_defeat": 24.0,
-        "attempts": 1
-      },
-      "enchant": "Swift",
-      "tier": "Skilled",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 35.3,
-        "dodges_used": 1.7,
-        "hits_taken": 9.3,
-        "damage_dealt": 132.6,
-        "time_to_defeat": 48.5,
-        "attempts": 6
-      },
-      "enchant": "Guardian",
-      "tier": "Struggling",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 12.9,
-        "dodges_used": 1.7,
-        "hits_taken": 15.2,
-        "damage_dealt": 99.8,
-        "time_to_defeat": 86.1,
-        "attempts": 5
-      },
-      "enchant": "Guardian",
-      "tier": "Struggling",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 24.2,
-        "dodges_used": 8.0,
-        "hits_taken": 10.7,
-        "damage_dealt": 202.9,
-        "time_to_defeat": 39.4,
-        "attempts": 2
-      },
-      "enchant": "Vampiric",
-      "tier": "Average",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 36.1,
-        "dodges_used": 4.5,
-        "hits_taken": 5.6,
-        "damage_dealt": 320.3,
-        "time_to_defeat": 40.2,
-        "attempts": 1
-      },
-      "enchant": "Berserker",
-      "tier": "Average",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 40.1,
-        "dodges_used": 2.9,
-        "hits_taken": 14.0,
-        "damage_dealt": 126.4,
-        "time_to_defeat": 67.7,
-        "attempts": 1
-      },
-      "enchant": "Vampiric",
-      "tier": "Struggling",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 16.7,
-        "dodges_used": 11.0,
-        "hits_taken": 6.2,
-        "damage_dealt": 228.2,
-        "time_to_defeat": 47.6,
-        "attempts": 2
-      },
-      "enchant": "Vampiric",
-      "tier": "Average",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 19.9,
-        "dodges_used": 18.2,
-        "hits_taken": 2.7,
-        "damage_dealt": 315.0,
-        "time_to_defeat": 24.7,
-        "attempts": 1
-      },
-      "enchant": "Swift",
-      "tier": "Skilled",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 38.5,
-        "dodges_used": 0,
-        "hits_taken": 17.0,
-        "damage_dealt": 160.5,
-        "time_to_defeat": 78.0,
-        "attempts": 5
-      },
-      "enchant": "Guardian",
-      "tier": "Struggling",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 16.5,
-        "dodges_used": 16.8,
-        "hits_taken": 2.6,
-        "damage_dealt": 240.0,
-        "time_to_defeat": 29.0,
-        "attempts": 1
-      },
-      "enchant": "Swift",
-      "tier": "Skilled",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 22.0,
-        "dodges_used": 13.3,
-        "hits_taken": 8.8,
-        "damage_dealt": 201.9,
-        "time_to_defeat": 57.4,
-        "attempts": 3
-      },
-      "enchant": "Vampiric",
-      "tier": "Average",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 13.1,
-        "dodges_used": 3.0,
-        "hits_taken": 19.6,
-        "damage_dealt": 135.0,
-        "time_to_defeat": 93.6,
-        "attempts": 7
-      },
-      "enchant": "Guardian",
-      "tier": "Struggling",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 28.5,
-        "dodges_used": 1.5,
-        "hits_taken": 9.7,
-        "damage_dealt": 223.7,
-        "time_to_defeat": 42.1,
-        "attempts": 2
-      },
-      "enchant": "Vampiric",
-      "tier": "Average",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 21.5,
-        "dodges_used": 8.4,
-        "hits_taken": 10.5,
-        "damage_dealt": 223.3,
-        "time_to_defeat": 45.5,
-        "attempts": 3
-      },
-      "enchant": "Guardian",
-      "tier": "Average",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 12.3,
-        "dodges_used": 2.8,
-        "hits_taken": 17.0,
-        "damage_dealt": 114.4,
-        "time_to_defeat": 72.6,
-        "attempts": 6
-      },
-      "enchant": "Guardian",
-      "tier": "Struggling",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 18.1,
-        "dodges_used": 15.8,
-        "hits_taken": 1.9,
-        "damage_dealt": 280.3,
-        "time_to_defeat": 17.7,
-        "attempts": 1
-      },
-      "enchant": "Swift",
-      "tier": "Skilled",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 39.4,
-        "dodges_used": 4.6,
-        "hits_taken": 13.1,
-        "damage_dealt": 220.9,
-        "time_to_defeat": 34.0,
-        "attempts": 2
-      },
-      "enchant": "Vampiric",
-      "tier": "Average",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 24.8,
-        "dodges_used": 0.8,
-        "hits_taken": 21.0,
-        "damage_dealt": 130.9,
-        "time_to_defeat": 53.6,
-        "attempts": 5
-      },
-      "enchant": "Guardian",
-      "tier": "Struggling",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 21.3,
-        "dodges_used": 18.0,
-        "hits_taken": 3.1,
-        "damage_dealt": 336.2,
-        "time_to_defeat": 26.1,
-        "attempts": 1
-      },
-      "enchant": "Swift",
-      "tier": "Skilled",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 30.5,
-        "dodges_used": 4.6,
-        "hits_taken": 25.5,
-        "damage_dealt": 135.0,
-        "time_to_defeat": 88.5,
-        "attempts": 7
-      },
-      "enchant": "Guardian",
-      "tier": "Struggling",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 20.5,
-        "dodges_used": 6.9,
-        "hits_taken": 5.8,
-        "damage_dealt": 200.4,
-        "time_to_defeat": 39.0,
-        "attempts": 2
-      },
-      "enchant": "Vampiric",
-      "tier": "Average",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 22.0,
-        "dodges_used": 3.0,
-        "hits_taken": 6.0,
-        "damage_dealt": 168.3,
-        "time_to_defeat": 39.0,
-        "attempts": 1
-      },
-      "enchant": "Vampiric",
-      "tier": "Average",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 11.8,
-        "dodges_used": 14.9,
-        "hits_taken": 1.9,
-        "damage_dealt": 242.8,
-        "time_to_defeat": 26.5,
-        "attempts": 1
-      },
-      "enchant": "Swift",
-      "tier": "Skilled",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 14.7,
-        "dodges_used": 2.2,
-        "hits_taken": 25.6,
-        "damage_dealt": 112.0,
-        "time_to_defeat": 93.6,
-        "attempts": 6
-      },
-      "enchant": "Guardian",
-      "tier": "Struggling",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 38.5,
-        "dodges_used": 1.0,
-        "hits_taken": 17.0,
-        "damage_dealt": 120.8,
-        "time_to_defeat": 65.8,
-        "attempts": 9
-      },
-      "enchant": "Guardian",
-      "tier": "Struggling",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 38.8,
-        "dodges_used": 1.2,
-        "hits_taken": 15.0,
-        "damage_dealt": 119.4,
-        "time_to_defeat": 67.4,
-        "attempts": 5
-      },
-      "enchant": "Guardian",
-      "tier": "Struggling",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 15.1,
-        "dodges_used": 2.6,
-        "hits_taken": 13.8,
-        "damage_dealt": 131.9,
-        "time_to_defeat": 81.2,
-        "attempts": 8
-      },
-      "enchant": "Guardian",
-      "tier": "Struggling",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 32.6,
-        "dodges_used": 6.5,
-        "hits_taken": 15.1,
-        "damage_dealt": 135.5,
-        "time_to_defeat": 56.3,
-        "attempts": 3
-      },
-      "enchant": "Guardian",
-      "tier": "Average",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 18.2,
-        "dodges_used": 3.5,
-        "hits_taken": 12.5,
-        "damage_dealt": 126.8,
-        "time_to_defeat": 55.3,
-        "attempts": 3
-      },
-      "enchant": "Guardian",
-      "tier": "Struggling",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 8.2,
-        "dodges_used": 2.0,
-        "hits_taken": 17.2,
-        "damage_dealt": 179.1,
-        "time_to_defeat": 75.7,
-        "attempts": 5
-      },
-      "enchant": "Guardian",
-      "tier": "Struggling",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 29.3,
-        "dodges_used": 0,
-        "hits_taken": 22.6,
-        "damage_dealt": 146.5,
-        "time_to_defeat": 87.2,
-        "attempts": 6
-      },
-      "enchant": "Guardian",
-      "tier": "Struggling",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 10.7,
-        "dodges_used": 2.4,
-        "hits_taken": 21.9,
-        "damage_dealt": 146.2,
-        "time_to_defeat": 67.8,
-        "attempts": 9
-      },
-      "enchant": "Guardian",
-      "tier": "Struggling",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 20.7,
-        "dodges_used": 16.2,
-        "hits_taken": 2.2,
-        "damage_dealt": 260.4,
-        "time_to_defeat": 27.0,
-        "attempts": 1
-      },
-      "enchant": "Swift",
-      "tier": "Skilled",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 42.7,
-        "dodges_used": 4.2,
-        "hits_taken": 30.1,
-        "damage_dealt": 108.9,
-        "time_to_defeat": 69.7,
-        "attempts": 3
-      },
-      "enchant": "Guardian",
-      "tier": "Struggling",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 43.7,
-        "dodges_used": 0.3,
-        "hits_taken": 16.8,
-        "damage_dealt": 193.6,
-        "time_to_defeat": 39.9,
-        "attempts": 7
-      },
-      "enchant": "Guardian",
-      "tier": "Struggling",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 27.6,
-        "dodges_used": 0,
-        "hits_taken": 13.5,
-        "damage_dealt": 164.2,
-        "time_to_defeat": 50.3,
-        "attempts": 2
-      },
-      "enchant": "Guardian",
-      "tier": "Average",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 16.0,
-        "dodges_used": 12.1,
-        "hits_taken": 3.4,
-        "damage_dealt": 305.7,
-        "time_to_defeat": 32.8,
-        "attempts": 1
-      },
-      "enchant": "Swift",
-      "tier": "Average",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 20.1,
-        "dodges_used": 1.9,
-        "hits_taken": 15.6,
-        "damage_dealt": 134.3,
-        "time_to_defeat": 42.9,
-        "attempts": 2
-      },
-      "enchant": "Guardian",
-      "tier": "Struggling",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 27.9,
-        "dodges_used": 7.7,
-        "hits_taken": 14.0,
-        "damage_dealt": 167.0,
-        "time_to_defeat": 91.9,
-        "attempts": 5
-      },
-      "enchant": "Guardian",
-      "tier": "Struggling",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 29.9,
-        "dodges_used": 9.1,
-        "hits_taken": 7.6,
-        "damage_dealt": 228.3,
-        "time_to_defeat": 45.0,
-        "attempts": 3
-      },
-      "enchant": "Vampiric",
-      "tier": "Average",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 10.1,
-        "dodges_used": 2.7,
-        "hits_taken": 13.0,
-        "damage_dealt": 120.3,
-        "time_to_defeat": 67.6,
-        "attempts": 11
-      },
-      "enchant": "Guardian",
-      "tier": "Struggling",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 32.6,
-        "dodges_used": 3.5,
-        "hits_taken": 13.9,
-        "damage_dealt": 151.7,
-        "time_to_defeat": 73.7,
-        "attempts": 5
-      },
-      "enchant": "Guardian",
-      "tier": "Struggling",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 9.3,
-        "dodges_used": 2.5,
-        "hits_taken": 14.3,
-        "damage_dealt": 154.0,
-        "time_to_defeat": 85.4,
-        "attempts": 3
-      },
-      "enchant": "Guardian",
-      "tier": "Struggling",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 18.4,
-        "dodges_used": 11.5,
-        "hits_taken": 10.6,
-        "damage_dealt": 212.2,
-        "time_to_defeat": 46.4,
-        "attempts": 1
-      },
-      "enchant": "Guardian",
-      "tier": "Struggling",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 17.3,
-        "dodges_used": 15.5,
-        "hits_taken": 1.0,
-        "damage_dealt": 299.9,
-        "time_to_defeat": 36.5,
-        "attempts": 1
-      },
-      "enchant": "Swift",
-      "tier": "Skilled",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 40.0,
-        "dodges_used": 2.9,
-        "hits_taken": 23.8,
-        "damage_dealt": 144.9,
-        "time_to_defeat": 67.0,
-        "attempts": 8
-      },
-      "enchant": "Guardian",
-      "tier": "Struggling",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 22.9,
-        "dodges_used": 7.8,
-        "hits_taken": 9.7,
-        "damage_dealt": 238.7,
-        "time_to_defeat": 48.9,
-        "attempts": 1
-      },
-      "enchant": "Vampiric",
-      "tier": "Average",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 19.5,
-        "dodges_used": 3.4,
-        "hits_taken": 26.3,
-        "damage_dealt": 124.2,
-        "time_to_defeat": 55.5,
-        "attempts": 9
-      },
-      "enchant": "Guardian",
-      "tier": "Struggling",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 13.1,
-        "dodges_used": 2.1,
-        "hits_taken": 25.6,
-        "damage_dealt": 104.9,
-        "time_to_defeat": 103.9,
-        "attempts": 6
-      },
-      "enchant": "Guardian",
-      "tier": "Struggling",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 22.0,
-        "dodges_used": 2.1,
-        "hits_taken": 19.5,
-        "damage_dealt": 133.1,
-        "time_to_defeat": 77.8,
-        "attempts": 3
-      },
-      "enchant": "Guardian",
-      "tier": "Struggling",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 14.2,
-        "dodges_used": 2.3,
-        "hits_taken": 9.7,
-        "damage_dealt": 121.3,
-        "time_to_defeat": 67.2,
+        "dodge_rate": 0.108,
+        "hit_taken_rate": 0.423,
+        "avg_fight_duration": 119.1,
+        "damage_dealt_avg": 13.89,
         "attempts": 4
       },
       "enchant": "Guardian",
@@ -3799,24 +3194,34 @@
     },
     {
       "features": {
-        "attacks_thrown": 19.5,
-        "dodges_used": 14.5,
-        "hits_taken": 2.4,
-        "damage_dealt": 323.4,
-        "time_to_defeat": 21.4,
+        "dodge_rate": 0.136,
+        "hit_taken_rate": 0.463,
+        "avg_fight_duration": 100.4,
+        "damage_dealt_avg": 8.45,
+        "attempts": 5
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.432,
+        "hit_taken_rate": 0.0,
+        "avg_fight_duration": 15.9,
+        "damage_dealt_avg": 19.24,
         "attempts": 1
       },
-      "enchant": "Swift",
+      "enchant": "Berserker",
       "tier": "Skilled",
       "source": "synthetic"
     },
     {
       "features": {
-        "attacks_thrown": 13.0,
-        "dodges_used": 4.2,
-        "hits_taken": 17.4,
-        "damage_dealt": 120.6,
-        "time_to_defeat": 93.2,
+        "dodge_rate": 0.101,
+        "hit_taken_rate": 0.287,
+        "avg_fight_duration": 71.7,
+        "damage_dealt_avg": 8.44,
         "attempts": 4
       },
       "enchant": "Guardian",
@@ -3825,11 +3230,70 @@
     },
     {
       "features": {
-        "attacks_thrown": 20.8,
-        "dodges_used": 11.5,
-        "hits_taken": 1.7,
-        "damage_dealt": 264.2,
-        "time_to_defeat": 28.4,
+        "dodge_rate": 0.259,
+        "hit_taken_rate": 0.101,
+        "avg_fight_duration": 48.8,
+        "damage_dealt_avg": 17.86,
+        "attempts": 2
+      },
+      "enchant": "Vampiric",
+      "tier": "Average",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.319,
+        "hit_taken_rate": 0.116,
+        "avg_fight_duration": 37.5,
+        "damage_dealt_avg": 13.59,
+        "attempts": 5
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.263,
+        "hit_taken_rate": 0.103,
+        "avg_fight_duration": 53.3,
+        "damage_dealt_avg": 11.6,
+        "attempts": 3
+      },
+      "enchant": "Vampiric",
+      "tier": "Average",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.295,
+        "hit_taken_rate": 0.11,
+        "avg_fight_duration": 46.1,
+        "damage_dealt_avg": 16.64,
+        "attempts": 1
+      },
+      "enchant": "Vampiric",
+      "tier": "Average",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.299,
+        "hit_taken_rate": 0.181,
+        "avg_fight_duration": 59.4,
+        "damage_dealt_avg": 18.32,
+        "attempts": 3
+      },
+      "enchant": "Vampiric",
+      "tier": "Average",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.55,
+        "hit_taken_rate": 0.059,
+        "avg_fight_duration": 30.3,
+        "damage_dealt_avg": 17.92,
         "attempts": 1
       },
       "enchant": "Swift",
@@ -3838,94 +3302,951 @@
     },
     {
       "features": {
-        "attacks_thrown": 30.4,
-        "dodges_used": 2.8,
-        "hits_taken": 10.2,
-        "damage_dealt": 290.5,
-        "time_to_defeat": 29.3,
+        "dodge_rate": 0.127,
+        "hit_taken_rate": 0.355,
+        "avg_fight_duration": 77.3,
+        "damage_dealt_avg": 9.65,
+        "attempts": 5
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.175,
+        "hit_taken_rate": 0.402,
+        "avg_fight_duration": 73.6,
+        "damage_dealt_avg": 9.2,
+        "attempts": 4
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.155,
+        "hit_taken_rate": 0.176,
+        "avg_fight_duration": 36.8,
+        "damage_dealt_avg": 16.37,
+        "attempts": 3
+      },
+      "enchant": "Vampiric",
+      "tier": "Average",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.311,
+        "hit_taken_rate": 0.142,
+        "avg_fight_duration": 55.3,
+        "damage_dealt_avg": 19.77,
+        "attempts": 5
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.026,
+        "hit_taken_rate": 0.399,
+        "avg_fight_duration": 87.8,
+        "damage_dealt_avg": 11.84,
+        "attempts": 3
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.599,
+        "hit_taken_rate": 0.028,
+        "avg_fight_duration": 35.9,
+        "damage_dealt_avg": 20.01,
+        "attempts": 1
+      },
+      "enchant": "Swift",
+      "tier": "Average",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.096,
+        "hit_taken_rate": 0.424,
+        "avg_fight_duration": 53.9,
+        "damage_dealt_avg": 12.57,
+        "attempts": 5
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.08,
+        "hit_taken_rate": 0.256,
+        "avg_fight_duration": 79.5,
+        "damage_dealt_avg": 11.48,
+        "attempts": 5
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.13,
+        "hit_taken_rate": 0.493,
+        "avg_fight_duration": 77.7,
+        "damage_dealt_avg": 7.88,
+        "attempts": 5
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.109,
+        "hit_taken_rate": 0.355,
+        "avg_fight_duration": 66.0,
+        "damage_dealt_avg": 11.18,
+        "attempts": 5
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.379,
+        "hit_taken_rate": 0.199,
+        "avg_fight_duration": 45.9,
+        "damage_dealt_avg": 13.7,
         "attempts": 2
+      },
+      "enchant": "Vampiric",
+      "tier": "Average",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.073,
+        "hit_taken_rate": 0.443,
+        "avg_fight_duration": 58.0,
+        "damage_dealt_avg": 8.52,
+        "attempts": 8
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.043,
+        "hit_taken_rate": 0.369,
+        "avg_fight_duration": 83.2,
+        "damage_dealt_avg": 11.04,
+        "attempts": 3
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.194,
+        "hit_taken_rate": 0.384,
+        "avg_fight_duration": 57.5,
+        "damage_dealt_avg": 9.5,
+        "attempts": 5
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.221,
+        "hit_taken_rate": 0.299,
+        "avg_fight_duration": 40.5,
+        "damage_dealt_avg": 12.87,
+        "attempts": 3
+      },
+      "enchant": "Guardian",
+      "tier": "Average",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.542,
+        "hit_taken_rate": 0.043,
+        "avg_fight_duration": 21.7,
+        "damage_dealt_avg": 23.37,
+        "attempts": 1
+      },
+      "enchant": "Swift",
+      "tier": "Skilled",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.178,
+        "hit_taken_rate": 0.217,
+        "avg_fight_duration": 30.0,
+        "damage_dealt_avg": 19.99,
+        "attempts": 4
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.503,
+        "hit_taken_rate": 0.057,
+        "avg_fight_duration": 16.6,
+        "damage_dealt_avg": 24.09,
+        "attempts": 1
+      },
+      "enchant": "Swift",
+      "tier": "Skilled",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.087,
+        "hit_taken_rate": 0.276,
+        "avg_fight_duration": 61.9,
+        "damage_dealt_avg": 5.71,
+        "attempts": 6
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.204,
+        "hit_taken_rate": 0.304,
+        "avg_fight_duration": 37.2,
+        "damage_dealt_avg": 16.97,
+        "attempts": 3
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.263,
+        "hit_taken_rate": 0.137,
+        "avg_fight_duration": 41.8,
+        "damage_dealt_avg": 16.22,
+        "attempts": 4
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.214,
+        "hit_taken_rate": 0.287,
+        "avg_fight_duration": 37.3,
+        "damage_dealt_avg": 25.0,
+        "attempts": 2
+      },
+      "enchant": "Guardian",
+      "tier": "Average",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.575,
+        "hit_taken_rate": 0.086,
+        "avg_fight_duration": 23.0,
+        "damage_dealt_avg": 22.42,
+        "attempts": 1
+      },
+      "enchant": "Swift",
+      "tier": "Skilled",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.64,
+        "hit_taken_rate": 0.095,
+        "avg_fight_duration": 26.1,
+        "damage_dealt_avg": 21.93,
+        "attempts": 1
+      },
+      "enchant": "Swift",
+      "tier": "Skilled",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.089,
+        "hit_taken_rate": 0.314,
+        "avg_fight_duration": 101.5,
+        "damage_dealt_avg": 12.54,
+        "attempts": 6
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.289,
+        "hit_taken_rate": 0.218,
+        "avg_fight_duration": 38.5,
+        "damage_dealt_avg": 17.79,
+        "attempts": 3
+      },
+      "enchant": "Vampiric",
+      "tier": "Average",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.553,
+        "hit_taken_rate": 0.073,
+        "avg_fight_duration": 29.4,
+        "damage_dealt_avg": 21.37,
+        "attempts": 1
+      },
+      "enchant": "Swift",
+      "tier": "Skilled",
+      "source": "synthetic"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.0,
+        "hit_taken_rate": 0.359232269321564,
+        "avg_fight_duration": 19.486,
+        "damage_dealt_avg": 22.9166666666667,
+        "attempts": 1.0
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "real"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.0,
+        "hit_taken_rate": 0.177544996560066,
+        "avg_fight_duration": 45.059,
+        "damage_dealt_avg": 22.9166666666667,
+        "attempts": 1.0
       },
       "enchant": "Berserker",
       "tier": "Average",
-      "source": "synthetic"
+      "source": "real"
     },
     {
       "features": {
-        "attacks_thrown": 18.0,
-        "dodges_used": 0.6,
-        "hits_taken": 25.0,
-        "damage_dealt": 143.9,
-        "time_to_defeat": 78.1,
-        "attempts": 6
-      },
-      "enchant": "Guardian",
-      "tier": "Struggling",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 14.8,
-        "dodges_used": 1.6,
-        "hits_taken": 12.6,
-        "damage_dealt": 97.7,
-        "time_to_defeat": 63.1,
-        "attempts": 6
-      },
-      "enchant": "Guardian",
-      "tier": "Struggling",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 23.7,
-        "dodges_used": 7.1,
-        "hits_taken": 4.9,
-        "damage_dealt": 207.1,
-        "time_to_defeat": 39.5,
-        "attempts": 3
+        "dodge_rate": 0.0,
+        "hit_taken_rate": 0.112745927053385,
+        "avg_fight_duration": 53.217,
+        "damage_dealt_avg": 12.5,
+        "attempts": 1.0
       },
       "enchant": "Vampiric",
       "tier": "Average",
-      "source": "synthetic"
+      "source": "real"
     },
     {
       "features": {
-        "attacks_thrown": 17.1,
-        "dodges_used": 21.8,
-        "hits_taken": 2.2,
-        "damage_dealt": 270.7,
-        "time_to_defeat": 31.3,
-        "attempts": 1
-      },
-      "enchant": "Swift",
-      "tier": "Skilled",
-      "source": "synthetic"
-    },
-    {
-      "features": {
-        "attacks_thrown": 20.1,
-        "dodges_used": 11.3,
-        "hits_taken": 8.2,
-        "damage_dealt": 240.8,
-        "time_to_defeat": 52.2,
-        "attempts": 3
+        "dodge_rate": 0.0,
+        "hit_taken_rate": 0.184094256259205,
+        "avg_fight_duration": 16.296,
+        "damage_dealt_avg": 22.9166666666667,
+        "attempts": 1.0
       },
       "enchant": "Vampiric",
       "tier": "Average",
-      "source": "synthetic"
+      "source": "real"
     },
     {
       "features": {
-        "attacks_thrown": 14.5,
-        "dodges_used": 15.3,
-        "hits_taken": 0.8,
-        "damage_dealt": 295.3,
-        "time_to_defeat": 21.4,
-        "attempts": 1
+        "dodge_rate": 0.0,
+        "hit_taken_rate": 0.428602043003072,
+        "avg_fight_duration": 13.999,
+        "damage_dealt_avg": 16.1764705882353,
+        "attempts": 1.0
       },
-      "enchant": "Swift",
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "real"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.0,
+        "hit_taken_rate": 0.169904287251515,
+        "avg_fight_duration": 17.657,
+        "damage_dealt_avg": 22.9166666666667,
+        "attempts": 1.0
+      },
+      "enchant": "Berserker",
+      "tier": "Average",
+      "source": "real"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.0,
+        "hit_taken_rate": 0.358465766519297,
+        "avg_fight_duration": 8.369,
+        "damage_dealt_avg": 22.9166666666667,
+        "attempts": 1.0
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "real"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.0,
+        "hit_taken_rate": 0.240673886883273,
+        "avg_fight_duration": 12.465,
+        "damage_dealt_avg": 18.3333333333333,
+        "attempts": 1.0
+      },
+      "enchant": "Vampiric",
+      "tier": "Average",
+      "source": "real"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.0,
+        "hit_taken_rate": 0.18618506795755,
+        "avg_fight_duration": 16.113,
+        "damage_dealt_avg": 22.9166666666667,
+        "attempts": 1.0
+      },
+      "enchant": "Vampiric",
+      "tier": "Average",
+      "source": "real"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.0,
+        "hit_taken_rate": 0.922225637872733,
+        "avg_fight_duration": 3.253,
+        "damage_dealt_avg": 22.9166666666667,
+        "attempts": 1.0
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "real"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.0,
+        "hit_taken_rate": 0.205058099794942,
+        "avg_fight_duration": 14.63,
+        "damage_dealt_avg": 21.1538461538462,
+        "attempts": 1.0
+      },
+      "enchant": "Vampiric",
+      "tier": "Average",
+      "source": "real"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.0,
+        "hit_taken_rate": 0.190539703710761,
+        "avg_fight_duration": 20.993,
+        "damage_dealt_avg": 18.3333333333333,
+        "attempts": 1.0
+      },
+      "enchant": "Vampiric",
+      "tier": "Average",
+      "source": "real"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.0,
+        "hit_taken_rate": 0.310141631344981,
+        "avg_fight_duration": 9.673,
+        "damage_dealt_avg": 22.9166666666667,
+        "attempts": 1.0
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "real"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.0,
+        "hit_taken_rate": 0.140232786425466,
+        "avg_fight_duration": 21.393,
+        "damage_dealt_avg": 22.9166666666667,
+        "attempts": 1.0
+      },
+      "enchant": "Berserker",
+      "tier": "Average",
+      "source": "real"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.0,
+        "hit_taken_rate": 0.152098965727033,
+        "avg_fight_duration": 19.724,
+        "damage_dealt_avg": 22.9166666666667,
+        "attempts": 1.0
+      },
+      "enchant": "Berserker",
+      "tier": "Average",
+      "source": "real"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.0,
+        "hit_taken_rate": 0.891530460624071,
+        "avg_fight_duration": 3.365,
+        "damage_dealt_avg": 22.9166666666667,
+        "attempts": 1.0
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "real"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.0,
+        "hit_taken_rate": 0.142477203647416,
+        "avg_fight_duration": 21.056,
+        "damage_dealt_avg": 22.9166666666667,
+        "attempts": 1.0
+      },
+      "enchant": "Berserker",
+      "tier": "Average",
+      "source": "real"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.0,
+        "hit_taken_rate": 0.0578469370046856,
+        "avg_fight_duration": 86.435,
+        "damage_dealt_avg": 22.9166666666667,
+        "attempts": 1.0
+      },
+      "enchant": "Berserker",
+      "tier": "Struggling",
+      "source": "real"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.0,
+        "hit_taken_rate": 0.128419160138693,
+        "avg_fight_duration": 23.361,
+        "damage_dealt_avg": 22.9166666666667,
+        "attempts": 1.0
+      },
+      "enchant": "Berserker",
+      "tier": "Average",
+      "source": "real"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.0,
+        "hit_taken_rate": 0.114103149246919,
+        "avg_fight_duration": 26.292,
+        "damage_dealt_avg": 22.9166666666667,
+        "attempts": 1.0
+      },
+      "enchant": "Berserker",
+      "tier": "Average",
+      "source": "real"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.0,
+        "hit_taken_rate": 0.0885164640623156,
+        "avg_fight_duration": 33.892,
+        "damage_dealt_avg": 18.3333333333333,
+        "attempts": 1.0
+      },
+      "enchant": "Berserker",
       "tier": "Skilled",
-      "source": "synthetic"
+      "source": "real"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.0,
+        "hit_taken_rate": 0.112372176649062,
+        "avg_fight_duration": 35.596,
+        "damage_dealt_avg": 22.9166666666667,
+        "attempts": 1.0
+      },
+      "enchant": "Berserker",
+      "tier": "Average",
+      "source": "real"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.0,
+        "hit_taken_rate": 0.123542202016209,
+        "avg_fight_duration": 80.944,
+        "damage_dealt_avg": 18.75,
+        "attempts": 2.0
+      },
+      "enchant": "Berserker",
+      "tier": "Struggling",
+      "source": "real"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.0,
+        "hit_taken_rate": 0.450019688361366,
+        "avg_fight_duration": 17.777,
+        "damage_dealt_avg": 22.9166666666667,
+        "attempts": 1.0
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "real"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.0,
+        "hit_taken_rate": 0.142295583500827,
+        "avg_fight_duration": 56.221,
+        "damage_dealt_avg": 22.9166666666667,
+        "attempts": 1.0
+      },
+      "enchant": "Berserker",
+      "tier": "Average",
+      "source": "real"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.0,
+        "hit_taken_rate": 1.08932461873638,
+        "avg_fight_duration": 6.426,
+        "damage_dealt_avg": 22.9166666666667,
+        "attempts": 1.0
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "real"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.0,
+        "hit_taken_rate": 0.842601954836535,
+        "avg_fight_duration": 5.934,
+        "damage_dealt_avg": 22.9166666666667,
+        "attempts": 1.0
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "real"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.0,
+        "hit_taken_rate": 0.966930961129375,
+        "avg_fight_duration": 10.342,
+        "damage_dealt_avg": 0.0,
+        "attempts": 2.0
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "real"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.0,
+        "hit_taken_rate": 0.0890947968638632,
+        "avg_fight_duration": 44.896,
+        "damage_dealt_avg": 22.9166666666667,
+        "attempts": 1.0
+      },
+      "enchant": "Berserker",
+      "tier": "Average",
+      "source": "real"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.0,
+        "hit_taken_rate": 0.342161089440909,
+        "avg_fight_duration": 29.226,
+        "damage_dealt_avg": 25.0,
+        "attempts": 2.0
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "real"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.0,
+        "hit_taken_rate": 0.441940117114131,
+        "avg_fight_duration": 9.051,
+        "damage_dealt_avg": 17.1875,
+        "attempts": 1.0
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "real"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.0,
+        "hit_taken_rate": 0.336972637821809,
+        "avg_fight_duration": 14.838,
+        "damage_dealt_avg": 21.1538461538462,
+        "attempts": 1.0
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "real"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.0,
+        "hit_taken_rate": 0.427222625710258,
+        "avg_fight_duration": 23.407,
+        "damage_dealt_avg": 25.0,
+        "attempts": 2.0
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "real"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.0,
+        "hit_taken_rate": 0.426413255360624,
+        "avg_fight_duration": 16.416,
+        "damage_dealt_avg": 22.9166666666667,
+        "attempts": 1.0
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "real"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.0,
+        "hit_taken_rate": 0.386473429951691,
+        "avg_fight_duration": 15.525,
+        "damage_dealt_avg": 22.9166666666667,
+        "attempts": 1.0
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "real"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.0,
+        "hit_taken_rate": 0.0260968846843908,
+        "avg_fight_duration": 153.275,
+        "damage_dealt_avg": 23.5294117647059,
+        "attempts": 1.0
+      },
+      "enchant": "Berserker",
+      "tier": "Struggling",
+      "source": "real"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.0,
+        "hit_taken_rate": 0.117524004277874,
+        "avg_fight_duration": 85.089,
+        "damage_dealt_avg": 12.5,
+        "attempts": 2.0
+      },
+      "enchant": "Vampiric",
+      "tier": "Struggling",
+      "source": "real"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.0,
+        "hit_taken_rate": 0.107693633152408,
+        "avg_fight_duration": 46.428,
+        "damage_dealt_avg": 22.9166666666667,
+        "attempts": 1.0
+      },
+      "enchant": "Berserker",
+      "tier": "Average",
+      "source": "real"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.0,
+        "hit_taken_rate": 0.0588933931428459,
+        "avg_fight_duration": 101.879,
+        "damage_dealt_avg": 22.2222222222222,
+        "attempts": 1.0
+      },
+      "enchant": "Berserker",
+      "tier": "Struggling",
+      "source": "real"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.0,
+        "hit_taken_rate": 0.460511167395809,
+        "avg_fight_duration": 34.744,
+        "damage_dealt_avg": 21.5909090909091,
+        "attempts": 2.0
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "real"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.0,
+        "hit_taken_rate": 1.56915489800493,
+        "avg_fight_duration": 4.461,
+        "damage_dealt_avg": 22.2222222222222,
+        "attempts": 2.0
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "real"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.0,
+        "hit_taken_rate": 1.37804317868626,
+        "avg_fight_duration": 2.17700000000001,
+        "damage_dealt_avg": 22.2222222222222,
+        "attempts": 1.0
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "real"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.0,
+        "hit_taken_rate": 1.70575692963753,
+        "avg_fight_duration": 2.345,
+        "damage_dealt_avg": 22.2222222222222,
+        "attempts": 1.0
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "real"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.0,
+        "hit_taken_rate": 0.332612672542824,
+        "avg_fight_duration": 42.091,
+        "damage_dealt_avg": 23.8636363636364,
+        "attempts": 1.0
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "real"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.0,
+        "hit_taken_rate": 0.361108603412476,
+        "avg_fight_duration": 44.308,
+        "damage_dealt_avg": 25.0,
+        "attempts": 2.0
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "real"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.0,
+        "hit_taken_rate": 0.744324525493116,
+        "avg_fight_duration": 5.374,
+        "damage_dealt_avg": 23.5294117647059,
+        "attempts": 2.0
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "real"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.0,
+        "hit_taken_rate": 0.387704237053448,
+        "avg_fight_duration": 18.055,
+        "damage_dealt_avg": 30.4624757684852,
+        "attempts": 1.0
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "real"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.0,
+        "hit_taken_rate": 0.689963066682901,
+        "avg_fight_duration": 24.639,
+        "damage_dealt_avg": 0.0,
+        "attempts": 2.0
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "real"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.0,
+        "hit_taken_rate": 0.329785639334433,
+        "avg_fight_duration": 33.355,
+        "damage_dealt_avg": 11.2426922500375,
+        "attempts": 2.0
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "real"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.0,
+        "hit_taken_rate": 0.252525252525253,
+        "avg_fight_duration": 35.64,
+        "damage_dealt_avg": 11.2233445566779,
+        "attempts": 1.0
+      },
+      "enchant": "Vampiric",
+      "tier": "Average",
+      "source": "real"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.0,
+        "hit_taken_rate": 0.928173639868628,
+        "avg_fight_duration": 14.006,
+        "damage_dealt_avg": 30.3441382264744,
+        "attempts": 2.0
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "real"
+    },
+    {
+      "features": {
+        "dodge_rate": 0.0,
+        "hit_taken_rate": 0.334522747546833,
+        "avg_fight_duration": 26.904,
+        "damage_dealt_avg": 18.5845970859352,
+        "attempts": 2
+      },
+      "enchant": "Guardian",
+      "tier": "Struggling",
+      "source": "real"
     }
   ]
 }

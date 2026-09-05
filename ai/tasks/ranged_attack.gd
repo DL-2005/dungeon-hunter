@@ -11,7 +11,7 @@ func _tick(_delta: float) -> Status:
 	if boss._ranged_cooldown_timer <= 0.0 \
 			and boss.player.has_method("take_damage") \
 			and boss.player.health > 0.0:
-		boss.player.take_damage(boss.ranged_damage)
+		boss.player.take_damage(boss.attack_damage, boss.IS_BOSS)
 		boss._ranged_cooldown_timer = boss.ranged_cooldown
 		print("Boss ranged-hits player for ", boss.ranged_damage, " damage")
 	return SUCCESS
