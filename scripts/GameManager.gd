@@ -11,8 +11,11 @@ var last_skill_tier: String = "Average"
 var attempts_this_boss: int = 1
 var currency: int = 0 
 var equipped_enchant: String = ""
+var last_skill_score: float = 0.5
+var has_played_before: bool = false 
 
 const FIGHT_LOG_PATH := "user://fight_logs.json"
+const TIER_VALUE := {"Struggling": 0.0, "Average": 0.5, "Skilled": 1.0}
 
 #currency on shop UI 
 func add_currency(amount: int) -> void:
@@ -123,9 +126,9 @@ func log_fight_result(profile: Dictionary) -> void:
 ## enchant. Real nearest-neighbor logic will be filled in once the table
 ## exists — for now this is a stub so other systems can integrate against
 ## a stable interface.
-func _classify(profile: Dictionary) -> Dictionary:
+func _find_k_nearest(profile: Dictionary) -> Array:
 	if enchant_lookup.is_empty() or not enchant_lookup.has("dataset"):
-		return {"enchant": "balanced_damage", "tier": "Average", "confidence": 0.0}
+		return []
 	var feature_order: Array = enchant_lookup["feature_order"]
 	var mins: Dictionary = enchant_lookup["normalization"]["min"]
 	var maxs: Dictionary = enchant_lookup["normalization"]["max"]
@@ -136,8 +139,7 @@ func _classify(profile: Dictionary) -> Dictionary:
 		var raw: float = profile.get(feat_name, float(attempts_this_boss) if feat_name == "attempts" else 0.0)
 		var lo: float = mins[feat_name]
 		var hi: float = maxs[feat_name]
-		var norm: float = 0.0 if hi == lo else (raw - lo) / (hi - lo)
-		query.append(norm)
+		query.append(0.0 if hi == lo else (raw - lo) / (hi - lo))
 	var distances: Array = []
 	for point in dataset:
 		var feats: Dictionary = point["features"]
@@ -146,25 +148,36 @@ func _classify(profile: Dictionary) -> Dictionary:
 			var feat_name = feature_order[i]
 			var lo: float = mins[feat_name]
 			var hi: float = maxs[feat_name]
-			var raw: float = feats[feat_name]
-			var norm: float = 0.0 if hi == lo else (raw - lo) / (hi - lo)
+			var norm: float = 0.0 if hi == lo else (feats[feat_name] - lo) / (hi - lo)
 			var diff: float = query[i] - norm
 			dist_sq += diff * diff
 		distances.append({"dist": dist_sq, "enchant": point["enchant"], "tier": point["tier"]})
 	distances.sort_custom(func(a, b): return a["dist"] < b["dist"])
+	return distances.slice(0, min(k, distances.size()))
+
+
+func _classify(profile: Dictionary) -> Dictionary:
+	var neighbors: Array = _find_k_nearest(profile)
+	if neighbors.is_empty():
+		return {"enchant": "balanced_damage", "tier": "Average", "confidence": 0.0}
 	var enchant_votes: Dictionary = {}
 	var tier_votes: Dictionary = {}
-	var neighbors: int = min(k, distances.size())
-	for i in range(neighbors):
-		var e = distances[i]["enchant"]
-		var t = distances[i]["tier"]
-		enchant_votes[e] = enchant_votes.get(e, 0) + 1
-		tier_votes[t] = tier_votes.get(t, 0) + 1
+	for n in neighbors:
+		enchant_votes[n["enchant"]] = enchant_votes.get(n["enchant"], 0) + 1
+		tier_votes[n["tier"]] = tier_votes.get(n["tier"], 0) + 1
 	var winning_enchant = _majority(enchant_votes)
 	var winning_tier = _majority(tier_votes)
-	var confidence: float = 0.0 if neighbors == 0 else float(enchant_votes.get(winning_enchant, 0)) / float(neighbors)
-	print("classify query=", query, " for profile=", profile)
+	var confidence: float = float(enchant_votes.get(winning_enchant, 0)) / float(neighbors.size())
 	return {"enchant": winning_enchant, "tier": winning_tier, "confidence": confidence}
+
+func get_skill_score(profile: Dictionary) -> float:
+	var neighbors: Array = _find_k_nearest(profile)
+	if neighbors.is_empty():
+		return 0.5
+	var total := 0.0
+	for n in neighbors:
+		total += TIER_VALUE.get(n["tier"], 0.5)
+	return total / neighbors.size()
 
 func recommend_enchant(profile: Dictionary) -> String:
 	var result := _classify(profile)

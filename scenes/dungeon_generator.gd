@@ -44,12 +44,50 @@ var _tiles: TileMapLayer
 var _grid: Array = []          # 2D array [x][y] -> Cell
 var _rooms: Array[Rect2i] = [] # generated room rectangles, in grid coordinates
 var _rng := RandomNumberGenerator.new()
+# --- Effective per-run parameters (computed from difficulty_bias each generate() call) ---
+var _eff_room_count_min: int
+var _eff_room_count_max: int
+var _eff_room_min_size: int
+var _eff_room_max_size: int
+var _eff_wide_corridor_chance: float
+
+
+
+
+## Called by Main.gd before generate(), using the same skill tier that already
+## drives adaptive boss difficulty and mob-wave sizing -- one shared signal of
+## player performance, not a separate metric.
+func configure_from_skill_tier(tier: String) -> void:
+	match tier:
+		"Struggling":
+			difficulty_bias = 0.0
+		"Skilled":
+			difficulty_bias = 1.0
+		_: # "Average" or anything unrecognized
+			difficulty_bias = 0.5
+
+func configure_from_skill_score(score: float) -> void:
+	difficulty_bias = clamp(score, 0.0, 1.0)
+
+## Bounds chosen so difficulty_bias = 0.5 reproduces today's hand-tuned
+## defaults almost exactly -- Average play looks the same as before this
+## feature existed; Struggling/Skilled bias away from that baseline.
+func _compute_effective_params() -> void:
+	_eff_room_count_min = int(round(lerp(4.0, 8.0, difficulty_bias)))
+	_eff_room_count_max = int(round(lerp(6.0, 12.0, difficulty_bias)))
+	_eff_room_min_size = int(round(lerp(3.0, 5.0, difficulty_bias)))
+	_eff_room_max_size = int(round(lerp(6.0, 9.0, difficulty_bias)))
+	_eff_wide_corridor_chance = lerp(0.25, 0.75, difficulty_bias)
+	print("Dungeon params for bias=", difficulty_bias, ": rooms ", _eff_room_count_min, "-", _eff_room_count_max,
+		", size ", _eff_room_min_size, "-", _eff_room_max_size, ", wide_corridor_chance=", _eff_wide_corridor_chance)
 
 
 func _ready() -> void:
 	_tiles = get_node(dungeon_tiles_path)
 	_ensure_wall_collision(Vector2i(2, 0))
 	_ensure_wall_collision(Vector2i(3, 0))
+	_ensure_wall_occluder(Vector2i(2, 0))   # NEW
+	_ensure_wall_occluder(Vector2i(3, 0))   # NEW
 
 
 ## Guarantees the given wall tile has a full-square collision polygon,
@@ -74,6 +112,30 @@ func _ensure_wall_collision(atlas_coords: Vector2i) -> void:
 	tile_data.add_collision_polygon(0)
 	tile_data.set_collision_polygon_points(0, 0, points)
 
+## Guarantees the given wall tile has a light-occluder polygon on
+## Occlusion Layer 0, so PointLight2D shadow-casting (used for the
+## player's limited-vision fog-of-war) treats it as solid. Mirrors
+## _ensure_wall_collision() exactly -- same tile, same full-square shape,
+## just for occlusion instead of physics. Safe to call every run: skips
+## tiles that already have an occluder.
+func _ensure_wall_occluder(atlas_coords: Vector2i) -> void:
+	var source := _tiles.tile_set.get_source(SOURCE_ID) as TileSetAtlasSource
+	var tile_data: TileData = source.get_tile_data(atlas_coords, 0)
+	var existing: OccluderPolygon2D = tile_data.get_occluder(0)
+	if existing != null and existing.polygon.size() > 0:
+		return  # already has an occluder, nothing to do
+	var tile_size: Vector2 = Vector2(_tiles.tile_set.tile_size)
+	var half: Vector2 = tile_size / 2.0
+	var points := PackedVector2Array([
+		Vector2(-half.x, -half.y),
+		Vector2(half.x, -half.y),
+		Vector2(half.x, half.y),
+		Vector2(-half.x, half.y),
+	])
+	var occluder := OccluderPolygon2D.new()
+	occluder.polygon = points
+	tile_data.set_occluder(0, occluder)
+
 ## Runs the full generation pipeline. Call this from Main.gd on _ready(),
 ## same as before: dungeon.generate()
 func generate(seed_value: int = -1) -> void:
@@ -81,7 +143,7 @@ func generate(seed_value: int = -1) -> void:
 		_rng.seed = seed_value
 	else:
 		_rng.randomize()
-
+	_compute_effective_params()   # NEW -- must run before _place_rooms()
 	_init_grid()
 	_place_rooms()
 	_connect_rooms()
@@ -101,15 +163,13 @@ func _init_grid() -> void:
 
 
 func _place_rooms() -> void:
-	var target_count: int = _rng.randi_range(room_count_min, room_count_max)
+	var target_count: int = _rng.randi_range(_eff_room_count_min, _eff_room_count_max)
 	var attempts: int = 0
 	var max_attempts: int = target_count * 20
-
 	while _rooms.size() < target_count and attempts < max_attempts:
 		attempts += 1
-
-		var w: int = _rng.randi_range(room_min_size, room_max_size)
-		var h: int = _rng.randi_range(room_min_size, room_max_size)
+		var w: int = _rng.randi_range(_eff_room_min_size, _eff_room_max_size)
+		var h: int = _rng.randi_range(_eff_room_min_size, _eff_room_max_size)
 		# Keep a 1-tile margin so rooms never touch the grid edge.
 		var x: int = _rng.randi_range(1, grid_width - w - 1)
 		var y: int = _rng.randi_range(1, grid_height - h - 1)
@@ -148,7 +208,7 @@ func _connect_rooms() -> void:
 
 
 func _carve_l_corridor(from: Vector2i, to: Vector2i) -> void:
-	var wide: bool = _rng.randf() < wide_corridor_chance
+	var wide: bool = _rng.randf() < _eff_wide_corridor_chance
 	if _rng.randi_range(0, 1) == 0:
 		_carve_horizontal(from.x, to.x, from.y, wide)
 		_carve_vertical(from.y, to.y, to.x, wide)

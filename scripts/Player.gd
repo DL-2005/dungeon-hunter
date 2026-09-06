@@ -9,6 +9,7 @@ extends CharacterBody2D
 @export var dodge_duration: float = 0.2
 @export var dodge_cooldown: float = 0.6
 @export var max_health: float = 100.0
+@onready var vision_light: PointLight2D = $PointLight2D
 
 # --- Enchant effect tuning (Week 11-12) ---
 # Read GameManager.equipped_enchant at point-of-use rather than caching it,
@@ -17,6 +18,9 @@ const VAMPIRIC_LIFESTEAL_PCT: float = 0.20  # % of damage dealt returned as heal
 const SWIFT_SPEED_MULT: float = 1.25        # move + dodge speed multiplier
 const GUARDIAN_DAMAGE_REDUCTION: float = 0.25  # % less damage taken
 const BERSERKER_MAX_BONUS: float = 0.5      # up to +50% attack damage at 0 HP
+const VISION_SCALE_TUTORIAL := 16.0
+const VISION_SCALE_STRUGGLING := 13.0
+const VISION_SCALE_SKILLED := 8.0
 
 var health: float = max_health
 var is_dodging: bool = false
@@ -40,6 +44,9 @@ var stats := {
 }
 
 signal died
+
+func _ready() -> void:
+	apply_vision_radius()
 
 func _physics_process(delta: float) -> void:
 	if is_dead:
@@ -162,6 +169,7 @@ func _die() -> void:
 	var combined_enchant: String = GameManager.get_combined_recommendation(boss_result, mob_result)
 
 	GameManager.last_skill_tier = boss_result["tier"]
+	GameManager.last_skill_score = GameManager.get_skill_score(boss_profile)  # NEW
 
 	print("Recommended vs Boss (after loss): ", boss_result["enchant"], " (tier: ", boss_result["tier"], ", confidence: ", boss_result["confidence"], ")")
 	print("Recommended vs Mobs (after loss): ", mob_result["enchant"], " (tier: ", mob_result["tier"], ", confidence: ", mob_result["confidence"], ")")
@@ -191,3 +199,12 @@ func get_mob_playstyle_profile(fight_duration: float) -> Dictionary:
 		"avg_fight_duration": fight_duration,
 		"damage_dealt_avg": stats["damage_dealt_to_mobs"] / max(fight_duration, 1.0),
 	}
+
+func apply_vision_radius() -> void:
+	var scale_value: float
+	if not GameManager.has_played_before:
+		scale_value = VISION_SCALE_TUTORIAL
+	else:
+		scale_value = lerp(VISION_SCALE_STRUGGLING, VISION_SCALE_SKILLED, GameManager.last_skill_score)
+	vision_light.scale = Vector2(scale_value, scale_value)
+	print("Vision radius scale set to: ", scale_value, " (has_played_before=", GameManager.has_played_before, ", score=", GameManager.last_skill_score, ")")

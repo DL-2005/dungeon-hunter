@@ -26,6 +26,7 @@ texture_region_size = Vector2i(64, 64)
 
 [sub_resource type="TileSet" id="TileSet_lfkbx"]
 tile_size = Vector2i(64, 64)
+occlusion_layer_0/light_mask = 1
 physics_layer_0/collision_layer = 1
 sources/1 = SubResource("TileSetAtlasSource_vcsgt")
 
@@ -102,5 +103,9 @@ blackboard_plan = SubResource("BlackboardPlan_vcsgt")
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1995418825]
 
 [node name="ShopUI" parent="CanvasLayer" unique_id=31122269 instance=ExtResource("14_mwfav")]
+process_mode = 3
 
 [node name="TutorialUI" parent="CanvasLayer" unique_id=671197343 instance=ExtResource("15_3p2gp")]
+
+[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=213509300]
+color = Color(0, 0, 0, 1)
