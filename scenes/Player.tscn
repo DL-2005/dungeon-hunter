@@ -9,6 +9,12 @@ size = Vector2(32, 32)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1"]
 size = Vector2(80, 80)
 
+[sub_resource type="Gradient" id="Gradient_v6fml"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_3li8b"]
+gradient = SubResource("Gradient_v6fml")
+fill = 1
+
 [node name="Player" type="CharacterBody2D" unique_id=1659127173]
 script = ExtResource("1")
 
@@ -28,3 +34,8 @@ monitoring = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackHitbox" unique_id=1090132323]
 position = Vector2(-30, 0)
 shape = SubResource("RectangleShape2D_1")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1421564448]
+scale = Vector2(10, 10)
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_3li8b")

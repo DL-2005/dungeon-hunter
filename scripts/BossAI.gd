@@ -85,24 +85,22 @@ func _on_enter_phase_2() -> void:
 	_spawn_adds_for_tier()
 
 func _spawn_adds_for_tier() -> void:
-	var count := 0
-	match GameManager.last_skill_tier:
-		"Skilled":
-			count = randi_range(3, 4)
-		"Average":
-			count = randi_range(1, 2)
-		"Struggling":
-			count = 0
-		_:
-			count = randi_range(1, 2)
+	var score: float = GameManager.last_skill_score
+	# Continuous instead of a 3-way tier switch: scales smoothly from 0
+	# adds (Struggling, score=0.0) up to 4 adds (Skilled, score=1.0).
+	var count: int = int(round(lerp(0.0, 4.0, score)))
 	if count > 0:
 		mobs_requested.emit(count)
-	if GameManager.last_skill_tier == "Skilled":
-		# Second wave for Skilled players, a bit later -- only if the boss
-		# is still alive (don't spawn adds right as/after the boss dies).
+	# Second, delayed wave: also continuous. Size scales with score and
+	# goes to 0 (i.e. doesn't happen at all) below roughly the
+	# Average/Skilled boundary, instead of a hard "only if Skilled" gate.
+	var second_count: int = int(round(lerp(-3.0, 3.0, score)))
+	if second_count > 0 and is_alive():
+		# Second wave for strong performances, a bit later -- only if the
+		# boss is still alive (don't spawn adds right as/after it dies).
 		await get_tree().create_timer(9.0).timeout
 		if is_alive():
-			mobs_requested.emit(randi_range(2, 3))
+			mobs_requested.emit(second_count)
 
 func take_damage(amount: float) -> void:
 	if health <= 0.0:
@@ -151,9 +149,10 @@ func _die() -> void:
 	print("Recommended vs Boss: ", boss_result["enchant"], " (tier: ", boss_result["tier"], ", confidence: ", boss_result["confidence"], ")")
 	print("Recommended vs Mobs: ", mob_result["enchant"], " (tier: ", mob_result["tier"], ", confidence: ", mob_result["confidence"], ")")
 	print("Combined recommendation: ", combined_enchant)
-
 	GameManager.last_skill_tier = boss_result["tier"]  # adaptive difficulty scales off boss performance specifically, not mob performance
-
+	GameManager.last_skill_score = GameManager.get_skill_score(boss_profile)  # NEW -- continuous score for dungeon generation
+	print("Skill score: ", GameManager.last_skill_score)
+	GameManager.has_played_before = true
 	emit_signal("defeated", combined_enchant, GameManager.last_skill_tier)
 	GameManager.attempts_this_boss = 1
 	# TODO: trigger loot drop using `combined_enchant` (Week 11)

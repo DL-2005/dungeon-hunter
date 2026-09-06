@@ -23,8 +23,11 @@ func _ready() -> void:
 	tutorial_ui.closed.connect(_on_tutorial_closed)
 	tutorial_ui.open()
 
+
 func start_new_encounter() -> void:
 	_clear_active_mobs()
+	dungeon.configure_from_skill_score(GameManager.last_skill_score)   # was configure_from_skill_tier
+	player.apply_vision_radius()
 	dungeon.generate()
 	player.global_position = dungeon.get_random_floor_position()
 	boss.global_position = dungeon.get_random_floor_position()
@@ -50,7 +53,12 @@ func _on_player_died() -> void:
 	start_new_encounter()
 
 func _spawn_exploration_mobs() -> void:
-	var mob_count := randi_range(3, 5)
+	var score: float = GameManager.last_skill_score
+	var eff_min: int = int(round(lerp(1.0, 5.0, score)))
+	var eff_max: int = int(round(lerp(3.0, 8.0, score)))
+	if eff_max < eff_min:
+		eff_max = eff_min
+	var mob_count: int = randi_range(eff_min, eff_max)
 	for i in mob_count:
 		var scene := MELEE_MOB_SCENE if randf() < 0.6 else RANGED_MOB_SCENE
 		var mob := scene.instantiate()
