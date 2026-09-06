@@ -43,7 +43,7 @@ def label_profile(features: dict) -> tuple[str, str]:
     # --- Skill tier ---
     if attempts >= 4 or hit_taken_rate > 0.30 or duration > 65:
         tier = "Struggling"
-    elif attempts == 1 and hit_taken_rate < 0.10 and duration < 35:
+    elif attempts == 1 and hit_taken_rate < 0.20 and duration < 45:
         tier = "Skilled"
     else:
         tier = "Average"
