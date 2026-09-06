@@ -93,7 +93,7 @@
         "attempts": 1
       },
       "enchant": "Vampiric",
-      "tier": "Average",
+      "tier": "Skilled",
       "source": "synthetic"
     },
     {
@@ -873,7 +873,7 @@
         "attempts": 1
       },
       "enchant": "Vampiric",
-      "tier": "Average",
+      "tier": "Skilled",
       "source": "synthetic"
     },
     {
@@ -897,7 +897,7 @@
         "attempts": 1
       },
       "enchant": "Vampiric",
-      "tier": "Average",
+      "tier": "Skilled",
       "source": "synthetic"
     },
     {
@@ -933,7 +933,7 @@
         "attempts": 1
       },
       "enchant": "Swift",
-      "tier": "Average",
+      "tier": "Skilled",
       "source": "synthetic"
     },
     {
@@ -1053,7 +1053,7 @@
         "attempts": 1
       },
       "enchant": "Swift",
-      "tier": "Average",
+      "tier": "Skilled",
       "source": "synthetic"
     },
     {
@@ -1353,7 +1353,7 @@
         "attempts": 1
       },
       "enchant": "Swift",
-      "tier": "Average",
+      "tier": "Skilled",
       "source": "synthetic"
     },
     {
@@ -1437,7 +1437,7 @@
         "attempts": 1
       },
       "enchant": "Vampiric",
-      "tier": "Average",
+      "tier": "Skilled",
       "source": "synthetic"
     },
     {
@@ -1473,7 +1473,7 @@
         "attempts": 1
       },
       "enchant": "Vampiric",
-      "tier": "Average",
+      "tier": "Skilled",
       "source": "synthetic"
     },
     {
@@ -1977,7 +1977,7 @@
         "attempts": 1
       },
       "enchant": "Berserker",
-      "tier": "Average",
+      "tier": "Skilled",
       "source": "synthetic"
     },
     {
@@ -2217,7 +2217,7 @@
         "attempts": 1
       },
       "enchant": "Berserker",
-      "tier": "Average",
+      "tier": "Skilled",
       "source": "synthetic"
     },
     {
@@ -2349,7 +2349,7 @@
         "attempts": 1
       },
       "enchant": "Vampiric",
-      "tier": "Average",
+      "tier": "Skilled",
       "source": "synthetic"
     },
     {
@@ -2517,7 +2517,7 @@
         "attempts": 1
       },
       "enchant": "Berserker",
-      "tier": "Average",
+      "tier": "Skilled",
       "source": "synthetic"
     },
     {
@@ -2625,7 +2625,7 @@
         "attempts": 1
       },
       "enchant": "Berserker",
-      "tier": "Average",
+      "tier": "Skilled",
       "source": "synthetic"
     },
     {
@@ -2853,7 +2853,7 @@
         "attempts": 1
       },
       "enchant": "Vampiric",
-      "tier": "Average",
+      "tier": "Skilled",
       "source": "synthetic"
     },
     {
@@ -2997,7 +2997,7 @@
         "attempts": 1
       },
       "enchant": "Swift",
-      "tier": "Average",
+      "tier": "Skilled",
       "source": "synthetic"
     },
     {
@@ -3369,7 +3369,7 @@
         "attempts": 1
       },
       "enchant": "Swift",
-      "tier": "Average",
+      "tier": "Skilled",
       "source": "synthetic"
     },
     {
@@ -3669,7 +3669,7 @@
         "attempts": 1.0
       },
       "enchant": "Vampiric",
-      "tier": "Average",
+      "tier": "Skilled",
       "source": "real"
     },
     {
@@ -3693,7 +3693,7 @@
         "attempts": 1.0
       },
       "enchant": "Berserker",
-      "tier": "Average",
+      "tier": "Skilled",
       "source": "real"
     },
     {
@@ -3729,7 +3729,7 @@
         "attempts": 1.0
       },
       "enchant": "Vampiric",
-      "tier": "Average",
+      "tier": "Skilled",
       "source": "real"
     },
     {
@@ -3765,7 +3765,7 @@
         "attempts": 1.0
       },
       "enchant": "Vampiric",
-      "tier": "Average",
+      "tier": "Skilled",
       "source": "real"
     },
     {
@@ -3789,7 +3789,7 @@
         "attempts": 1.0
       },
       "enchant": "Berserker",
-      "tier": "Average",
+      "tier": "Skilled",
       "source": "real"
     },
     {
@@ -3801,7 +3801,7 @@
         "attempts": 1.0
       },
       "enchant": "Berserker",
-      "tier": "Average",
+      "tier": "Skilled",
       "source": "real"
     },
     {
@@ -3825,7 +3825,7 @@
         "attempts": 1.0
       },
       "enchant": "Berserker",
-      "tier": "Average",
+      "tier": "Skilled",
       "source": "real"
     },
     {
@@ -3849,7 +3849,7 @@
         "attempts": 1.0
       },
       "enchant": "Berserker",
-      "tier": "Average",
+      "tier": "Skilled",
       "source": "real"
     },
     {
@@ -3861,7 +3861,7 @@
         "attempts": 1.0
       },
       "enchant": "Berserker",
-      "tier": "Average",
+      "tier": "Skilled",
       "source": "real"
     },
     {
@@ -3885,7 +3885,7 @@
         "attempts": 1.0
       },
       "enchant": "Berserker",
-      "tier": "Average",
+      "tier": "Skilled",
       "source": "real"
     },
     {
@@ -3969,7 +3969,7 @@
         "attempts": 1.0
       },
       "enchant": "Berserker",
-      "tier": "Average",
+      "tier": "Skilled",
       "source": "real"
     },
     {
