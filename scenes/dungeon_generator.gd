@@ -301,3 +301,29 @@ func get_random_floor_position() -> Vector2:
 ## (e.g. loot placement, enemy spawning) need to pick specific rooms later.
 func get_rooms() -> Array[Rect2i]:
 	return _rooms
+
+## Returns the index into get_rooms() of whichever room contains the given
+## world-space position, or -1 if the position isn't inside any room
+## (e.g. player is standing in a corridor). Used by the minimap to track
+## which rooms the player has actually walked into.
+func get_room_index_at_world_pos(world_pos: Vector2) -> int:
+	var cell: Vector2i = get_cell_at_world_pos(world_pos)
+	for i in _rooms.size():
+		if _rooms[i].has_point(cell):
+			return i
+	return -1
+
+## Converts a world-space position into grid-cell coordinates. Shared by
+## get_room_index_at_world_pos() and the minimap's corridor tracing.
+func get_cell_at_world_pos(world_pos: Vector2) -> Vector2i:
+	var local: Vector2 = _tiles.to_local(world_pos)
+	var tile_size: Vector2 = Vector2(_tiles.tile_set.tile_size)
+	return Vector2i(floor(local.x / tile_size.x), floor(local.y / tile_size.y))
+
+## Returns true if the given grid cell is a floor tile (room interior or
+## corridor) -- used by the minimap to trace corridors the player has
+## actually walked through.
+func is_floor_cell(cell: Vector2i) -> bool:
+	if cell.x < 0 or cell.x >= grid_width or cell.y < 0 or cell.y >= grid_height:
+		return false
+	return _grid[cell.x][cell.y] == Cell.FLOOR

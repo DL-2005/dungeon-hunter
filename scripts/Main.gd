@@ -9,6 +9,7 @@ extends Node2D
 @onready var dungeon = $DungeonTiles/DungeonGenerator
 @onready var shop_ui = $CanvasLayer/ShopUI
 @onready var tutorial_ui = $CanvasLayer/TutorialUI
+@onready var minimap = $CanvasLayer/Minimap
 
 var _active_mobs: Array[Node] = []
 const MELEE_MOB_SCENE := preload("res://scenes/MeleeMob.tscn")
@@ -29,12 +30,13 @@ func start_new_encounter() -> void:
 	dungeon.configure_from_skill_score(GameManager.last_skill_score)   # was configure_from_skill_tier
 	player.apply_vision_radius()
 	dungeon.generate()
+	minimap.reset_for_new_dungeon()
 	player.global_position = dungeon.get_random_floor_position()
 	boss.global_position = dungeon.get_random_floor_position()
 	player.revive()
 	boss.reset_and_respawn()
 	GameManager.start_fight()
-	_spawn_exploration_mobs()
+	_spawn_exploration_mobs()	
 
 func _on_boss_defeated(recommended_enchant: String, skill_tier: String) -> void:
 	GameManager.add_currency(50)
