@@ -80,11 +80,12 @@ func _physics_process(delta: float) -> void:
 		_start_dodge()
 
 
+var _attack_in_progress: bool = false
+
 func _attack() -> void:
-	if is_dead:
+	if is_dead or _attack_in_progress:
 		return
-	# TODO (Week 3-4): spawn a hitbox / play attack animation.
-	# For now this just registers the intent so BossAI has something to react to.
+	_attack_in_progress = true
 	stats["attacks_thrown"] += 1
 	print("Player attacks toward ", last_move_dir)
 	$AttackHitbox.position = last_move_dir * 30.0
@@ -108,6 +109,7 @@ func _attack() -> void:
 				print("Vampiric healed for ", damage * VAMPIRIC_LIFESTEAL_PCT, ". Health: ", health)
 	await get_tree().create_timer(0.1).timeout
 	$AttackHitbox.monitoring = false
+	_attack_in_progress = false
 
 func revive() -> void:
 	is_dead = false

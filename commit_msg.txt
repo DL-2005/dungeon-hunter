@@ -1,0 +1,5 @@
+Add fog-of-war (shadow-casting light + tile occluders) and tier-linked adaptive vision radius
+
+- PointLight2D on Player with shadow-casting occluders on wall tiles
+- Vision radius now scales with the continuous k-NN skill score: 16.0 (tutorial) -> 13.0 (Struggling) -> 8.0 (Skilled)
+- Fixed grey letterbox bars (Default Clear Color -> black, Stretch Mode -> canvas_items/keep)
