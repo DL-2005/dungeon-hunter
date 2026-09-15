@@ -16,19 +16,26 @@ const CURRENT_ROOM_COLOR := Color(0.95, 0.95, 0.95, 1.0)
 const CORRIDOR_COLOR := Color(0.6, 0.55, 0.2, 0.85)
 const PLAYER_DOT_COLOR := Color(1.0, 0.15, 0.15, 1.0)
 const PLAYER_DOT_RADIUS: float = 3.0
+const SECRET_MARKER_COLOR := Color(0.65, 0.35, 0.85, 1.0)  # matches the wall tint
+const SECRET_MARKER_RADIUS: float = 4.0
 
 var _visited: Dictionary = {}          # room index -> true
 var _visited_cells: Dictionary = {}    # Vector2i (corridor cell) -> true
 var _current_room: int = -1
 var _rooms: Array[Rect2i] = []
 var _bounds: Rect2i
+var _secret_marker_visible: bool = false
+
+func reveal_secret_marker() -> void:
+	_secret_marker_visible = true
+	queue_redraw()
 
 func reset_for_new_dungeon() -> void:
 	_rooms = dungeon.get_rooms()
-	print("Minimap: reset_for_new_dungeon called, room count = ", _rooms.size())
 	_visited.clear()
 	_visited_cells.clear()
 	_current_room = -1
+	_secret_marker_visible = false
 	if _rooms.is_empty():
 		_bounds = Rect2i()
 	else:
@@ -49,9 +56,10 @@ func _process(_delta: float) -> void:
 		changed = true
 	if idx == -1:
 		var cell: Vector2i = dungeon.get_cell_at_world_pos(player.global_position)
-		if dungeon.is_floor_cell(cell) and not _visited_cells.has(cell):
-			_visited_cells[cell] = true
-			changed = true
+		if dungeon.is_floor_cell(cell):
+			if not _visited_cells.has(cell):
+				_visited_cells[cell] = true
+			changed = true  # always redraw in a corridor so the dot tracks the player, even on a revisited cell
 	if changed:
 		queue_redraw()
 
@@ -81,3 +89,8 @@ func _draw() -> void:
 		var cell: Vector2i = dungeon.get_cell_at_world_pos(player.global_position)
 		var rel := Vector2(cell - _bounds.position) * CELL_SCALE + Vector2(CELL_SCALE, CELL_SCALE) / 2.0
 		draw_circle(Vector2(MARGIN, MARGIN) + rel, PLAYER_DOT_RADIUS, PLAYER_DOT_COLOR)
+
+	if _secret_marker_visible and dungeon.has_secret_room():
+		var door_cell: Vector2i = dungeon.get_secret_door_cell()
+		var rel := Vector2(door_cell - _bounds.position) * CELL_SCALE + Vector2(CELL_SCALE, CELL_SCALE) / 2.0
+		draw_circle(Vector2(MARGIN, MARGIN) + rel, SECRET_MARKER_RADIUS, SECRET_MARKER_COLOR)
