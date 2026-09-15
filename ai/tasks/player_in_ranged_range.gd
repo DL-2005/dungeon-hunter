@@ -7,4 +7,4 @@ func _tick(_delta: float) -> Status:
 	if boss.player == null:
 		return FAILURE
 	var dist: float = boss.global_position.distance_to(boss.player.global_position)
-	return SUCCESS if dist < boss.ranged_range and dist > 110.0 else FAILURE
+	return SUCCESS if dist < boss.ranged_range and dist > 70.0 else FAILURE

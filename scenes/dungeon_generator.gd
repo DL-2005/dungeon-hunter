@@ -157,7 +157,7 @@ func generate(seed_value: int = -1) -> void:
 	_build_walls_around_floors()
 	_draw_tiles()
 	_highlight_secret_room_walls()
-	_print_debug_map()
+	_export_debug_map_json()
 
 func _highlight_secret_room_walls() -> void:
 	if _secret_highlight == null:
@@ -256,11 +256,9 @@ func _place_secret_room() -> void:
 		_secret_room = candidate
 		_secret_door_cell = door_cell
 		_carve_room(candidate)
-		print("DEBUG: secret room placed at ", candidate, " door=", door_cell, " (attempt ", attempts, ")")
 		return
 	# max_attempts exhausted -- rare; no secret room this dungeon. Main.gd
 	# must check has_secret_room() before offering it.
-	print("DEBUG: secret room placement FAILED after ", attempts, " attempts (rooms=", _rooms.size(), ")")
 
 
 func _rect_overlaps_existing_floor(rect: Rect2i) -> bool:
@@ -320,7 +318,7 @@ func open_secret_door() -> void:
 	_ensure_door_neighbor_walls()
 	if _secret_highlight != null:
 		_secret_highlight.erase_cell(_secret_door_cell)
-	_print_debug_map()
+	_export_debug_map_json()
 
 func _ensure_door_neighbor_walls() -> void:
 	# Opening the door can expose EMPTY cells that were never wall-ified at
@@ -504,25 +502,45 @@ func is_floor_cell(cell: Vector2i) -> bool:
 		return false
 	return _grid[cell.x][cell.y] == Cell.FLOOR
 
-func _print_debug_map() -> void:
-	print("DEBUG: dungeon map (S=secret room floor, D=secret door closed, O=secret door open, #=wall, .=floor):")
+func _export_debug_map_json() -> void:
+	var cells: Array = []
 	for y in grid_height:
-		var row := ""
+		var row: Array = []
 		for x in grid_width:
-			var cell := Vector2i(x, y)
-			if has_secret_room() and cell == _secret_door_cell:
-				row += ("O" if _secret_door_open else "D")
-			elif has_secret_room() and _secret_room.has_point(cell):
-				row += "S"
-			else:
-				match _grid[x][y]:
-					Cell.WALL:
-						row += "#"
-					Cell.FLOOR:
-						row += "."
-					_:
-						row += " "
-		print(row)
+			match _grid[x][y]:
+				Cell.WALL:
+					row.append("wall")
+				Cell.FLOOR:
+					row.append("floor")
+				_:
+					row.append("empty")
+		cells.append(row)
+
+	var rooms_data: Array = []
+	for r in _rooms:
+		rooms_data.append({"x": r.position.x, "y": r.position.y, "w": r.size.x, "h": r.size.y})
+
+	var data := {
+		"grid_width": grid_width,
+		"grid_height": grid_height,
+		"cells": cells,
+		"rooms": rooms_data,
+		"has_secret_room": has_secret_room(),
+		"secret_room": null,
+		"secret_door_cell": null,
+		"secret_door_open": _secret_door_open,
+	}
+	if has_secret_room():
+		data["secret_room"] = {"x": _secret_room.position.x, "y": _secret_room.position.y, "w": _secret_room.size.x, "h": _secret_room.size.y}
+		data["secret_door_cell"] = {"x": _secret_door_cell.x, "y": _secret_door_cell.y}
+
+	DirAccess.make_dir_recursive_absolute("res://debug")
+	var file := FileAccess.open("res://debug/dungeon_map.json", FileAccess.WRITE)
+	if file == null:
+		push_warning("DungeonGenerator: failed to open res://debug/dungeon_map.json for writing")
+		return
+	file.store_string(JSON.stringify(data, "\t"))
+	file.close()
 
 func is_inside_secret_room(cell: Vector2i) -> bool:
 	return has_secret_room() and _secret_room.has_point(cell)

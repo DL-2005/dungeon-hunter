@@ -36,6 +36,22 @@ const BOSS_PRESETS: Array[Dictionary] = [
 		"attack_damage": 14.0,
 		"ranged_damage": 10.0,
 	},
+	{
+	"name": "Venom Stalker",
+	"max_health": 260.0,
+	"move_speed": 110.0,
+	"attack_cooldown": 1.0,
+	"attack_damage": 8.0,
+	"ranged_damage": 14.0,
+},
+{
+	"name": "Storm Herald",
+	"max_health": 350.0,
+	"move_speed": 130.0,
+	"attack_cooldown": 0.8,
+	"attack_damage": 12.0,
+	"ranged_damage": 9.0,
+},
 ]
 const IS_BOSS: bool = true
 var _current_preset: Dictionary = {}
@@ -48,14 +64,19 @@ var _encounter_id: int = 0
 @export var attack_cooldown: float = 1.0
 @export var ranged_range: float = 400.0
 @export var ranged_cooldown: float = 2.0
-@export var ranged_damage: float = 8.0 
+@export var ranged_damage: float = 8.0
 @export var attack_damage: float = 10.0
+@export var attack_telegraph_duration: float = 1.0  # wind-up before a hit lands, so dodges are reactable
 
 var _ranged_cooldown_timer: float = 0.0
 var _base_move_speed: float
 var _base_attack_cooldown: float
 var _attack_cooldown_timer: float = 0.0
-var health: float 
+var is_telegraphing_melee: bool = false
+var is_telegraphing_ranged: bool = false
+var _melee_telegraph_timer: float = 0.0
+var _ranged_telegraph_timer: float = 0.0
+var health: float
 var current_phase: Phase = Phase.PHASE_1
 var player: Node2D = null
 var _base_max_health: float
@@ -97,6 +118,73 @@ func take_damage(amount: float) -> void:
 
 func is_alive() -> bool:
 	return health > 0.0
+
+# --- Attack telegraphs -----------------------------------------------------
+# Called by ai/tasks/attack_player.gd and ai/tasks/ranged_attack.gd instead of
+# dealing damage the instant the cooldown clears. This gives a brief, visible
+# wind-up so a dodge can actually be timed to the attack instead of being
+# pure luck. Same interface on MobAI.gd so the shared task scripts work for
+# both bosses and mobs.
+
+func start_melee_telegraph() -> void:
+	is_telegraphing_melee = true
+	_melee_telegraph_timer = attack_telegraph_duration
+	_flash_telegraph()
+
+
+func tick_melee_telegraph(delta: float) -> bool:
+	_melee_telegraph_timer -= delta
+	if _melee_telegraph_timer <= 0.0:
+		is_telegraphing_melee = false
+		return true
+	return false
+
+
+func resolve_melee_attack() -> void:
+	if player != null and player.has_method("take_damage") and player.health > 0.0 and is_alive():
+		player.take_damage(attack_damage, IS_BOSS)
+		print("Boss hits player for ", attack_damage, " damage")
+	_attack_cooldown_timer = attack_cooldown
+
+
+func start_ranged_telegraph() -> void:
+	is_telegraphing_ranged = true
+	_ranged_telegraph_timer = attack_telegraph_duration
+	_flash_telegraph()
+
+
+func tick_ranged_telegraph(delta: float) -> bool:
+	_ranged_telegraph_timer -= delta
+	if _ranged_telegraph_timer <= 0.0:
+		is_telegraphing_ranged = false
+		return true
+	return false
+
+
+func resolve_ranged_attack() -> void:
+	if player != null and player.has_method("take_damage") and player.health > 0.0 and is_alive():
+		player.take_damage(ranged_damage, IS_BOSS)
+		print("Boss ranged-hits player for ", ranged_damage, " damage")
+	_ranged_cooldown_timer = ranged_cooldown
+
+
+func _get_visual_sprite() -> Sprite2D:
+	if has_node("Sprite2D"):
+		return $Sprite2D
+	if has_node("Visual"):
+		return $Visual
+	return null
+
+
+func _flash_telegraph() -> void:
+	var spr := _get_visual_sprite()
+	if spr == null:
+		return
+	spr.modulate = Color(1, 1, 1)
+	var tween := create_tween()
+	tween.tween_property(spr, "modulate", Color(1.0, 0.25, 0.25), attack_telegraph_duration * 0.5)
+	tween.tween_property(spr, "modulate", Color(1, 1, 1), attack_telegraph_duration * 0.5)
+
 
 func get_current_preset_index() -> int:
 	return _current_preset_index
@@ -150,6 +238,13 @@ func reset_and_respawn(exclude_indices: Array[int] = [], reroll_preset: bool = t
 	current_phase = Phase.PHASE_1
 	_attack_cooldown_timer = 0.0
 	_ranged_cooldown_timer = 0.0
+	is_telegraphing_melee = false
+	is_telegraphing_ranged = false
+	_melee_telegraph_timer = 0.0
+	_ranged_telegraph_timer = 0.0
+	var spr := _get_visual_sprite()
+	if spr != null:
+		spr.modulate = Color(1, 1, 1)
 	set_physics_process(true)
 	if not $BTPlayer.active:
 		$BTPlayer.active = true

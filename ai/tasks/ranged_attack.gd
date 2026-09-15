@@ -2,16 +2,19 @@
 extends BTAction
 func _generate_name() -> String:
 	return "RangedAttack"
-func _tick(_delta: float) -> Status:
+func _tick(delta: float) -> Status:
 	var boss = get_agent()
 	if boss.player == null:
 		return FAILURE
 	if not boss.is_alive():
 		return FAILURE
+	if boss.is_telegraphing_ranged:
+		if boss.tick_ranged_telegraph(delta):
+			boss.resolve_ranged_attack()
+		return RUNNING
 	if boss._ranged_cooldown_timer <= 0.0 \
 			and boss.player.has_method("take_damage") \
 			and boss.player.health > 0.0:
-		print(boss.name, " ranged-hits player for ", boss.ranged_damage, " damage")
-		boss.player.take_damage(boss.ranged_damage, boss.IS_BOSS)
-		boss._ranged_cooldown_timer = boss.ranged_cooldown
+		boss.start_ranged_telegraph()
+		return RUNNING
 	return SUCCESS

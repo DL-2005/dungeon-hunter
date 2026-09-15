@@ -7,7 +7,7 @@ extends BTCondition
 ## other side.
 ## Attach the "agent" on BTPlayer to the Boss node itself, so get_agent()
 ## returns the Boss (with .player, .global_position, etc.).
-const ATTACK_RANGE: float = 110.0
+const ATTACK_RANGE: float = 70.0
 func _generate_name() -> String:
 	return "PlayerInAttackRange"
 func _tick(_delta: float) -> Status:

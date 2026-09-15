@@ -126,6 +126,17 @@ script = ExtResource("16_cvmbd")
 dungeon = NodePath("../../DungeonTiles/DungeonGenerator")
 player = NodePath("../../Player")
 
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=1861232018]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Panel" type="Panel" parent="CanvasLayer/Control" unique_id=78255710]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
 [node name="FightTimerLabel" type="Label" parent="CanvasLayer" unique_id=798190578]
 anchors_preset = 1
 anchor_left = 1.0
