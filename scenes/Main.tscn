@@ -81,8 +81,12 @@ script = ExtResource("3")
 [node name="DungeonTiles" type="TileMapLayer" parent="." unique_id=699402272]
 tile_set = SubResource("TileSet_lfkbx")
 
+[node name="SecretWallHighlight" type="TileMapLayer" parent="DungeonTiles" unique_id=1387810121]
+tile_set = SubResource("TileSet_lfkbx")
+
 [node name="DungeonGenerator" type="Node" parent="DungeonTiles" unique_id=1224714687]
 script = ExtResource("5_vcsgt")
+secret_highlight_path = NodePath("../SecretWallHighlight")
 
 [node name="Player" parent="." unique_id=549141553 instance=ExtResource("1")]
 position = Vector2(532, 420)
@@ -121,6 +125,27 @@ grow_horizontal = 0
 script = ExtResource("16_cvmbd")
 dungeon = NodePath("../../DungeonTiles/DungeonGenerator")
 player = NodePath("../../Player")
+
+[node name="FightTimerLabel" type="Label" parent="CanvasLayer" unique_id=798190578]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 23.0
+grow_horizontal = 0
+
+[node name="SecretPromptLabel" type="Label" parent="CanvasLayer" unique_id=1717929324]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+
+[node name="SecretTimerLabel" type="Label" parent="CanvasLayer" unique_id=1606353155]
+offset_right = 40.0
+offset_bottom = 23.0
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=213509300]
 color = Color(0, 0, 0, 1)

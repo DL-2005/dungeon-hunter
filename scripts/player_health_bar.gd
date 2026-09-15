@@ -1,5 +1,4 @@
 extends Node2D
-
 @export var bar_width: float = 60.0
 @export var bar_height: float = 8.0
 @export var offset_above_parent: float = 50.0
@@ -7,6 +6,11 @@ var health_ratio: float = 1.0
 
 func _ready() -> void:
 	position = Vector2(-bar_width / 2.0, -offset_above_parent)
+	z_index = 100
+	z_as_relative = false
+	var mat := CanvasItemMaterial.new()
+	mat.light_mode = CanvasItemMaterial.LIGHT_MODE_UNSHADED
+	material = mat
 
 func update_health(current: float, max_value: float) -> void:
 	health_ratio = clamp(current / max_value, 0.0, 1.0)

@@ -39,7 +39,7 @@ enum Cell { EMPTY, FLOOR, WALL }
 
 @export_group("Node refs")
 @export var dungeon_tiles_path: NodePath = ^".."
-
+var _spawn_room_index: int = -1
 var _tiles: TileMapLayer
 var _grid: Array = []          # 2D array [x][y] -> Cell
 var _rooms: Array[Rect2i] = [] # generated room rectangles, in grid coordinates
@@ -50,8 +50,13 @@ var _eff_room_count_max: int
 var _eff_room_min_size: int
 var _eff_room_max_size: int
 var _eff_wide_corridor_chance: float
-
-
+var _secret_room: Rect2i = Rect2i()
+var _secret_door_cell: Vector2i = Vector2i(-1, -1)
+var _secret_door_open: bool = false
+@export_group("Hidden room")
+@export var secret_highlight_path: NodePath
+var _secret_highlight: TileMapLayer
+const SECRET_WALL_TINT: Color = Color(0.65, 0.35, 0.85)  # purple-ish; change to taste
 
 
 ## Called by Main.gd before generate(), using the same skill tier that already
@@ -78,9 +83,7 @@ func _compute_effective_params() -> void:
 	_eff_room_min_size = int(round(lerp(3.0, 5.0, difficulty_bias)))
 	_eff_room_max_size = int(round(lerp(6.0, 9.0, difficulty_bias)))
 	_eff_wide_corridor_chance = lerp(0.25, 0.75, difficulty_bias)
-	print("Dungeon params for bias=", difficulty_bias, ": rooms ", _eff_room_count_min, "-", _eff_room_count_max,
-		", size ", _eff_room_min_size, "-", _eff_room_max_size, ", wide_corridor_chance=", _eff_wide_corridor_chance)
-
+	
 
 func _ready() -> void:
 	_tiles = get_node(dungeon_tiles_path)
@@ -88,6 +91,9 @@ func _ready() -> void:
 	_ensure_wall_collision(Vector2i(3, 0))
 	_ensure_wall_occluder(Vector2i(2, 0))   # NEW
 	_ensure_wall_occluder(Vector2i(3, 0))   # NEW
+	if secret_highlight_path != NodePath():
+		_secret_highlight = get_node(secret_highlight_path)
+		_secret_highlight.modulate = SECRET_WALL_TINT
 
 
 ## Guarantees the given wall tile has a full-square collision polygon,
@@ -143,13 +149,33 @@ func generate(seed_value: int = -1) -> void:
 		_rng.seed = seed_value
 	else:
 		_rng.randomize()
-	_compute_effective_params()   # NEW -- must run before _place_rooms()
+	_compute_effective_params()
 	_init_grid()
 	_place_rooms()
 	_connect_rooms()
+	_place_secret_room()          # NEW
 	_build_walls_around_floors()
 	_draw_tiles()
+	_highlight_secret_room_walls()
+	_print_debug_map()
 
+func _highlight_secret_room_walls() -> void:
+	if _secret_highlight == null:
+		return
+	_secret_highlight.clear()
+	_secret_highlight.visible = false
+	if not has_secret_room():
+		return
+	for x in range(_secret_room.position.x - 1, _secret_room.position.x + _secret_room.size.x + 1):
+		for y in range(_secret_room.position.y - 1, _secret_room.position.y + _secret_room.size.y + 1):
+			if x < 0 or x >= grid_width or y < 0 or y >= grid_height:
+				continue
+			if _grid[x][y] == Cell.WALL:
+				_secret_highlight.set_cell(Vector2i(x, y), SOURCE_ID, WALL_TILES[0])
+
+func reveal_secret_highlight() -> void:
+	if _secret_highlight != null:
+		_secret_highlight.visible = true
 
 func _init_grid() -> void:
 	_rooms.clear()
@@ -177,10 +203,138 @@ func _place_rooms() -> void:
 		var candidate := Rect2i(x, y, w, h)
 		if _overlaps_any_room(candidate):
 			continue
-
 		_rooms.append(candidate)
 		_carve_room(candidate)
 
+func _place_secret_room() -> void:
+	_secret_room = Rect2i()
+	_secret_door_cell = Vector2i(-1, -1)
+	_secret_door_open = false
+	if _rooms.is_empty():
+		return
+	var attempts := 0
+	var max_attempts := 60
+	while attempts < max_attempts:
+		attempts += 1
+		var host_index: int = _rng.randi_range(0, _rooms.size() - 1)
+		var host: Rect2i = _rooms[host_index]
+		var w: int = _rng.randi_range(3, 4)
+		var h: int = _rng.randi_range(3, 4)
+		var side: int = _rng.randi_range(0, 3)
+		var candidate: Rect2i
+		var door_cell: Vector2i
+		match side:
+			0:  # right of host
+				var door_y: int = _rng.randi_range(host.position.y, host.position.y + host.size.y - 1)
+				candidate = Rect2i(host.position.x + host.size.x + 1, door_y - h / 2, w, h)
+				door_cell = Vector2i(host.position.x + host.size.x, door_y)
+			1:  # left of host
+				var door_y: int = _rng.randi_range(host.position.y, host.position.y + host.size.y - 1)
+				candidate = Rect2i(host.position.x - w - 1, door_y - h / 2, w, h)
+				door_cell = Vector2i(host.position.x - 1, door_y)
+			2:  # below host
+				var door_x: int = _rng.randi_range(host.position.x, host.position.x + host.size.x - 1)
+				candidate = Rect2i(door_x - w / 2, host.position.y + host.size.y + 1, w, h)
+				door_cell = Vector2i(door_x, host.position.y + host.size.y)
+			_:  # above host
+				var door_x: int = _rng.randi_range(host.position.x, host.position.x + host.size.x - 1)
+				candidate = Rect2i(door_x - w / 2, host.position.y - h - 1, w, h)
+				door_cell = Vector2i(door_x, host.position.y - 1)
+		if candidate.position.x < 1 or candidate.position.y < 1 \
+				or candidate.position.x + candidate.size.x >= grid_width - 1 \
+				or candidate.position.y + candidate.size.y >= grid_height - 1:
+			continue
+		var blocked := false
+		for i in _rooms.size():
+			if i == host_index:
+				continue
+			if candidate.grow(1).intersects(_rooms[i]):
+				blocked = true
+				break
+		if blocked or _rect_overlaps_existing_floor(candidate) or _rect_perimeter_touches_floor(candidate, door_cell):
+			continue
+		_secret_room = candidate
+		_secret_door_cell = door_cell
+		_carve_room(candidate)
+		print("DEBUG: secret room placed at ", candidate, " door=", door_cell, " (attempt ", attempts, ")")
+		return
+	# max_attempts exhausted -- rare; no secret room this dungeon. Main.gd
+	# must check has_secret_room() before offering it.
+	print("DEBUG: secret room placement FAILED after ", attempts, " attempts (rooms=", _rooms.size(), ")")
+
+
+func _rect_overlaps_existing_floor(rect: Rect2i) -> bool:
+	for x in range(rect.position.x, rect.position.x + rect.size.x):
+		for y in range(rect.position.y, rect.position.y + rect.size.y):
+			if _grid[x][y] == Cell.FLOOR:
+				return true
+	return false
+
+
+func _rect_perimeter_touches_floor(rect: Rect2i, door_cell: Vector2i) -> bool:
+	# Checks the 1-tile buffer ring around the candidate (the cells that are
+	# supposed to become sealing walls) against ALL existing floor in the
+	# grid -- including standalone corridor cells carved by _connect_rooms(),
+	# which aren't tracked in _rooms and were previously invisible to the
+	# placement check. Any floor found here (other than the intended door
+	# gap) means there's no room left for a wall on that side, so the
+	# candidate must be rejected.
+	var padded: Rect2i = rect.grow(1)
+	for x in range(padded.position.x, padded.position.x + padded.size.x):
+		for y in range(padded.position.y, padded.position.y + padded.size.y):
+			var cell := Vector2i(x, y)
+			if rect.has_point(cell):
+				continue  # interior, already checked by _rect_overlaps_existing_floor
+			if cell == door_cell:
+				continue  # this is the one deliberate opening into the host room
+			if _grid[x][y] == Cell.FLOOR:
+				return true
+	return false
+
+func has_secret_room() -> bool:
+	return _secret_room.size != Vector2i.ZERO
+
+func get_secret_door_world_pos() -> Vector2:
+	var tile_size: Vector2 = Vector2(_tiles.tile_set.tile_size)
+	return _tiles.to_global(Vector2(_secret_door_cell) * tile_size + tile_size / 2.0)
+
+func get_secret_door_cell() -> Vector2i:
+	return _secret_door_cell
+
+func get_secret_room_center_world_pos() -> Vector2:
+	var center: Vector2i = Vector2i(
+		_secret_room.position.x + _secret_room.size.x / 2,
+		_secret_room.position.y + _secret_room.size.y / 2)
+	var tile_size: Vector2 = Vector2(_tiles.tile_set.tile_size)
+	return _tiles.to_global(Vector2(center) * tile_size + tile_size / 2.0)
+
+func is_secret_door_open() -> bool:
+	return _secret_door_open
+
+func open_secret_door() -> void:
+	if _secret_door_open or not has_secret_room():
+		return
+	_secret_door_open = true
+	_grid[_secret_door_cell.x][_secret_door_cell.y] = Cell.FLOOR
+	_tiles.set_cell(_secret_door_cell, SOURCE_ID, FLOOR_TILES[_rng.randi_range(0, FLOOR_TILES.size() - 1)])
+	_ensure_door_neighbor_walls()
+	if _secret_highlight != null:
+		_secret_highlight.erase_cell(_secret_door_cell)
+	_print_debug_map()
+
+func _ensure_door_neighbor_walls() -> void:
+	# Opening the door can expose EMPTY cells that were never wall-ified at
+	# generation time (since the door itself wasn't floor yet back then) --
+	# fill those in now so opening the door doesn't leave a tile-less gap.
+	for dx in range(-1, 2):
+		for dy in range(-1, 2):
+			var nx: int = _secret_door_cell.x + dx
+			var ny: int = _secret_door_cell.y + dy
+			if nx < 0 or nx >= grid_width or ny < 0 or ny >= grid_height:
+				continue
+			if _grid[nx][ny] == Cell.EMPTY:
+				_grid[nx][ny] = Cell.WALL
+				_tiles.set_cell(Vector2i(nx, ny), SOURCE_ID, WALL_TILES[0])
 
 func _overlaps_any_room(candidate: Rect2i) -> bool:
 	# Grow the candidate by 1 tile so rooms never end up directly adjacent
@@ -197,7 +351,6 @@ func _carve_room(room: Rect2i) -> void:
 		for y in range(room.position.y, room.position.y + room.size.y):
 			_grid[x][y] = Cell.FLOOR
 
-
 func _connect_rooms() -> void:
 	# Connect each room to the next in sequence with an L-shaped corridor.
 	# Simple and guarantees full connectivity since it's a single chain.
@@ -205,6 +358,7 @@ func _connect_rooms() -> void:
 		var a: Vector2i = _rooms[i].get_center()
 		var b: Vector2i = _rooms[i + 1].get_center()
 		_carve_l_corridor(a, b)
+
 
 
 func _carve_l_corridor(from: Vector2i, to: Vector2i) -> void:
@@ -282,19 +436,41 @@ func _draw_tiles() -> void:
 
 ## Returns a random world-space position inside a random room's floor area.
 ## Used by Main.gd to place Player/Boss after generate() runs.
-func get_random_floor_position() -> Vector2:
+
+
+func _random_position_in_room(room_index: int) -> Vector2:
+	var room: Rect2i = _rooms[room_index]
+	var cell_x: int = _rng.randi_range(room.position.x, room.position.x + room.size.x - 1)
+	var cell_y: int = _rng.randi_range(room.position.y, room.position.y + room.size.y - 1)
+	var tile_size: Vector2 = Vector2(_tiles.tile_set.tile_size)
+	return _tiles.to_global(Vector2(cell_x, cell_y) * tile_size + tile_size / 2.0)
+
+## Picks room 0 as the "safe" spawn room and returns a position inside it.
+## Call this once per generate() for the player's spawn point.
+func get_spawn_position() -> Vector2:
+	if _rooms.is_empty():
+		push_warning("DungeonGenerator: get_spawn_position() called before generate() or no rooms exist.")
+		return Vector2.ZERO
+	_spawn_room_index = 0
+	return _random_position_in_room(_spawn_room_index)
+
+func get_spawn_room_index() -> int:
+	return _spawn_room_index
+
+## Now accepts an optional room index to exclude (e.g. the spawn room),
+## so boss/mob spawns can avoid landing next to the player.
+func get_random_floor_position(exclude_room_index: int = -1) -> Vector2:
 	if _rooms.is_empty():
 		push_warning("DungeonGenerator: get_random_floor_position() called before generate() or no rooms exist.")
 		return Vector2.ZERO
-
-	var room: Rect2i = _rooms[_rng.randi_range(0, _rooms.size() - 1)]
-	var cell_x: int = _rng.randi_range(room.position.x, room.position.x + room.size.x - 1)
-	var cell_y: int = _rng.randi_range(room.position.y, room.position.y + room.size.y - 1)
-
-	# Convert grid cell -> world position using the TileMapLayer's tile size,
-	# centered in the cell.
-	var tile_size: Vector2 = Vector2(_tiles.tile_set.tile_size)
-	return _tiles.to_global(Vector2(cell_x, cell_y) * tile_size + tile_size / 2.0)
+	var candidates: Array = []
+	for i in _rooms.size():
+		if i != exclude_room_index:
+			candidates.append(i)
+	if candidates.is_empty():
+		candidates = range(_rooms.size())  # only one room total -- fall back
+	var room_index: int = candidates[_rng.randi_range(0, candidates.size() - 1)]
+	return _random_position_in_room(room_index)
 
 
 ## Returns the list of generated rooms, in case Main.gd or other systems
@@ -327,3 +503,26 @@ func is_floor_cell(cell: Vector2i) -> bool:
 	if cell.x < 0 or cell.x >= grid_width or cell.y < 0 or cell.y >= grid_height:
 		return false
 	return _grid[cell.x][cell.y] == Cell.FLOOR
+
+func _print_debug_map() -> void:
+	print("DEBUG: dungeon map (S=secret room floor, D=secret door closed, O=secret door open, #=wall, .=floor):")
+	for y in grid_height:
+		var row := ""
+		for x in grid_width:
+			var cell := Vector2i(x, y)
+			if has_secret_room() and cell == _secret_door_cell:
+				row += ("O" if _secret_door_open else "D")
+			elif has_secret_room() and _secret_room.has_point(cell):
+				row += "S"
+			else:
+				match _grid[x][y]:
+					Cell.WALL:
+						row += "#"
+					Cell.FLOOR:
+						row += "."
+					_:
+						row += " "
+		print(row)
+
+func is_inside_secret_room(cell: Vector2i) -> bool:
+	return has_secret_room() and _secret_room.has_point(cell)

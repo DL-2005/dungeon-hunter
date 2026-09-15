@@ -21,7 +21,7 @@ const BOSS_PRESETS: Array[Dictionary] = [
 		"ranged_damage": 8.0,
 	},
 	{
-		"name": "Swift Reaver",
+		"name": "Blade Wraith",
 		"max_health": 220.0,
 		"move_speed": 140.0,
 		"attack_cooldown": 0.7,
@@ -39,6 +39,7 @@ const BOSS_PRESETS: Array[Dictionary] = [
 ]
 const IS_BOSS: bool = true
 var _current_preset: Dictionary = {}
+var _encounter_id: int = 0
 
 @export var max_health: float = 300.0
 @export var phase_2_threshold: float = 0.5  # triggers at 50% HP
@@ -57,11 +58,14 @@ var _attack_cooldown_timer: float = 0.0
 var health: float 
 var current_phase: Phase = Phase.PHASE_1
 var player: Node2D = null
+var _base_max_health: float
+var _base_attack_damage: float
+var _base_ranged_damage: float
+var _current_preset_index: int = -1
 
 # --- Pattern tracking, for the reactive layer described in the plan ---
 # e.g. "if player dodges the same direction 3x in a row, counter it"
 var _recent_player_dodge_dirs: Array = []
-
 
 func _physics_process(delta: float) -> void:
 	if _attack_cooldown_timer > 0.0:
@@ -69,9 +73,6 @@ func _physics_process(delta: float) -> void:
 	if _ranged_cooldown_timer > 0.0:
 		_ranged_cooldown_timer -= delta
 	_check_phase_transition()
-	# Movement/attack decisions now happen inside the Behavior Tree
-	# (BTPlayer child node ticks automatically based on its Update Mode).
-
 
 func _check_phase_transition() -> void:
 	if current_phase == Phase.PHASE_1 and health <= max_health * phase_2_threshold:
@@ -83,24 +84,6 @@ func _on_enter_phase_2() -> void:
 	print("Boss enters Phase 2 — enraged.")
 	move_speed *= 1.3
 	_spawn_adds_for_tier()
-
-func _spawn_adds_for_tier() -> void:
-	var score: float = GameManager.last_skill_score
-	# Continuous instead of a 3-way tier switch: scales smoothly from 0
-	# adds (Struggling, score=0.0) up to 4 adds (Skilled, score=1.0).
-	var count: int = int(round(lerp(0.0, 4.0, score)))
-	if count > 0:
-		mobs_requested.emit(count)
-	# Second, delayed wave: also continuous. Size scales with score and
-	# goes to 0 (i.e. doesn't happen at all) below roughly the
-	# Average/Skilled boundary, instead of a hard "only if Skilled" gate.
-	var second_count: int = int(round(lerp(-3.0, 3.0, score)))
-	if second_count > 0 and is_alive():
-		# Second wave for strong performances, a bit later -- only if the
-		# boss is still alive (don't spawn adds right as/after it dies).
-		await get_tree().create_timer(9.0).timeout
-		if is_alive():
-			mobs_requested.emit(second_count)
 
 func take_damage(amount: float) -> void:
 	if health <= 0.0:
@@ -114,6 +97,9 @@ func take_damage(amount: float) -> void:
 
 func is_alive() -> bool:
 	return health > 0.0
+
+func get_current_preset_index() -> int:
+	return _current_preset_index
 
 func _ready() -> void:
 	health = max_health
@@ -151,14 +137,15 @@ func _die() -> void:
 	print("Combined recommendation: ", combined_enchant)
 	GameManager.last_skill_tier = boss_result["tier"]  # adaptive difficulty scales off boss performance specifically, not mob performance
 	GameManager.last_skill_score = GameManager.get_skill_score(boss_profile)  # NEW -- continuous score for dungeon generation
-	print("Skill score: ", GameManager.last_skill_score)
 	GameManager.has_played_before = true
 	emit_signal("defeated", combined_enchant, GameManager.last_skill_tier)
 	GameManager.attempts_this_boss = 1
 	# TODO: trigger loot drop using `combined_enchant` (Week 11)
 
-func reset_and_respawn() -> void:
-	_pick_preset()
+func reset_and_respawn(exclude_indices: Array[int] = [], reroll_preset: bool = true) -> void:
+	_encounter_id += 1
+	if reroll_preset:
+		_pick_preset(exclude_indices)
 	health = max_health
 	current_phase = Phase.PHASE_1
 	_attack_cooldown_timer = 0.0
@@ -167,13 +154,46 @@ func reset_and_respawn() -> void:
 	if not $BTPlayer.active:
 		$BTPlayer.active = true
 	_apply_adaptive_difficulty()
+	_apply_score_based_stats()
 	$HealthBar.update_health(health, max_health)
 
-func _pick_preset() -> void:
-	_current_preset = BOSS_PRESETS[randi() % BOSS_PRESETS.size()]
-	max_health = _current_preset["max_health"]
+func _pick_preset(exclude_indices: Array[int] = []) -> void:
+	var candidates: Array[int] = []
+	for i in BOSS_PRESETS.size():
+		if i not in exclude_indices:
+			candidates.append(i)
+	if candidates.is_empty():
+		candidates = range(BOSS_PRESETS.size())
+	_current_preset_index = candidates[randi() % candidates.size()]
+	_current_preset = BOSS_PRESETS[_current_preset_index]
+	_base_max_health = _current_preset["max_health"]
 	_base_move_speed = _current_preset["move_speed"]
 	_base_attack_cooldown = _current_preset["attack_cooldown"]
-	attack_damage = _current_preset["attack_damage"]
-	ranged_damage = _current_preset["ranged_damage"]
+	_base_attack_damage = _current_preset["attack_damage"]
+	_base_ranged_damage = _current_preset["ranged_damage"]
 	print("Boss preset this encounter: ", _current_preset["name"])
+
+func _spawn_adds_for_tier() -> void:
+	var my_encounter: int = _encounter_id
+	var score: float = GameManager.last_skill_score
+	var count: int = int(round(lerp(0.0, 4.0, score)))
+	if count > 0:
+		mobs_requested.emit(count)
+	var second_count: int = int(round(lerp(-3.0, 3.0, score)))
+	if second_count > 0 and is_alive():
+		await get_tree().create_timer(9.0).timeout
+		if is_alive() and _encounter_id == my_encounter:
+			mobs_requested.emit(second_count)
+
+func _apply_score_based_stats() -> void:
+	# Continuous k-NN score scales this boss's HP/damage on top of its preset
+	# and the existing tier-based speed/cooldown scaling in _apply_adaptive_difficulty().
+	# Recomputed from stored preset bases each call so repeated retries (reroll_preset=false)
+	# never compound the multiplier.
+	var score: float = GameManager.last_skill_score
+	var mult: float = lerp(0.85, 1.25, score)
+	max_health = _base_max_health * mult
+	health = max_health
+	attack_damage = _base_attack_damage * mult
+	ranged_damage = _base_ranged_damage * mult
+	print("Score-based stats: score=", score, " mult=", mult, " -> max_health=", max_health, " attack_damage=", attack_damage)

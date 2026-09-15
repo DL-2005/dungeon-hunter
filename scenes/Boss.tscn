@@ -17,5 +17,5 @@ texture = ExtResource("2_gw42l")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1934476521]
 shape = SubResource("RectangleShape2D_1")
 
-[node name="HealthBar" type="Node2D" parent="." unique_id=67390702]
+[node name="HealthBar" type="Node2D" parent="." unique_id=1692262236]
 script = ExtResource("2_6ig5k")

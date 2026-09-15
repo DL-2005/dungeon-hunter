@@ -31,7 +31,7 @@ layout_mode = 2
 [node name="VampiricButton" type="Button" parent="Panel/VBoxContainer" unique_id=909830066]
 layout_mode = 2
 
-[node name="SwiftButton" type="Button" parent="Panel/VBoxContainer" unique_id=1030350206]
+[node name="RegenerationButton" type="Button" parent="Panel/VBoxContainer" unique_id=1030350206]
 layout_mode = 2
 
 [node name="GuardianButton" type="Button" parent="Panel/VBoxContainer" unique_id=583417551]
