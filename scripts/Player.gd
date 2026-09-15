@@ -21,6 +21,9 @@ const BERSERKER_LOWHP_HEAL: float = 4.0        # flat heal per landed hit while 
 const VISION_SCALE_TUTORIAL := 10.0
 const VISION_SCALE_STRUGGLING := 13.0
 const VISION_SCALE_SKILLED := 8.0
+const SWIFT_SPEED_BONUS_PCT: float = 0.35   # +35% move speed, always on while equipped
+const SWIFT_DAMAGE_BONUS_PCT: float = 0.20  # +20% flat attack damage -- does NOT scale with missing health, unlike Berserker, which is what keeps the two distinct
+
 var health: float = max_health
 var is_dodging: bool = false
 var _dodge_timer: float = 0.0
@@ -33,6 +36,7 @@ var is_dead: bool = false
 var stats := {
 	"attacks_thrown": 0,
 	"dodges_used": 0,
+	"successful_dodges": 0,
 	"hits_taken": 0,
 	"hits_taken_from_boss": 0,
 	"hits_taken_from_mobs": 0,
@@ -71,7 +75,10 @@ func _physics_process(delta: float) -> void:
 	if input_dir.length() > 0.0:
 		input_dir = input_dir.normalized()
 		last_move_dir = input_dir
-	velocity = input_dir * speed
+	var effective_speed := speed
+	if GameManager.equipped_enchant == "Swift":
+		effective_speed *= 1.0 + SWIFT_SPEED_BONUS_PCT
+	velocity = input_dir * effective_speed
 	move_and_slide()
 	if Input.is_action_just_pressed("attack"):
 		_attack()
@@ -94,6 +101,8 @@ func _attack() -> void:
 			if GameManager.equipped_enchant == "Berserker":
 				var missing_frac := 1.0 - (health / max_health)
 				damage *= 1.0 + BERSERKER_MAX_BONUS * missing_frac
+			if GameManager.equipped_enchant == "Swift":
+				damage *= 1.0 + SWIFT_DAMAGE_BONUS_PCT
 			body.take_damage(damage)
 			stats["damage_dealt"] += damage
 			if "IS_BOSS" in body and body.IS_BOSS:
@@ -123,6 +132,7 @@ func revive() -> void:
 	stats = {
 		"attacks_thrown": 0,
 		"dodges_used": 0,
+		"successful_dodges": 0,
 		"hits_taken": 0,
 		"hits_taken_from_boss": 0,
 		"hits_taken_from_mobs": 0,
@@ -141,6 +151,7 @@ func take_damage(amount: float, from_boss: bool = true) -> void:
 	if health <= 0.0:
 		return
 	if is_dodging:
+		stats["successful_dodges"] += 1
 		return
 	var final_amount := amount
 	if GameManager.equipped_enchant == "Guardian":
@@ -187,8 +198,7 @@ func _die() -> void:
 func get_playstyle_profile(fight_duration: float) -> Dictionary:
 	var total_actions = max(stats["attacks_thrown"] + stats["dodges_used"], 1)
 	return {
-		"dodge_rate": float(stats["dodges_used"]) / total_actions,
-		"hit_taken_rate": float(stats["hits_taken_from_boss"]) / max(fight_duration, 1.0),
+		"dodge_rate": float(stats["successful_dodges"]) / total_actions,		"hit_taken_rate": float(stats["hits_taken_from_boss"]) / max(fight_duration, 1.0),
 		"avg_fight_duration": fight_duration,
 		"damage_dealt_avg": stats["damage_dealt_to_boss"] / max(fight_duration, 1.0),
 	}
@@ -196,8 +206,7 @@ func get_playstyle_profile(fight_duration: float) -> Dictionary:
 func get_mob_playstyle_profile(fight_duration: float) -> Dictionary:
 	var total_actions = max(stats["attacks_thrown"] + stats["dodges_used"], 1)
 	return {
-		"dodge_rate": float(stats["dodges_used"]) / total_actions,
-		"hit_taken_rate": float(stats["hits_taken_from_mobs"]) / max(fight_duration, 1.0),
+		"dodge_rate": float(stats["successful_dodges"]) / total_actions,		"hit_taken_rate": float(stats["hits_taken_from_mobs"]) / max(fight_duration, 1.0),
 		"avg_fight_duration": fight_duration,
 		"damage_dealt_avg": stats["damage_dealt_to_mobs"] / max(fight_duration, 1.0),
 	}

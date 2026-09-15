@@ -16,6 +16,7 @@ var has_played_before: bool = false
 
 const FIGHT_LOG_PATH := "user://fight_logs.json"
 const TIER_VALUE := {"Struggling": 0.0, "Average": 0.5, "Skilled": 1.0}
+const SECRET_ROOM_LOG_PATH := "user://secret_room_logs.json"
 
 #currency on shop UI 
 func add_currency(amount: int) -> void:
@@ -202,3 +203,31 @@ func _majority(votes: Dictionary) -> String:
 			best_count = votes[key]
 			best_key = key
 	return best_key
+
+var last_secret_room_find_time: float = -1.0
+const SECRET_ROOM_PREFERENCE_LOG_PATH := "user://secret_room_preferences.json"
+
+func log_secret_room_choice(choice: String, died_this_gauntlet: bool) -> void:
+	var entry := {
+		"choice": choice,                        # "hunt", "skip", or "quit"
+		"died_this_gauntlet": died_this_gauntlet,
+		"skill_tier": last_skill_tier,
+		"skill_score": last_skill_score,
+		"timestamp": Time.get_unix_time_from_system(),
+	}
+
+	var logs: Array = []
+	if FileAccess.file_exists(SECRET_ROOM_LOG_PATH):
+		var read_file := FileAccess.open(SECRET_ROOM_LOG_PATH, FileAccess.READ)
+		var parsed = JSON.parse_string(read_file.get_as_text())
+		if parsed is Array:
+			logs = parsed
+		read_file.close()
+
+	logs.append(entry)
+
+	var write_file := FileAccess.open(SECRET_ROOM_LOG_PATH, FileAccess.WRITE)
+	write_file.store_string(JSON.stringify(logs, "\t"))
+	write_file.close()
+
+	print("Logged secret room choice (", logs.size(), " total logged).")

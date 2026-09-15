@@ -4,6 +4,7 @@ const ENCHANT_PRICE := 30
 signal closed
 var _purchase_in_progress: bool = false
 var _free_mode: bool = false
+var _preference_only: bool = false
 
 @onready var recommended_label: Label = $Panel/VBoxContainer/RecommendedLabel
 @onready var currency_label: Label = $Panel/VBoxContainer/CurrencyLabel
@@ -12,8 +13,8 @@ var _free_mode: bool = false
 	"Regeneration": $Panel/VBoxContainer/RegenerationButton,
 	"Guardian": $Panel/VBoxContainer/GuardianButton,
 	"Berserker": $Panel/VBoxContainer/BerserkerButton,
+	"Swift": $Panel/VBoxContainer/SwiftButton,
 }
-
 func _ready() -> void:
 	for name in buttons:
 		buttons[name].pressed.connect(_on_enchant_pressed.bind(name))
@@ -22,7 +23,17 @@ func open(recommended: String) -> void:
 	visible = true
 	_purchase_in_progress = false
 	_free_mode = false
+	_preference_only = false
 	recommended_label.text = "Recommended for you: " + recommended
+	_refresh()
+	get_tree().paused = true
+
+func open_preference_choice() -> void:
+	visible = true
+	_purchase_in_progress = false
+	_free_mode = false
+	_preference_only = true
+	recommended_label.text = "Which enchant do you like best? (for research only -- not equipped)"
 	_refresh()
 	get_tree().paused = true
 
@@ -37,7 +48,10 @@ func open_free_choice() -> void:
 func _refresh() -> void:
 	currency_label.text = "Gold: " + str(GameManager.currency)
 	for name in buttons:
-		if _free_mode:
+		if _preference_only:
+			buttons[name].text = name
+			buttons[name].disabled = false
+		elif _free_mode:
 			buttons[name].text = name + "  (FREE)"
 			buttons[name].disabled = false
 		else:
@@ -46,6 +60,11 @@ func _refresh() -> void:
 
 func _on_enchant_pressed(enchant_name: String) -> void:
 	if _purchase_in_progress:
+		return
+	if _preference_only:
+		_purchase_in_progress = true
+		GameManager.log_secret_room_preference(enchant_name)
+		close()
 		return
 	if _free_mode or GameManager.currency >= ENCHANT_PRICE:
 		_purchase_in_progress = true

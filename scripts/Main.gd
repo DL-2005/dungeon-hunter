@@ -13,6 +13,7 @@ extends Node2D
 @onready var fight_timer_label: Label = $CanvasLayer/FightTimerLabel
 @onready var secret_prompt_label: Label = $CanvasLayer/SecretPromptLabel
 @onready var secret_timer_label: Label = $CanvasLayer/SecretTimerLabel
+@onready var phase3_choice_ui = $CanvasLayer/Phase3ChoiceUI
 
 enum Phase3State { NONE, HUNTING, CHALLENGE, AWAITING_REWARD_CHOICE }
 
@@ -24,19 +25,16 @@ var _phase3_state: Phase3State = Phase3State.NONE
 var _phase3_hunt_timer: float = 0.0
 var _phase3_challenge_timer: float = 0.0
 var _phase3_challenge_mobs: Array[Node] = []
+var _gauntlet_died: bool = false
 
 const PHASE3_HUNT_DURATION: float = 300.0
 const PHASE3_CHALLENGE_DURATION_SKILLED: float = 15.0
 const PHASE3_CHALLENGE_DURATION_AVERAGE: float = 25.0
 const PHASE3_CHALLENGE_MOB_COUNT: int = 4
 const INTERACT_RANGE: float = 90.0
-const DEBUG_FORCE_SKILL_TIER: String = "Skilled"  # "" = off, or "Struggling" / "Average" / "Skilled"
-const GAUNTLET_SIZE: int = 3
+const GAUNTLET_SIZE: int = 5
 const MELEE_MOB_SCENE := preload("res://scenes/MeleeMob.tscn")
 const RANGED_MOB_SCENE := preload("res://scenes/RangedMob.tscn")
-const DEBUG_PRINT_POSITIONS: bool = true
-const DEBUG_POSITION_PRINT_INTERVAL: float = 0.2  # seconds; set to 0.0 to print every single frame
-var _debug_position_timer: float = 0.0
 
 func _ready() -> void:
 	boss.player = player
@@ -46,10 +44,13 @@ func _ready() -> void:
 	shop_ui.closed.connect(_on_shop_closed)
 	tutorial_ui.closed.connect(_on_tutorial_closed)
 	tutorial_ui.open()
+	phase3_choice_ui.choice_made.connect(_on_phase3_choice_made)
 
 
 func start_new_encounter() -> void:
+	GameManager.equipped_enchant = ""
 	_gauntlet_leg = 0
+	_gauntlet_died = false
 	_gauntlet_used_presets.clear()
 	_clear_active_mobs()
 	dungeon.configure_from_skill_score(GameManager.last_skill_score)
@@ -78,15 +79,6 @@ func _process(delta: float) -> void:
 			_process_phase3_hunting(delta)
 		Phase3State.CHALLENGE:
 			_process_phase3_challenge(delta)
-	if dungeon.has_secret_room() and not dungeon.is_secret_door_open():
-		var cell: Vector2i = dungeon.get_cell_at_world_pos(player.global_position)
-		if dungeon.is_inside_secret_room(cell):
-			print("DEBUG: !!! player is standing INSIDE the sealed secret room while door is still CLOSED !!! cell=", cell)
-	#if DEBUG_PRINT_POSITIONS and is_instance_valid(boss) and is_instance_valid(player):
-	#	_debug_position_timer -= delta
-	#if _debug_position_timer <= 0.0:
-	#	_debug_position_timer = DEBUG_POSITION_PRINT_INTERVAL
-	#	print("DEBUG POS: boss=", boss.global_position, " player=", player.global_position)
 
 func _on_boss_defeated(recommended_enchant: String, skill_tier: String) -> void:
 	GameManager.add_currency(50)
@@ -103,6 +95,7 @@ func _on_shop_closed() -> void:
 		_start_phase3_or_new_gauntlet()
 
 func _on_player_died() -> void:
+	_gauntlet_died = true
 	if _phase3_state == Phase3State.HUNTING or _phase3_state == Phase3State.CHALLENGE:
 		_die_during_phase3()
 		return
@@ -112,7 +105,6 @@ func _on_player_died() -> void:
 	_retry_current_boss()
 
 func _die_during_phase3() -> void:
-	print("DEBUG: player died during Phase 3 -- ending hunt/challenge as failure")
 	for mob in _phase3_challenge_mobs:
 		if is_instance_valid(mob):
 			mob.queue_free()
@@ -185,21 +177,27 @@ func _retry_current_boss() -> void:
 	_spawn_exploration_mobs()
 
 func _start_phase3_or_new_gauntlet() -> void:
-	if DEBUG_FORCE_SKILL_TIER != "":
-		GameManager.last_skill_tier = DEBUG_FORCE_SKILL_TIER
-		print("DEBUG: forcing skill tier to ", DEBUG_FORCE_SKILL_TIER, " for Phase 3 check")
-	var tier: String = GameManager.last_skill_tier
-	print("DEBUG: Phase 3 check -- tier=", tier, " has_secret_room=", dungeon.has_secret_room())
-	if tier == "Struggling" or not dungeon.has_secret_room():
-		start_new_encounter()
-		return
-	_clear_active_mobs()
-	_phase3_state = Phase3State.HUNTING
-	_phase3_hunt_timer = PHASE3_HUNT_DURATION
-	secret_timer_label.visible = true
-	dungeon.reveal_secret_highlight()
-	minimap.reveal_secret_marker()
-	print("DEBUG: hunt started, door at ", dungeon.get_secret_door_world_pos(), " player at ", player.global_position)
+	var can_hunt: bool = dungeon.has_secret_room() and not _gauntlet_died
+	phase3_choice_ui.open(can_hunt)
+
+func _on_phase3_choice_made(choice: String) -> void:
+	var can_hunt: bool = dungeon.has_secret_room() and not _gauntlet_died
+	GameManager.log_secret_room_choice(choice, _gauntlet_died)
+	match choice:
+		"hunt":
+			if not can_hunt:
+				return  # button should've been hidden, but don't trust it blindly
+			_clear_active_mobs()
+			_phase3_state = Phase3State.HUNTING
+			_phase3_hunt_timer = PHASE3_HUNT_DURATION
+			secret_timer_label.visible = true
+			dungeon.reveal_secret_highlight()
+			minimap.reveal_secret_marker()
+		"skip":
+			_phase3_state = Phase3State.NONE
+			start_new_encounter()
+		"quit":
+			get_tree().quit()
 
 func _process_phase3_hunting(delta: float) -> void:
 	_phase3_hunt_timer -= delta
@@ -219,7 +217,6 @@ func _process_phase3_hunting(delta: float) -> void:
 		secret_prompt_label.visible = false
 
 func _start_phase3_challenge() -> void:
-	print("DEBUG: Phase 3 CHALLENGE started")
 	_phase3_state = Phase3State.CHALLENGE
 	var tier: String = GameManager.last_skill_tier
 	_phase3_challenge_timer = PHASE3_CHALLENGE_DURATION_SKILLED if tier == "Skilled" else PHASE3_CHALLENGE_DURATION_AVERAGE
@@ -245,7 +242,6 @@ func _on_phase3_mob_died(mob: Node) -> void:
 		_end_phase3_hunt(true)
 
 func _end_phase3_hunt(success: bool) -> void:
-	print("DEBUG: Phase 3 ended -- success=", success)
 	secret_timer_label.visible = false
 	secret_prompt_label.visible = false
 	for mob in _phase3_challenge_mobs:
@@ -256,10 +252,7 @@ func _end_phase3_hunt(success: bool) -> void:
 		_phase3_state = Phase3State.NONE
 		start_new_encounter()
 		return
-	if GameManager.last_skill_tier == "Skilled":
-		_phase3_state = Phase3State.AWAITING_REWARD_CHOICE
-		shop_ui.open_free_choice()
-	else:
-		GameManager.add_currency(75)
-		_phase3_state = Phase3State.NONE
-		start_new_encounter()
+	GameManager.add_currency(75)
+	GameManager.last_secret_room_find_time = PHASE3_HUNT_DURATION - _phase3_hunt_timer
+	_phase3_state = Phase3State.AWAITING_REWARD_CHOICE
+	shop_ui.open_preference_choice()
