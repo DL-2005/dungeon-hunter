@@ -48,9 +48,11 @@ def label_profile(features: dict) -> tuple[str, str]:
     else:
         tier = "Average"
 
-    # --- Enchant recommendation (dominant trait wins) ---
+        # --- Enchant recommendation (dominant trait wins) ---
     if dodge_rate > 0.45 and hit_taken_rate < 0.12:
         enchant = "Regeneration"  # evasive/cautious players already avoid damage well -- passive sustain rewards that instead of Swift's redundant speed boost
+    elif duration < 30.0 and hit_taken_rate < 0.15 and dodge_rate >= 0.20:
+        enchant = "Swift"          # fast, mobile playstyle -- quick decisive fights with some positioning-based evasion, distinct from Regeneration's heavier reliance on active dodging
     elif hit_taken_rate > 0.28 or attempts >= 4:
         enchant = "Guardian"       # struggling/tanky players need survivability
     elif damage_avg > 18.0 and hit_taken_rate < 0.18:

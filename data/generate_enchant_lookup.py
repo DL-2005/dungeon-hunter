@@ -64,6 +64,12 @@ def make_features(archetype: str) -> dict:
         duration = max(5.0, random.gauss(45, 8))
         damage_avg = max(0.0, min(25.0, random.gauss(18, 3)))
         attempts = max(1, round(random.gauss(2, 1)))
+    elif archetype == "swift_mobile":
+        dodge_rate = max(0.0, min(1.0, random.gauss(0.30, 0.06)))
+        hit_taken_rate = max(0.0, random.gauss(0.08, 0.03))
+        duration = max(5.0, random.gauss(22, 5))
+        damage_avg = max(0.0, min(25.0, random.gauss(16, 3)))
+        attempts = 1
     else:  # "novice_struggling"
         dodge_rate = max(0.0, random.gauss(0.10, 0.04))
         hit_taken_rate = max(0.0, random.gauss(0.40, 0.08))
@@ -87,9 +93,10 @@ def main():
         "tanky_struggling",
         "efficient_average",
         "novice_struggling",
+        "swift_mobile",
     ]
 
-    n_per_archetype = 60
+    n_per_archetype = 300
     rows = []
     for arch in archetypes:
         for _ in range(n_per_archetype):
