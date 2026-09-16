@@ -231,3 +231,28 @@ func log_secret_room_choice(choice: String, died_this_gauntlet: bool) -> void:
 	write_file.close()
 
 	print("Logged secret room choice (", logs.size(), " total logged).")
+
+func log_secret_room_preference(enchant_name: String) -> void:
+	var entry := {
+		"enchant": enchant_name,
+		"skill_tier": last_skill_tier,
+		"skill_score": last_skill_score,
+		"find_time": last_secret_room_find_time,
+		"timestamp": Time.get_unix_time_from_system(),
+	}
+
+	var logs: Array = []
+	if FileAccess.file_exists(SECRET_ROOM_PREFERENCE_LOG_PATH):
+		var read_file := FileAccess.open(SECRET_ROOM_PREFERENCE_LOG_PATH, FileAccess.READ)
+		var parsed = JSON.parse_string(read_file.get_as_text())
+		if parsed is Array:
+			logs = parsed
+		read_file.close()
+
+	logs.append(entry)
+
+	var write_file := FileAccess.open(SECRET_ROOM_PREFERENCE_LOG_PATH, FileAccess.WRITE)
+	write_file.store_string(JSON.stringify(logs, "\t"))
+	write_file.close()
+
+	print("Logged secret room enchant preference (", logs.size(), " total logged).")

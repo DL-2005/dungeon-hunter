@@ -57,7 +57,7 @@ func _physics_process(delta: float) -> void:
 		health = min(health + REGEN_HP_PER_SEC * delta, max_health)
 		$HealthBar.update_health(health, max_health)
 		_regen_debug_timer += delta
-		if _regen_debug_timer >= 1.0:
+		if _regen_debug_timer >= 7.0:
 			print("Regeneration ticking. Health: ", health)
 			_regen_debug_timer = 0.0
 	if _dodge_cooldown_timer > 0.0:

@@ -160,7 +160,12 @@ func _advance_gauntlet_leg() -> void:
 	_gauntlet_leg += 1
 	_clear_active_mobs()
 	var player_room: int = dungeon.get_room_index_at_world_pos(player.global_position)
-	boss.global_position = dungeon.get_random_floor_position(player_room)
+	var spawn_pos: Vector2 = dungeon.get_random_floor_position(player_room)
+	var _spawn_tries: int = 0
+	while spawn_pos.distance_to(player.global_position) < 400.0 and _spawn_tries < 10:
+		spawn_pos = dungeon.get_random_floor_position(player_room)
+		_spawn_tries += 1
+	boss.global_position = spawn_pos
 	boss.reset_and_respawn(_gauntlet_used_presets)
 	_gauntlet_used_presets.append(boss.get_current_preset_index())
 	_spawn_exploration_mobs()
@@ -202,7 +207,7 @@ func _on_phase3_choice_made(choice: String) -> void:
 func _process_phase3_hunting(delta: float) -> void:
 	_phase3_hunt_timer -= delta
 	var dist: float = player.global_position.distance_to(dungeon.get_secret_door_world_pos())
-	secret_timer_label.text = "Secret room: %ds  (dist=%d)" % [int(ceil(_phase3_hunt_timer)), int(dist)]
+	secret_timer_label.text = "Secret room: %ds" % [int(ceil(_phase3_hunt_timer))]
 	if _phase3_hunt_timer <= 0.0:
 		_end_phase3_hunt(false)
 		return
