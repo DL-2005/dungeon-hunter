@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://kgpkfww1fbxw" path="res://scenes/ShopUI.tscn" id="14_mwfav"]
 [ext_resource type="PackedScene" uid="uid://dmdfr8i4tg7nm" path="res://scenes/TutorialUI.tscn" id="15_3p2gp"]
 [ext_resource type="Script" uid="uid://b5nxfahwj6bep" path="res://scenes/Minimap.gd" id="16_cvmbd"]
+[ext_resource type="PackedScene" uid="uid://bhctt06cbyma7" path="res://scenes/phase_3_choice_ui.tscn" id="17_ft6cd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vcsgt"]
 texture = ExtResource("4_rarhs")
@@ -126,16 +127,7 @@ script = ExtResource("16_cvmbd")
 dungeon = NodePath("../../DungeonTiles/DungeonGenerator")
 player = NodePath("../../Player")
 
-[node name="Control" type="Control" parent="CanvasLayer" unique_id=1861232018]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Panel" type="Panel" parent="CanvasLayer/Control" unique_id=78255710]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="Phase3ChoiceUI" parent="CanvasLayer" unique_id=281335395 instance=ExtResource("17_ft6cd")]
 
 [node name="FightTimerLabel" type="Label" parent="CanvasLayer" unique_id=798190578]
 anchors_preset = 1
