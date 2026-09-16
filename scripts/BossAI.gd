@@ -236,7 +236,7 @@ func reset_and_respawn(exclude_indices: Array[int] = [], reroll_preset: bool = t
 		_pick_preset(exclude_indices)
 	health = max_health
 	current_phase = Phase.PHASE_1
-	_attack_cooldown_timer = 0.0
+	_attack_cooldown_timer = attack_cooldown	
 	_ranged_cooldown_timer = 0.0
 	is_telegraphing_melee = false
 	is_telegraphing_ranged = false
