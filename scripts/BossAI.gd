@@ -66,7 +66,7 @@ var _encounter_id: int = 0
 @export var ranged_cooldown: float = 2.0
 @export var ranged_damage: float = 8.0
 @export var attack_damage: float = 10.0
-@export var attack_telegraph_duration: float = 1.0  # wind-up before a hit lands, so dodges are reactable
+@export var attack_telegraph_duration: float = 0.35  # wind-up before a hit lands, so dodges are reactable
 
 var _ranged_cooldown_timer: float = 0.0
 var _base_move_speed: float

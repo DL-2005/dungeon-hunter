@@ -42,7 +42,7 @@ const IS_BOSS: bool = false
 @export var ranged_range: float = 260.0
 @export var ranged_cooldown: float = 1.8
 @export var ranged_damage: float = 4.0
-@export var attack_telegraph_duration: float = 0.75  
+@export var attack_telegraph_duration: float = 0.35  
 
 var _attack_cooldown_timer: float = 0.0
 var _ranged_cooldown_timer: float = 0.0

@@ -196,17 +196,19 @@ func _die() -> void:
 ## the k-NN enchant recommender. Kept here so GameManager can just call this
 ## at the end of a fight without duplicating tracking logic.
 func get_playstyle_profile(fight_duration: float) -> Dictionary:
-	var total_actions = max(stats["attacks_thrown"] + stats["dodges_used"], 1)
+	var boss_attacks_faced = stats["hits_taken_from_boss"] + stats["successful_dodges"]
 	return {
-		"dodge_rate": float(stats["successful_dodges"]) / total_actions,		"hit_taken_rate": float(stats["hits_taken_from_boss"]) / max(fight_duration, 1.0),
+		"dodge_rate": float(stats["successful_dodges"]) / max(boss_attacks_faced, 1),
+		"hit_taken_rate": float(stats["hits_taken_from_boss"]) / max(fight_duration, 1.0),
 		"avg_fight_duration": fight_duration,
 		"damage_dealt_avg": stats["damage_dealt_to_boss"] / max(fight_duration, 1.0),
 	}
 
 func get_mob_playstyle_profile(fight_duration: float) -> Dictionary:
-	var total_actions = max(stats["attacks_thrown"] + stats["dodges_used"], 1)
+	var mob_attacks_faced = stats["hits_taken_from_mobs"] + stats["successful_dodges"]
 	return {
-		"dodge_rate": float(stats["successful_dodges"]) / total_actions,		"hit_taken_rate": float(stats["hits_taken_from_mobs"]) / max(fight_duration, 1.0),
+		"dodge_rate": float(stats["successful_dodges"]) / max(mob_attacks_faced, 1),
+		"hit_taken_rate": float(stats["hits_taken_from_mobs"]) / max(fight_duration, 1.0),
 		"avg_fight_duration": fight_duration,
 		"damage_dealt_avg": stats["damage_dealt_to_mobs"] / max(fight_duration, 1.0),
 	}

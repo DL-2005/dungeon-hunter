@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://baf4qvw34xcbt" path="res://scenes/phase_3_choice_ui.gd" id="1_gks0l"]
 
 [node name="Phase3ChoiceUI" type="Control" unique_id=281335395]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
